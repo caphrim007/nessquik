@@ -1,0 +1,40 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/policy/views/scripts/modify/title.phtml'; ?>
+
+<div class='span-24 last' style='border-color: 1px solid #fff; position: relative;'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+		<input type='hidden' name='isNew' value='<?php echo $this->isNew; ?>'>
+		<input type='hidden' name='policyId' value='<?php echo $this->id; ?>'>
+		<input type='hidden' name='targetAction' value='include'>
+		<input type='hidden' name='format' value='json'>
+		<input type='hidden' name='totalPlugins' value='<?php echo $this->totalPlugins; ?>'>
+	</form>
+
+	<form id='form-plugin'>
+		<input type='hidden' name='policyId' value='<?php echo $this->id; ?>'>
+		<input type='hidden' name='page' value='1'>
+		<input type='hidden' name='family' value='1'>
+	</form>
+
+	<div id='policies' class='block clearfix menu-content span-24'>
+		<div id='content' class='content'>
+			<form id='form-submit' action=''>
+			<?php require 'form-general.phtml'; ?>
+			<?php require 'form-options.phtml'; ?>
+			<?php require 'form-credentials.phtml'; ?>
+			<?php require 'form-plugins.phtml'; ?>
+			<?php require 'form-network.phtml'; ?>
+			<?php require 'form-advanced.phtml'; ?>
+			</form>
+		</div>
+	</div>
+
+	<div class='span-22 prepend-1 append-1 clearfix form-ops' style='text-align: right;'>
+		<input id='btn-save' type='button' value='Save policy'>
+		<a class='hypertext cancel' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/policy'>cancel</a>
+	</div>
+</div>
+
+<?php require _MODPATH.'/policy/views/scripts/modify/dialog-add-plugin.phtml'; ?>
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

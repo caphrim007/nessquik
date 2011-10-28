@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="acctman" default="build">
+	<target name="build" depends="phpunit" />
+
+	<target name="init">
+		<mkdir dir="${basedir}/opt/build/logs" />
+	</target>
+
+	<target name="phpunit" depends="init">
+		<exec executable="phpunit" dir="${basedir}" failonerror="true">
+			<arg line=" --log-junit '${basedir}/opt/build/logs/phpunit.xml' --coverage-clover '${basedir}/opt/build/logs/clover.xml' --coverage-html '${basedir}/opt/build/logs/coverage' ${basedir}/lib/Tests" />
+		</exec>
+	</target>
+</project>

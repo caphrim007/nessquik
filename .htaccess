@@ -1,0 +1,27 @@
+RewriteEngine On
+
+<FilesMatch "(sandbox|build)\.(php|py|xml)">
+	Order Allow,Deny
+	Deny from all
+</FilesMatch>
+
+RewriteRule ^.*/images/(.*\.png|gif)$ usr/images/$1 [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^api/v1/xmlrpc api/v1/xmlrpc.php [L]
+RewriteRule ^api/v1/soap api/v1/soap.php [L]
+RewriteRule ^api/v1/json api/v1/json.php [L]
+RewriteRule ^api/v1/rest api/v1/rest.php [L]
+RewriteRule ^.*$ index.php [NC,L]
+
+<Limit GET POST>
+        Order Deny,Allow
+        Deny from all
+        Allow from 127.0.0.1
+
+        # tim
+        Allow from all
+</Limit>

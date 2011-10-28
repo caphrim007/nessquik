@@ -1,0 +1,25 @@
+This is a bugfix release that addresses several problems that were reported.
+
+- Individual plugins not being set in the nessusrc files that were generated
+- Special plugin profiles not be evaluated correctly at nessusrc generation time
+- Scan results not being saved to the database
+
+My most sincere thanks to Andy Michaelson and Joe Klemencic for debugging these
+problems and reporting them with solid info.
+
+Thanks also to everyone who stopped by my inbox for help!
+
+-Tim
+
+
+== Upgrade Instructions ==
+
+Easy. Use the mysql command to modify the database using the SQL supplied in the
+sql/ directory. Note that 'database' is the name of the nessquik database. Please
+change this to suite your particular installation
+
+	mysql -u user -p database < sql/upgrade.sql
+
+You will be prompted for your mysql password.
+
+The upgrade will be complete after that.

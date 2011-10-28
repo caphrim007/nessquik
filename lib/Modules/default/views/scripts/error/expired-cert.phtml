@@ -1,0 +1,43 @@
+<?php require _MODPATH.'/default/views/scripts/header/empty.phtml' ?>
+
+<div style='font-family: Verdana; font-size: 76%; padding: 0px 150px 0px 150px;'>
+	<h1 style='font-size: 4.4em; letter-spacing: -1px; line-height: 0.97em; font-family: Helvetica; font-weight: bold;'>
+		Oops...
+	</h1>
+	<div style='color:#888888; font-family:Georgia,Times,Serif; font-size:1.5em; font-size-adjust:none; font-stretch:normal; font-style:italic; font-variant:normal; font-weight:normal; line-height:1.67em;'>
+		Hi. I'm CST's nessquik server. It looks like the certificate that you have 
+		loaded in your browser has expired. If that's the case, you'll want to 
+		try refreshing your certificate using the tools available to you.
+	</div>
+
+	<br>
+
+	<div style='background:#EFEFEF none repeat scroll 0 0; border:1px solid #CCCCCC; display:block; font-size:1.2em; margin:0 0 1.4em; padding:1em; margin-left: 3em; margin-right: 3em; text-align:center;'>
+		<?php if ($this->browser->Platform == 'Linux'): ?>
+			On Linux, this means re-running the <code><a target='_blank' href='http://security.fnal.gov/tools'>get-cert</a></code> tool and
+			either restarting your browser or manually importing the certificate.
+		<?php elseif ($this->browser->Platform == 'MacOSX'): ?>
+			On Mac, this means re-running the <code>get-cert</code> for Mac tool and
+			either restarting your browser or manually importing the certificate.
+		<?php elseif (strpos($this->browser->Platform, 'Win') !== false): ?>
+			On Windows, this means your NetIdMgr program may not be refreshing your
+			KCA certificate, or, your password that you entered in NetIdMgr may have
+			expired and NetIdMgr simply hasn't been able to refresh your KCA certificate.
+		<?php else: ?>
+			
+		<?php endif; ?>
+	</div>
+
+	<div>
+		If that doesn't do the trick, try contacting...
+
+		<ul>
+			<li>...your desktop support
+			<li>...the <a href='helpdesk.fnal.gov'>Helpdesk</a>
+		</ul>
+
+		Or, if you're really lost, contact Computer Security
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/empty.phtml' ?>

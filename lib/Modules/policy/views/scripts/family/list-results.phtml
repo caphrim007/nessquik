@@ -1,0 +1,55 @@
+<?php if (empty($this->results)): ?>
+	<div class='prepend-top no-results-mesg'>
+		No plugin families were found
+	</div>
+<?php else: ?>
+<?php foreach ($this->results as $letter => $families): ?>
+<div class='span-22'>
+	<div class='span-22'>
+		<span style='font-size: 1.5em;'>
+			<?php echo $letter; ?>
+		</span>
+	</div>
+	<div class='span-22'>
+		<div class='span-21 prepend-1'>
+		<?php foreach($families as $family): ?>
+			<div class='span-7 last pluginFamilyTable prepend-top'>
+				<input type='hidden' name='family' value='<?php echo $family['family']; ?>'>
+				<input type='hidden' name='state' value='<?php echo $family['state']; ?>'>
+				<?php if (strlen($family['family']) > 35): ?>
+				<table>
+					<tr>
+						<td>
+							<img class='enable' src='<?php echo $this->baseUrl(); ?>/usr/images/bullet_green.png' alt='Click to disable all plugins in <?php echo $family['family']; ?>' title='Click to disable all plugins in <?php echo $family['family']; ?>'>
+							<img class='disable' src='<?php echo $this->baseUrl(); ?>/usr/images/bullet_white.png' alt='Click to enable all plugins in <?php echo $family['family']; ?>' title='Click to enable all plugins in <?php echo $family['family']; ?>'>
+							<img class='mixed' src='<?php echo $this->baseUrl(); ?>/usr/images/bullet_yellow.png' alt='Click to enable all plugins in <?php echo $family['family']; ?>' title='Click to enable all plugins in <?php echo $family['family']; ?>'>
+						</td>
+						<td style='vertical-align: center;'>
+							<span class='hypertext' title='<?php echo $family['family']; ?>'><?php echo substr($family['family'],0,35).'...'; ?></span>
+						</td>
+					</tr>
+				</table>
+				<?php else: ?>
+				<table>
+					<tr>
+						<td>
+							<img class='enable' src='<?php echo $this->baseUrl(); ?>/usr/images/bullet_green.png' alt='Click to disable all plugins in <?php echo $family['family']; ?>' title='Click to disable all plugins in <?php echo $family['family']; ?>'>
+							<img class='disable' src='<?php echo $this->baseUrl(); ?>/usr/images/bullet_white.png' alt='Click to enable all plugins in <?php echo $family['family']; ?>' title='Click to enable all plugins in <?php echo $family['family']; ?>'>
+							<img class='mixed' src='<?php echo $this->baseUrl(); ?>/usr/images/bullet_yellow.png' alt='Click to enable all plugins in <?php echo $family['family']; ?>' title='Click to enable all plugins in <?php echo $family['family']; ?>'>
+						</td>
+						<td style='vertical-align: center;'>
+							<span class='hypertext familyName'><?php echo $family['family'] ?></span>
+						</td>
+					</tr>
+				</table>
+				<?php endif; ?>
+			</div>
+		<?php endforeach; ?>
+		</div>
+	</div>
+	<div class='span-22 prepend-top'>
+		<hr class='quiet'>
+	</div>
+</div>
+<?php endforeach; ?>
+<?php endif; ?>

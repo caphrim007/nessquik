@@ -1,0 +1,6 @@
+/var/www/nessquik/var/log/messages {
+	daily
+	rotate 7
+	copytruncate
+	missingok
+}

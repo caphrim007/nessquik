@@ -1,0 +1,64 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div class='span-16 prepend-1 append-1 prepend-top'>
+	<div id='logoBox' class='span-8 colborder' style='min-height: 250px; text-align: center;'>
+		<div id='logoName' class='large logo'>
+			<a href='<?php echo $this->baseUrl(); ?>'>nessquik</a>
+		</div>
+	</div>
+	<div id='credentialsBox' class='span-7 last' style='min-height: 250px;'>
+		<div id='credentialsForm'>
+			<form id='form-edit'>
+				<input type='hidden' name='certAuth' value='<?php echo $this->certAuth; ?>'>
+				<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+			</form>
+			<div>
+				<form id='form-submit'>
+					<strong>Username</strong>
+					<div>
+						<input type="text" name="username"/>
+					</div>
+
+					<hr class='space'/>
+
+					<strong>Password</strong>
+					<div>
+						<input type="password" name="password"/>
+					</div>
+
+					<hr class='space'/>
+
+					<div class='message error'>
+						<span class='content'></span>
+						&nbsp;&nbsp;
+						<span class='hypertext close'>close</span>
+					</div>
+
+					<div>
+						<input id='btn-save' type='button' value='Sign in'>
+					</div>
+				</form>
+			</div>
+			<?php if ($this->certAuth === true): ?>
+			<div id='certAuthBlock'>
+				<div id='certAuthBlockStatus' style='text-align: center;'>
+					<div class='small quiet'>
+						Please wait a moment while we check to see if you have a valid certificate.
+					</div>
+					<hr class='space'/>
+					<img src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+				</div>
+
+				<p class='message prepend-top small quiet'>
+					<span class='content'></span>
+				</p>
+				<p class='small quiet'>
+					Would you like to <a class='hypertext' href='<?php echo $this->baseUrl(); ?>'>retry</a>?
+				</p>
+			</div>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

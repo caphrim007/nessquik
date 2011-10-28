@@ -1,0 +1,16 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/queues/views/scripts/modify/title.phtml'; ?>
+
+<div class='span-24 last' style='border-color: 1px solid #fff; position: relative;'>
+	<form id='form-edit'>
+		<input type='hidden' name='baseUrl' value='<?php echo $this->baseUrl(); ?>'>
+		<input type='hidden' name='queueId' value='<?php echo $this->id; ?>'>
+	</form>
+
+	<div class='span-24'>
+		<?php require _MODPATH.'/queues/views/scripts/modify/form-settings.phtml'; ?>
+		<?php require _MODPATH.'/queues/views/scripts/modify/form-messages.phtml'; ?>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

@@ -1,0 +1,75 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div id='page-heading' class='span-22 last'>
+	<div class='span-22' style='font-size: 1.5em;'>
+		<a href='<?php echo $this->baseUrl(); ?>/site-audit' class='hypertext'>Site audit</a> &raquo;
+		User account
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+		<input type='hidden' name='docId' value='<?php echo $this->docId; ?>'>
+
+		<?php if ($this->status === 'exists'): ?>
+		<input type='hidden' name='status' value='exists'>
+		<?php endif; ?>
+	</form>
+
+	<form id='form-submit'>
+		<strong>About</strong>
+		<div class='prepend-top'>
+			<p>
+			To begin, let's create an account that will be used to run this particular
+			audit. Note that this account will be granted privileges to scan any IP address.
+			</p>
+		</div>
+
+		<hr class='quiet'/>
+
+		<input type='hidden' name='id' value='<?php echo $this->id; ?>'>
+		<div id='formContent' class='span-22 append-bottom'>
+			<div class='span-10'>
+				<strong>Username</strong>
+				<div>
+					<input type='text' name='username'>
+				</div>
+			</div>
+
+			<div class='span-11 last'>
+				<?php if (in_array('DbTable', $this->types) || in_array('Array', $this->types)): ?>
+				<strong>Password</strong>
+				<div>
+					<input type='text' name='password'>
+				</div>
+				<?php endif; ?>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div class='message notice append-bottom'>
+			<span class='content'></span>
+		</div>
+
+		<div class='message error append-bottom'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+
+		<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Create new account'>
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+
+		<div class='span-22 append-bottom prepend-top'>
+			<div class='span-22'>
+				&laquo; <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/site-audit'>Site audit</a>
+			</div>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

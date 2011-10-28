@@ -1,0 +1,56 @@
+<div class='span-22 prepend-top append-bottom prepend-1 append-1'>
+	<div class='permission-block scanner'>
+		<strong>Scanners</strong>
+
+		<div class='span-22'>
+			<div class='span-5'>
+				Available scanners
+			</div>
+			<div class='span-5' style='text-align: right;'>
+				<span class='hypertext add-all'>add all &raquo;</span>
+			</div>
+			<div class='span-2'>&nbsp;</div>
+			<div class='span-5'>
+				Selected scanners
+			</div>
+			<div class='span-5 last' style='text-align: right;'>
+				<span class='hypertext clear-all'>clear all &laquo;</span>
+			</div>
+		</div>
+
+		<div class='permissions span-22'>
+			<div class='span-10'>
+				<ol class='selectable available'>
+					<?php if (!empty($this->scanners)): ?>
+					<?php foreach($this->scanners as $scanner): ?>
+						<?php if ($this->inSelected($scanner['permission_resource'], $this->selectedScanners)): ?>
+						<li class='<?php echo $scanner['permission_id']; ?>'>
+							<input type='hidden' name='available-scanner[]' value='<?php echo $scanner['permission_id']; ?>'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/forward-selected.png'>&nbsp;&nbsp;
+							<span><?php echo $scanner['name']; ?></span>
+						<?php else: ?>
+						<li class='<?php echo $scanner['permission_id']; ?>'>
+							<input type='hidden' name='available-scanner[]' value='<?php echo $scanner['permission_id']; ?>'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/forward.png'>&nbsp;&nbsp;
+							<span><?php echo $scanner['name']; ?></span>
+						<?php endif; ?>
+					<?php endforeach; ?>
+					<?php endif; ?>
+				</ol>
+			</div>
+			<div class='span-2'>&nbsp;</div>
+			<div class='span-10 last'>
+				<ol class='selectable selected'>
+					<?php if (!empty($this->selectedScanners)): ?>
+					<?php foreach($this->selectedScanners as $scanner): ?>
+						<li class='<?php echo $scanner['id']; ?>'>
+							<input type='hidden' name='selected-scanner[]' value='<?php echo $scanner['id']; ?>'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/back.png'>&nbsp;&nbsp;
+							<span><?php echo $scanner['name']; ?></span>
+					<?php endforeach; ?>
+					<?php endif; ?>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>

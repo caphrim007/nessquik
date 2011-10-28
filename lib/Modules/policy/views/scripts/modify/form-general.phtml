@@ -1,0 +1,21 @@
+<div id='general' class='span-22 prepend-top append-bottom prepend-1 append-1 config'>
+	<strong>Policy name</strong>
+	<div>
+		<?php if ($this->isNew): ?>
+		<input type='text' name='preference[policyName]' value='New policy'>
+		<?php else: ?>
+		<input type='text' name='preference[policyName]' value='<?php echo $this->policy->name; ?>'>
+		<?php endif; ?>
+	</div>
+
+	<hr class='space'/>
+
+	<strong>Description</strong>
+	<div>
+		<?php if ($this->isNew): ?>
+		<textarea name='preference[policyComments]' style='height: 120px; width: 98%;'></textarea>
+		<?php else: ?>
+		<textarea name='preference[policyComments]' style='height: 120px; width: 98%;'><?php echo $this->policy->description; ?></textarea>
+		<?php endif; ?>
+	</div>
+</div>

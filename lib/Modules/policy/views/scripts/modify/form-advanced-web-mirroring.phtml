@@ -1,0 +1,60 @@
+<div id='adv-web-mirroring' class='advanced'>
+	<div class='span-21'>
+		<strong>Miscellaneous</strong>
+		<div>
+			<?php if ($this->isNew): ?>
+				<input type='checkbox' name='plugin_preference[webMirrorFollowDynamic]'>Follow dynamic pages
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preferences->webMirrorFollowDynamic)): ?>
+				<input type='checkbox' name='plugin_preference[webMirrorFollowDynamic]' checked='checked'>Follow dynamic pages
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[webMirrorFollowDynamic]'>Follow dynamic pages
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Excluded items regex</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->webMirrorExcludedRegex == null): ?>
+			<input type='text' name='plugin_preference[webMirrorExcludedRegex]' value='/server_privileges\.php'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[webMirrorExcludedRegex]' value='<?php echo $this->policy->preferences->webMirrorExcludedRegex; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Maximum depth</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->webMirrorMaxDepth == null): ?>
+			<input type='text' name='plugin_preference[webMirrorMaxDepth]' value='6'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[webMirrorMaxDepth]' value='<?php echo $this->policy->preferences->webMirrorMaxDepth; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Number of pages to mirror</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->webMirrorNumPagesToMirror == null): ?>
+			<input type='text' name='plugin_preference[webMirrorNumPagesToMirror]' value='1000'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[webMirrorNumPagesToMirror]' value='<?php echo $this->policy->preferences->webMirrorNumPagesToMirror; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Start page</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->webMirrorStartPage == null): ?>
+			<input type='text' name='plugin_preference[webMirrorStartPage]' value='/'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[webMirrorStartPage]' value='<?php echo $this->policy->preferences->webMirrorStartPage; ?>'>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

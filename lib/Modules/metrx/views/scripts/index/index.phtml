@@ -1,0 +1,16 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/metrx/views/scripts/index/title.phtml'; ?>
+
+<div class='span-24 last' style='border-color: 1px solid #fff; position: relative;'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div class='span-24'>
+		<?php require _MODPATH.'/metrx/views/scripts/index/forms/charts.phtml'; ?>
+		<?php require _MODPATH.'/metrx/views/scripts/index/forms/reports.phtml'; ?>
+		<?php require _MODPATH.'/metrx/views/scripts/index/forms/tables.phtml'; ?>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

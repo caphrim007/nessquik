@@ -1,0 +1,41 @@
+<?php if (empty($this->auth->auth)): ?>
+	<div style='color: #aaa; font-size: 10px; padding: 10px;'>
+		No authentication methods were found
+	</div>
+<?php else: ?>
+	<div class='sortable'>
+	<?php foreach ($this->auth->auth as $id => $params): ?>
+		<?php if (count($this->results) == 1): ?>
+		<div class='row span-20 no-border'>
+		<?php elseif ((count($this->results) - 1) == $id): ?>
+		<div class='row span-20 no-border' style='padding: 5px 0 0 0;'>
+		<?php elseif ($id == 0): ?>
+		<div class='row span-20' style='padding: 0 0 5px 0;'>
+		<?php else: ?>
+		<div class='row span-20' style='padding: 5px 0 5px 0;'>
+		<?php endif; ?>
+			<div class='order span-1'>
+				<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+			</div>
+			<div class='span-1'>
+				<input type='checkbox' name='method[]' value='<?php echo $id; ?>'>
+			</div>
+			<div class='span-4'>
+			<?php if ($params->adapter == 'DbTable'): ?>
+				Database
+			<?php else: ?>
+				<?php echo $params->adapter ; ?>
+			<?php endif; ?>
+			</div>
+			<div class='span-11'>
+				<?php echo $params->name ; ?>
+			</div>
+			<div class='icons span-3 last'>
+				<input type='hidden' name='order[]' value='<?php echo $id; ?>'>
+				<input type='hidden' name='authenticationId' value='<?php echo $id; ?>'>
+				<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='delete draft'>
+			</div>
+		</div>
+	<?php endforeach; ?>
+	</div>
+<?php endif; ?>

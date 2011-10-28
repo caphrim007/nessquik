@@ -1,0 +1,46 @@
+<?php if (empty($this->results)): ?>
+	<div style='color: #aaa; font-size: 10px; padding: 10px;'>
+		No policies were found
+	</div>
+<?php else: ?>
+	<div id='selectable' class='selectable'>
+	<?php foreach ($this->results as $key => $policy): ?>
+		<div class='row span-22' style='padding: 5px 0 5px 0;'>
+			<div class='span-1'>
+				<?php if ($key == 0): ?>
+				<input type='radio' name='policyId' value='<?php echo $policy['id']; ?>' checked='checked'>
+				<?php else: ?>
+				<input type='radio' name='policyId' value='<?php echo $policy['id']; ?>'>
+				<?php endif; ?>
+			</div>
+			<div class='name span-12 last' style='padding: 5px 0 5px 0;'>
+				<?php echo $policy['name'] ; ?>
+			</div>
+		</div>
+	<?php endforeach; ?>
+	</div>
+<?php endif; ?>
+
+<?php if (count($this->results) == $this->limit): ?>
+<div class='span-13 prepend-top'>
+	<div class='span-13' style='text-align: right;'>
+		<?php if ($this->page > 1): ?>
+		<span class='show-less hypertext'>&laquo; less</span>
+		<?php else: ?>
+		&nbsp;
+		<?php endif; ?>
+		&nbsp;&nbsp;&nbsp;
+		<span class='show-more hypertext'>more &raquo;</span>
+	</div>
+</div>
+<?php else: ?>
+<div class='span-13 prepend-top'>
+	<?php if ($this->page > 1): ?>
+	<div class='span-13' style='text-align: right;'>
+		<span class='show-less hypertext'>&laquo; less</span>
+	</div>
+	<?php else: ?>
+	<div class='span-13'>&nbsp;</div>
+	<?php endif; ?>
+</div>
+<?php endif; ?>

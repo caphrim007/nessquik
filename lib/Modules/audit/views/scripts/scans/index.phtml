@@ -1,0 +1,39 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div style='border-bottom:1px solid #E9EFF3; margin:0 0 20px; 0'>
+	<h2>Scans</h2>
+</div>
+<div class='admin'>
+	<p>
+	Scans, or audits, are a way of associating a set of known targets, with a 
+	policy that describes how to scan those targets. Upon completion of the scan,
+	the results of the scan are stored in the scan container. Since a scan is 
+	just a combination of a list of targets and a policy though, you can switch in-and-out
+	these two parts any time you want.
+	</p>
+	<p>
+	Scan results are stored in the scan container for as long as that scan container exists.
+	If you want to use the result comparison features of nessquik, you should probably not
+	change your target list after you initially create it. If you do, do not be surprised
+	when a large difference between results is reported after the initial change.
+	</p>
+
+	<form method='post' action='admin.php'>
+		<input type='hidden' name='controller' value='roles'>
+		<input type='hidden' name='action' value='add-role'>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th colspan='2'>Operations</th>
+				</tr>
+			</thead>
+			<tbody class='admin-roles-list'>
+				<?php require 'list.phtml'; ?>
+			</tbody>
+		</table>
+	</form>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

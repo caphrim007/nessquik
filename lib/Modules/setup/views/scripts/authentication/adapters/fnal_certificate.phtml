@@ -1,0 +1,46 @@
+<div id='Fnal_Cert' class='authentication-block span-20'>
+	<div class='span-12'>
+		<strong>Certificate Authority file</strong><span class='required'>*</span>
+		<div class='small quiet'>
+			Certificates sent by the browser will attempt to be authenticated against
+			the CA certificate you specify here.
+		</div>
+		<div>
+			<input type='text' name='ca-file' value='<?php echo @$this->info->params->cafile; ?>'>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>OpenSSL verification</strong><span class='required'>*</span>
+		<div class='small quiet'>
+			You must specify <span class='loud large'>%s</span> placeholders in the command.
+			These will be replaced with the CA file and a temporary user certificate file, respectively
+		</div>
+		<div>
+			<?php if (empty($this->info->params->openssl)): ?>
+			<input type='text' name='openssl' value='/usr/bin/openssl verify -CAfile %s %s'>
+			<?php else: ?>
+			<input type='text' name='openssl' value='<?php echo $this->info->params->openssl; ?>'>
+			<?php endif; ?>
+		</div>
+	</div>
+	<div class='span-1'>&nbsp;</div>
+	<div class='span-6 last' style='text-align: justify;'>
+		<p>
+		X.509 certificate authentication is supported by nessquik
+		</p>
+		<p>
+		Certificates are useful for creating the effect of password-less logins.
+		</p>
+		<p>
+		nessquik requires that you specify a Certificate Authority file. This
+		file will be used to verify that the client certificate being presented
+		is valid.
+		</p>
+		<p>
+		Note that if your CA certificate has expired, nessquik will consider it
+		invalid. Depending on who you ask, this is either correct or incorrect
+		behavior.
+		</p>
+	</div>
+</div>

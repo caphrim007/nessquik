@@ -1,0 +1,54 @@
+	<div id='startTimeDiag'>
+		<div class='span-18' style='border-bottom: 1px solid #eee; background-color: #eee; height: 45px; min-height: 45px;'>
+			<div style='padding: 10px;'>
+				<div style='color: #303233; font-weight: bold;'>
+					Tell us when you want us to start your audit
+				</div>
+			</div>
+		</div>
+
+		<div class='span-18 last'>
+			<div class='span-18 last' style='min-height: 250px;'>
+				<div style='padding: 10px;'>
+					<div class='span-18 last prepend-top append-bottom'>
+						<input type='radio' name='startDateSwitch' value='now' checked='checked'>Start the audit now
+					</div>
+
+					<div class='span-18 last prepend-top append-bottom future'>
+						<input type='radio' name='startDateSwitch' value='future'>Start at a specific date and time
+						<div class='prepend-1 prepend-top'>
+							<div class='span-1'>On</div>
+							<div class='span-6'>
+								<input type='text' name='startOnDate' id='startOnDate'>
+							</div>
+							<div class='span-1'>at</div>
+							<div class='span-8 last'>
+								<input type='text' name='startOnTime' id='startOnTime'>
+							</div>
+						</div>
+					</div>
+
+					<div class='span-18 last prepend-top append-bottom'>
+						<input type='radio' name='startDateSwitch' value='schedule'>Start at the next scheduled date and time
+					</div>
+				</div>
+			</div>
+			<div class='prepend-1 span-16'>
+				<div class='message error'>
+					<span class='content'></span>
+					&nbsp;&nbsp;
+					<span class='hypertext close'>close</span>
+				</div>
+			</div>
+		</div>
+
+		<div class='span-18 last' style='height: 50px; background-color: #eee;'>
+			<div class='span-9' style='text-align: left; padding: 10px;'>
+				<input type='button' id='btn-start' value='Start'>
+				<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+			</div>
+			<div class='span-8 last' style='text-align: right; padding: 10px;'>
+				<span class='hypertext starttime-dialog-close'>close</span>
+			</div>
+		</div>
+	</div>

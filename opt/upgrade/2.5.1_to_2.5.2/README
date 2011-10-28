@@ -1,0 +1,9 @@
+This release upgrades the database adding new fields
+to the scanners table to support for features and finer
+control of the scanners
+
+See the following link for detailed instructions
+
+	http://caphrim.net/dokuwiki/doku.php?id=nessquik:upgrade:2.5_to_2.5.1
+
+-Tim

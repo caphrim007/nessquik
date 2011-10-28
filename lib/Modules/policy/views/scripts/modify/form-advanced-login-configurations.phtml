@@ -1,0 +1,179 @@
+<div id='adv-login-configurations' class='advanced'>
+	<div class='span-21'>
+		<div class='login-configuration span-21'>
+			<div class='span-4'>
+				<strong>HTTP</strong>
+			</div>
+			<div class='span-8 append-1'>
+				<span class='input-header'>Account</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='plugin_preference[loginConfigHttpAccount]' value=''>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[loginConfigHttpAccount]' value='<?php echo $this->policy->preferences->loginConfigHttpAccount; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class='span-8 last'>
+				<span class='input-header'>Password</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='plugin_preference[loginConfigHttpPassword]' value=''>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[loginConfigHttpPassword]' value='<?php echo $this->policy->preferences->loginConfigHttpPassword; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div class='login-configuration span-21 prepend-top'>
+			<div class='span-4'>
+				<strong>NNTP</strong>
+			</div>
+			<div class='span-8 append-1'>
+				<span class='input-header'>Account</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='plugin_preference[loginConfigNntpAccount]' value=''>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[loginConfigNntpAccount]' value='<?php echo $this->policy->preferences->loginConfigNntpAccount; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class='span-8 last'>
+				<span class='input-header'>Password</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='plugin_preference[loginConfigNntpPassword]' value=''>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[loginConfigNntpPassword]' value='<?php echo $this->policy->preferences->loginConfigNntpPassword; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div class='login-configuration span-21 prepend-top'>
+			<div class='span-4'>
+				<strong>POP2</strong>
+			</div>
+			<div class='span-8 append-1'>
+				<span class='input-header'>Account</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='plugin_preference[loginConfigPop2Account]' value=''>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[loginConfigPop2Account]' value='<?php echo $this->policy->preferences->loginConfigPop2Account; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class='span-8 last'>
+				<span class='input-header'>Password</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='plugin_preference[loginConfigPop2Password]' value=''>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[loginConfigPop2Password]' value='<?php echo $this->policy->preferences->loginConfigPop2Password; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div class='login-configuration span-21 prepend-top'>
+			<div class='span-4'>
+				<strong>POP3</strong>
+			</div>
+			<div class='span-8 append-1'>
+				<span class='input-header'>Account</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='plugin_preference[loginConfigPop3Account]' value=''>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[loginConfigPop3Account]' value='<?php echo $this->policy->preferences->loginConfigPop3Account; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class='span-8 last'>
+				<span class='input-header'>Password</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='plugin_preference[loginConfigPop3Password]' value=''>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[loginConfigPop3Password]' value='<?php echo $this->policy->preferences->loginConfigPop3Password; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div class='login-configuration span-21 prepend-top'>
+			<div class='span-4'>
+				<strong>IMAP</strong>
+			</div>
+			<div class='span-8 append-1'>
+				<span class='input-header'>Account</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='plugin_preference[loginConfigImapAccount]' value=''>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[loginConfigImapAccount]' value='<?php echo $this->policy->preferences->loginConfigImapAccount; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class='span-8 last'>
+				<span class='input-header'>Password</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='plugin_preference[loginConfigImapPassword]' value=''>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[loginConfigImapPassword]' value='<?php echo $this->policy->preferences->loginConfigImapPassword; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div class='login-configuration span-21 prepend-top'>
+			<div class='span-4'>
+				<strong>FTP</strong>
+			</div>
+			<div class='span-5 append-1'>
+				<span class='input-header'>Account</span>
+				<div>
+					<?php if ($this->isNew || $this->policy->preferences->loginConfigFtpAccount == null): ?>
+					<input type='text' name='plugin_preference[loginConfigFtpAccount]' value='anonymous'>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[loginConfigFtpAccount]' value='<?php echo $this->policy->preferences->loginConfigFtpAccount; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class='span-5 append-1'>
+				<span class='input-header'>Password</span>
+				<div>
+					<?php if ($this->isNew || $this->policy->preferences->loginConfigFtpPassword == null): ?>
+					<input type='text' name='plugin_preference[loginConfigFtpPassword]' value='nessquik@example.com'>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[loginConfigFtpPassword]' value='<?php echo $this->policy->preferences->loginConfigFtpPassword; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class='span-5 last'>
+				<span class='input-header'>Writable Directory</span>
+				<div>
+					<?php if ($this->isNew || $this->policy->preferences->loginConfigFtpWritableDirectory == null): ?>
+					<input type='text' name='plugin_preference[loginConfigFtpWritableDirectory]' value='/incoming'>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[loginConfigFtpWritableDirectory]' value='<?php echo $this->policy->preferences->loginConfigFtpWritableDirectory; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

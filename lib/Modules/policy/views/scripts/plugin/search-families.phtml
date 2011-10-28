@@ -1,0 +1,69 @@
+<?php if (empty($this->results)): ?>
+	<div id='selectable-family' class='selectable-family'>
+		<div style='color: #aaa; font-size: 10px; padding: 10px;'>
+			No families were found
+		</div>
+		<?php if ($this->page > 1): ?>
+		<table>
+			<tr class='navi'>
+				<td class='less'>
+					<span class='show-less hypertext'>&laquo; less</span>
+				</td>
+				<td class='more'>
+					&nbsp;
+				</td>
+			</tr>
+		</table>
+		<?php endif; ?>
+	</div>
+<?php else: ?>
+	<div id='selectable-family' class='selectable-family'>
+	<table>
+	<?php foreach($this->results as $key => $plugin): ?>
+		<tr class='plugin-row'>
+			<td class='check'>
+				<input type='hidden' value='<?php echo $plugin['id']; ?>'>
+				<input class='plugin-checkbox' type='checkbox' value='<?php echo $plugin['id']; ?>'>
+			</td>
+			<td class='name'>
+				<input type='hidden' value='<?php echo $plugin['id']; ?>'>
+				<?php if (strlen($plugin['id']) > 60): ?>
+				<span class='name' title='<?php echo $plugin['id']; ?>'><?php echo trim(substr($plugin['id'],0,60)).'...'; ?></span>
+				<?php else: ?>
+				<span class='name' title='<?php echo $plugin['id']; ?>'><?php echo $plugin['id']; ?></span>
+				<?php endif; ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+	<table>
+	<?php if (count($this->results) == $this->limit): ?>
+		<tr class='navi'>
+			<td class='less'>
+				<?php if ($this->page > 1): ?>
+				<span class='show-less hypertext'>&laquo; less</span>
+				<?php else: ?>
+				&nbsp;
+				<?php endif; ?>
+			</td>
+			<td class='more'>
+				<span class='show-more hypertext'>more &raquo;</span>
+			</td>
+		</tr>
+	<?php else: ?>
+		<tr class='navi'>
+			<td class='less'>
+				<?php if ($this->page > 1): ?>
+				<span class='show-less hypertext'>&laquo; less</span>
+				<?php else: ?>
+				&nbsp;
+				<?php endif; ?>
+			</td>
+			<td class='more'>
+				&nbsp;
+			</td>
+		</tr>
+	<?php endif; ?>
+	</table>
+	</div>
+<?php endif; ?>

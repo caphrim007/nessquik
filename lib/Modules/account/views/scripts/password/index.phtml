@@ -1,0 +1,35 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/account/views/scripts/password/title.phtml'; ?>
+
+<div class='prepend-1 append-1 prepend-top append-bottom span-22'>
+	<?php if (in_array('DbTable', $this->types) || in_array('Array', $this->types)): ?>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+	<form id='form-submit'>
+		<input type='hidden' name='accountId' value='<?php echo $this->accountId; ?>'>
+		<div class='span-22 append-bottom'>
+			<strong>New password</strong>
+			<div class='append-bottom'>
+				<input type='password' name='newPassword' value=''>
+			</div>
+
+			<strong>Repeat new password</strong>
+			<div>
+				<input type='password' name='repeatPassword' value=''>
+			</div>
+		</div>
+		<div class='span-22 clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Save'>
+			<a class='hypertext' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/account/modify/edit?id=<?php echo $this->accountId; ?>'>cancel</a>
+		</div>
+	</form>
+	<?php else: ?>
+	<div class='notice'>
+		The authentication types that are available do not support changing passwords.
+	</div>
+	<?php endif; ?>
+</div>
+
+<?php require _MODPATH.'/account/views/scripts/password/faq.phtml'; ?>
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

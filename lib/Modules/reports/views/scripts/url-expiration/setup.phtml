@@ -1,0 +1,70 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+	<div class='span-22 prepend-top append-bottom'>
+		<div class='span-22 append-bottom'>
+			<h4>Setup and Configuration</h4>
+		</div>
+		<div class='span-22 last'>
+			Use the box below to search for tags that should be considered whitelist tags
+		</div>
+		<div class='span-22 last'>
+			<input type='text' class='searchbox span-10' name='searchTag'/>
+		</div>
+
+		<div class='span-22 prepend-top'>
+			<div id='permission-block-tag' class='permission-block'>
+				<input type='hidden' name='permission' value='tag'>
+				<div class='span-10'>
+					Available tags
+				</div>
+				<div class='span-2'>&nbsp;</div>
+				<div class='span-5'>
+					Selected tags
+				</div>
+				<div class='span-5 last' style='text-align: right;'>
+					<span class='hypertext clear-all'>clear all &laquo;</span>
+				</div>
+
+				<div class='permissions'>
+					<form id='form-submit'>
+					<div class='span-10'>
+						<ol class='selectable available'>
+						</ol>
+					</div>
+					<div class='span-2'>&nbsp;</div>
+					<div class='span-10 last'>
+						<ol class='selectable selected'>
+							<?php if (!empty($this->selectedTags)): ?>
+							<?php foreach($this->selectedTags as $tag): ?>
+								<?php $tagObj = new Tag($tag['resource']); ?>
+								<li class='<?php echo $tag['id']; ?>'>
+									<input type='hidden' name='selected-tag[]' value='<?php echo $tag['id']; ?>'>
+									<img src='<?php echo $this->baseUrl(); ?>/usr/images/back.png'>&nbsp;&nbsp;
+									<span><?php echo $tagObj->getName(); ?></span>
+							<?php endforeach; ?>
+							<?php endif; ?>
+						</ol>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id='general-error' class='message error prepend-top'>
+		<span class='content'></span>
+		&nbsp;&nbsp;
+		<span class='hypertext close'>close</span>
+	</div>
+
+	<div id='form-ops' class='span-22 last prepend-top append-bottom' style='text-align: center;'>
+		<input type='button' value='Save'>
+		<a class='hypertext cancel' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/metrx#reports'>cancel</a>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

@@ -1,0 +1,9 @@
+[info]
+name = "Web Server Exemption"
+authors = "FNAL CST"
+last-updated = "07-08-2009"
+
+[plugins]
+single[] = 12101
+family[] = "Centos Vulnerabilties"
+severity[] = "critical"

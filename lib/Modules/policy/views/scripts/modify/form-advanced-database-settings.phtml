@@ -1,0 +1,154 @@
+<div id='adv-database-settings' class='advanced first-advanced'>
+	<div class='span-21'>
+		<strong>Login</strong>
+		<div>
+			<?php if ($this->isNew): ?>
+			<input type='text' name='plugin_preference[databaseSettingsLogin]' value=''>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[databaseSettingsLogin]' value='<?php echo $this->policy->preferences->databaseSettingsLogin; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Password</strong>
+		<div>
+			<?php if ($this->isNew): ?>
+			<input type='text' name='plugin_preference[databaseSettingsPassword]' value=''>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[databaseSettingsPassword]' value='<?php echo $this->policy->preferences->databaseSettingsPassword; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Database Type</strong>
+		<div>
+			<select id='db-type' name='plugin_preference[databaseSettingsDbType]'>
+			<?php if ($this->isNew): ?>
+				<option value='Oracle' selected='selected'>Oracle
+				<option value='SQL Server'>SQL Server
+				<option value='MySQL'>MySQL
+				<option value='DB2'>DB2
+				<option value='Informix/DRDA'>Informix/DRDA
+				<option value='PostgreSQL'>PostgreSQL
+			<?php else: ?>
+				<?php if ($this->policy->preferences->databaseSettingsDbType == 'SQL Server'): ?>
+					<option value='Oracle'>Oracle
+					<option value='SQL Server' selected='selected'>SQL Server
+					<option value='MySQL'>MySQL
+					<option value='DB2'>DB2
+					<option value='Informix/DRDA'>Informix/DRDA
+					<option value='PostgreSQL'>PostgreSQL
+				<?php elseif ($this->policy->preferences->databaseSettingsDbType == 'MySQL'): ?>
+					<option value='Oracle'>Oracle
+					<option value='SQL Server'>SQL Server
+					<option value='MySQL' selected='selected'>MySQL
+					<option value='DB2'>DB2
+					<option value='Informix/DRDA'>Informix/DRDA
+					<option value='PostgreSQL'>PostgreSQL
+				<?php elseif ($this->policy->preferences->databaseSettingsDbType == 'DB2'): ?>
+					<option value='Oracle'>Oracle
+					<option value='SQL Server'>SQL Server
+					<option value='MySQL'>MySQL
+					<option value='DB2' selected='selected'>DB2
+					<option value='Informix/DRDA'>Informix/DRDA
+					<option value='PostgreSQL'>PostgreSQL
+				<?php elseif ($this->policy->preferences->databaseSettingsDbType == 'Informix/DRDA'): ?>
+					<option value='Oracle'>Oracle
+					<option value='SQL Server'>SQL Server
+					<option value='MySQL'>MySQL
+					<option value='DB2'>DB2
+					<option value='Informix/DRDA' selected='selected'>Informix/DRDA
+					<option value='PostgreSQL'>PostgreSQL
+				<?php elseif ($this->policy->preferences->databaseSettingsDbType == 'PostgreSQL'): ?>
+					<option value='Oracle'>Oracle
+					<option value='SQL Server'>SQL Server
+					<option value='MySQL'>MySQL
+					<option value='DB2'>DB2
+					<option value='Informix/DRDA'>Informix/DRDA
+					<option value='PostgreSQL' selected='selected'>PostgreSQL
+				<?php else: ?>
+					<option value='Oracle' selected='selected'>Oracle
+					<option value='SQL Server'>SQL Server
+					<option value='MySQL'>MySQL
+					<option value='DB2'>DB2
+					<option value='Informix/DRDA'>Informix/DRDA
+					<option value='PostgreSQL'>PostgreSQL
+				<?php endif; ?>
+			<?php endif; ?>
+			</select>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Database SID</strong>
+		<div>
+			<?php if ($this->isNew): ?>
+			<input type='text' name='plugin_preference[databaseSettingsDatabaseSid]' value=''>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[databaseSettingsDatabaseSid]' value='<?php echo $this->policy->preferences->databaseSettingsDatabaseSid; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Database port to use</strong>
+		<div>
+			<?php if ($this->isNew): ?>
+			<input type='text' name='plugin_preference[databaseSettingsDatabasePort]' value=''>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[databaseSettingsDatabasePort]' value='<?php echo $this->policy->preferences->databaseSettingsDatabasePort; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<div id='oracle-auth-type' class='auth-type'>
+			<strong>Oracle auth type</strong>
+			<div>
+				<select name='plugin_preference[databaseSettingsOracleAuthType]'>
+				<?php if ($this->isNew): ?>
+					<option value='NORMAL' selected='selected'>NORMAL
+					<option value='SYSOPER'>SYSOPER
+					<option value='SYSDBA'>SYSDBA
+				<?php else: ?>
+					<?php if ($this->policy->preferences->databaseSettingsOracleAuthType == 'SYSOPER'): ?>
+						<option value='NORMAL'>NORMAL
+						<option value='SYSOPER' selected='selected'>SYSOPER
+						<option value='SYSDBA'>SYSDBA
+					<?php elseif ($this->policy->preferences->databaseSettingsOracleAuthType == 'SYSDBA'): ?>
+						<option value='NORMAL'>NORMAL
+						<option value='SYSOPER'>SYSOPER
+						<option value='SYSDBA' selected='selected'>SYSDBA
+					<?php else: ?>
+						<option value='NORMAL' selected='selected'>NORMAL
+						<option value='SYSOPER'>SYSOPER
+						<option value='SYSDBA'>SYSDBA
+					<?php endif; ?>
+				<?php endif; ?>
+				</select>
+			</div>
+		</div>
+
+		<div id='sqlserver-auth-type' class='auth-type'>
+			<strong>SQL Server auth type</strong>
+			<div>
+				<select name='plugin_preference[databaseSettingsSqlServerAuthType]'>
+				<?php if ($this->isNew): ?>
+					<option value='Windows' selected='selected'>Windows
+					<option value='SQL'>SQL
+				<?php else: ?>
+					<?php if ($this->policy->preferences->databaseSettingsSqlServerAuthType == 'SQL'): ?>
+						<option value='Windows'>Windows
+						<option value='SQL' selected='selected'>SQL
+					<?php else: ?>
+						<option value='Windows' selected='selected'>Windows
+						<option value='SQL'>SQL
+					<?php endif; ?>
+				<?php endif; ?>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,75 @@
+<?php if (empty($this->results)): ?>
+	<div style='color: #aaa; font-size: 10px; padding: 10px;'>
+		No messages exist.
+	</div>
+<?php else: ?>
+	<div class='selectable span-22 prepend-top'>
+		<div class='row span-22 select-mesg' style='padding: 5px 0 5px 0;'>
+			<div class='span-22 last select-all-mesg' style='text-align: center;'>
+				All messages on this page are selected. <span class='hypertext select-all-in-queue'>Select all messages in queue</span>
+			</div>
+			<div class='span-22 last select-all-in-queue-mesg' style='text-align: center;'>
+				All messages in this queue are selected. <span class='hypertext select-none'>Clear selection</span>
+			</div>
+		</div>
+	<?php foreach ($this->results as $key => $message): ?>
+	<?php if (count($this->results) == 1): ?>
+	<div class='row span-22 no-border'>
+	<?php elseif ((count($this->results) - 1) == $key): ?>
+	<div class='row span-22 no-border' style='padding: 5px 0 0 0;'>
+	<?php elseif ($key == 0): ?>
+	<div class='row span-22' style='padding: 0 0 5px 0;'>
+	<?php else: ?>
+	<div class='row span-22' style='padding: 5px 0 5px 0;'>
+	<?php endif; ?>
+		<div class='span-22'>
+			<div class='span-1'>
+				<input type='checkbox' name='messageId' value='<?php echo $message['message_id']; ?>'>
+			</div>
+			<div class='name span-14'>
+				<?php if (strlen($message['body']) > 70): ?>
+					<span title='<?php echo $message['body']; ?>'><?php echo substr($message['body'], 0, 70).'...'; ?></span>
+				<?php else: ?>
+					<?php echo $message['body']; ?>
+				<?php endif; ?>
+			</div>
+			<div class='span-6 small quiet'>
+				<?php $date = new Zend_Date($message['created'], Zend_Date::TIMESTAMP); ?>
+				Created on 
+				<?php echo $date->toString('EEEE, MMMM d').' at '.$date->toString('H:m a'); ?>
+			</div>
+			<div class='span-1 icons last'>
+				<input type='hidden' name='id' value='<?php echo $message['message_id']; ?>'>
+				<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='delete message'>
+			</div>
+		</div>
+	</div>
+	<?php endforeach; ?>
+	</div>
+
+	<?php if (count($this->results) == $this->limit): ?>
+	<div class='span-22 prepend-top'>
+		<div class='span-11'>&nbsp;</div>
+		<div class='span-11 last' style='text-align: right;'>
+			<?php if ($this->page > 1): ?>
+			<span class='show-less hypertext'>&laquo; less</span>
+			<?php else: ?>
+			&nbsp;
+			<?php endif; ?>
+			&nbsp;&nbsp;&nbsp;
+			<span class='show-more hypertext'>more &raquo;</span>
+		</div>
+	</div>
+	<?php else: ?>
+	<div class='span-22 prepend-top'>
+		<div class='span-11'>&nbsp;</div>
+		<?php if ($this->page > 1): ?>
+		<div class='span-11 last' style='text-align: right;'>
+			<span class='show-less hypertext'>&laquo; less</span>
+		</div>
+		<?php else: ?>
+		<div class='span-11 last'>&nbsp;</div>
+		<?php endif; ?>
+	</div>
+	<?php endif; ?>
+<?php endif; ?>

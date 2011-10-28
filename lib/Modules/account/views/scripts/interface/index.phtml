@@ -1,0 +1,115 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div class='span-22 last' style='font-size: 1.5em;'>
+		<a href='<?php echo $this->baseUrl(); ?>/admin/account' class='hypertext'>Accounts</a> &raquo;
+		<a href='<?php echo $this->baseUrl(); ?>/account/modify/edit?id=<?php echo $this->accountId; ?>' class='hypertext'><?php echo $this->account->username; ?></a> &raquo;
+		Interface
+		<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-21'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+	<form id='form-submit'>
+		<input type='hidden' name='accountId' value='<?php echo $this->accountId; ?>'>
+
+		<strong>Default page limits</strong>
+		<div class='small quiet'>
+			These numbers refer to the maximum number
+			of items that you will see on the specific
+			page.
+		</div>
+		<div class='prepend-1 append-bottom'>
+			<table style='width: 100%; border: 0;'>
+				<tr>
+					<td style='width: 20%;'>Accounts</td>
+					<?php if (isset($this->limits['limitAccounts'])): ?>
+					<td><input type='text' name='limitAccounts' value='<?php echo $this->limits["limitAccounts"]; ?>'></td>
+					<?php else: ?>
+					<td><input type='text' name='limitAccounts' value='15'></td>
+					<?php endif; ?>
+				</tr>
+				<tr>
+					<td style='width: 20%;'>Audits</td>
+					<?php if (isset($this->limits['limitAudits'])): ?>
+					<td><input type='text' name='limitAudits' value='<?php echo $this->limits["limitAudits"]; ?>'></td>
+					<?php else: ?>
+					<td><input type='text' name='limitAudits' value='15'></td>
+					<?php endif; ?>
+				</tr>
+				<tr>
+					<td style='width: 20%;'>Mappings</td>
+					<?php if (isset($this->limits['limitMappings'])): ?>
+					<td><input type='text' name='limitMappings' value='<?php echo $this->limits["limitMappings"]; ?>'></td>
+					<?php else: ?>
+					<td><input type='text' name='limitMappings' value='15'></td>
+					<?php endif; ?>
+				</tr>
+				<tr>
+					<td style='width: 20%;'>Policies</td>
+					<?php if (isset($this->limits['limitPolicies'])): ?>
+					<td><input type='text' name='limitPolicies' value='<?php echo $this->limits["limitPolicies"]; ?>'></td>
+					<?php else: ?>
+					<td><input type='text' name='limitPolicies' value='15'></td>
+					<?php endif; ?>
+				</tr>
+				<tr>
+					<td style='width: 20%;'>Roles</td>
+					<?php if (isset($this->limits['limitRoles'])): ?>
+					<td><input type='text' name='limitRoles' value='<?php echo $this->limits["limitRoles"]; ?>'></td>
+					<?php else: ?>
+					<td><input type='text' name='limitRoles' value='15'></td>
+					<?php endif; ?>
+				</tr>
+				<tr>
+					<td style='width: 20%;'>Scanners</td>
+					<?php if (isset($this->limits['limitScanners'])): ?>
+					<td><input type='text' name='limitScanners' value='<?php echo $this->limits["limitScanners"]; ?>'></td>
+					<?php else: ?>
+					<td><input type='text' name='limitScanners' value='15'></td>
+					<?php endif; ?>
+				</tr>
+			</table>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Other defaults</strong>
+		<div class='small quiet'>
+			The settings below control various other switches that can
+			be changed to affect the default format of particular pages
+		</div>
+		<div class='prepend-1 append-bottom'>
+			<table style='width: 100%; border: 0;'>
+				<tr>
+					<td style='width: 20%;'>Default policies page view</td>
+					<td>
+						<select name='defaultPolicyView'>
+					<?php if ($this->limits['defaultPolicyView'] == 'S'): ?>
+							<option value='S' selected='selected'>Simple
+							<option value='A'>Advanced
+					<?php else: ?>
+							<option value='S'>Simple
+							<option value='A' selected='selected'>Advanced
+					<?php endif; ?>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class='message'>
+			<div class='error content prepend-top append-bottom'></div>
+		</div>
+
+		<div class='span-20 last clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Save'>
+			<a class='hypertext' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/account/modify/edit?id=<?php echo $this->accountId; ?>'>cancel</a>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

@@ -1,0 +1,26 @@
+<?php if (empty($this->accounts)): ?>
+	<div class='quiet' style='text-align: center;'>
+		No accounts were created. Have they already been created?
+	</div>
+<?php else: ?>
+	<table id='acct-table' class='tablesorter'>
+		<thead>
+			<tr>
+				<th>Username</th>
+				<th>Password</th>
+			</tr>
+		</thead>
+		<tbody>
+	<?php foreach($this->accounts as $account): ?>
+		<tr>
+			<td>
+				<?php echo $account->username; ?>
+			</td>
+			<td>
+				<?php echo $account->password; ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php endif; ?>

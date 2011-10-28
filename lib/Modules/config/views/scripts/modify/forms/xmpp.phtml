@@ -1,0 +1,88 @@
+<div id='xmpp' class='span-22 prepend-top append-bottom prepend-1 append-1 config'>
+	<form class='form-submit'>
+		<div class='span-22 append-bottom'>
+			<strong>Connection settings</strong>
+			<div class='small quiet'>
+				Connection settings for sending instant messages to user accounts
+			</div>
+
+			<div class='prepend-1 prepend-top'>
+				<div class='span-20'>
+					<div class='span-9'>
+						Connect server
+						<div>
+							<?php if (isset($this->config->xmpp->default->params->host)): ?>
+							<input type='text' name='xmpp_host' value='<?php echo $this->config->xmpp->default->params->host; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='xmpp_host' value='jabber.localhost.localdomain' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+
+					<div class='span-2'>&nbsp;</div>
+
+					<div class='span-9 last'>
+						Connect port
+						<div>
+							<?php if (isset($this->config->xmpp->default->params->port)): ?>
+							<input type='text' name='xmpp_port' value='<?php echo $this->config->xmpp->default->params->port; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='xmpp_port' value='5222' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+				<div class='span-20'>
+					<div class='span-9'>
+						Domain
+						<div>
+							<?php if (isset($this->config->xmpp->default->params->server)): ?>
+							<input type='text' name='xmpp_server' value='<?php echo $this->config->xmpp->default->params->server; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='xmpp_server' value='localhost.localdomain' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+
+					<div class='span-2'>&nbsp;</div>
+
+					<div class='span-9 last'>
+						Resource
+						<div>
+							<?php if (isset($this->config->xmpp->default->params->resource)): ?>
+							<input type='text' name='xmpp_resource' value='<?php echo $this->config->xmpp->default->params->resource; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='xmpp_resource' value='nessquik' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+				<div class='span-20'>
+					<div class='span-9'>
+						Username
+						<div>
+							<?php if (isset($this->config->xmpp->default->params->username)): ?>
+							<input type='text' name='xmpp_username' value='<?php echo $this->config->xmpp->default->params->username; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='xmpp_username' value='' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+
+					<div class='span-2'>&nbsp;</div>
+
+					<div class='span-9 last'>
+						Password
+						<div>
+							<?php if (isset($this->config->xmpp->default->params->password)): ?>
+							<input type='text' name='xmpp_password' value='<?php echo $this->config->xmpp->default->params->password; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='xmpp_password' value='' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

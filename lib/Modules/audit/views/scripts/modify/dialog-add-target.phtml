@@ -1,0 +1,193 @@
+<div id='dialog' class='container'>
+	<div style='width: 100%; border-bottom: 1px solid #eee; background-color: #eee; height: 45px; min-height: 45px;'>
+		<div style='padding: 10px;'>
+			<div style='color: #303233; font-weight: bold;'>
+				<span class='include'>Include targets</span>
+				<span class='exclude'>Exclude targets</span>
+			</div>
+		</div>
+	</div>
+
+	<div class='span-18 last'>
+		<div id='target-steps' style='border-color: 1px solid #fff;'>
+			<ul>
+				<li><a href="#target-specific"><span>Specific</span></a></li>
+				<li><a href="#target-list"><span>List of targets</span></a></li>
+				<?php if ($this->session->acl->isAllowed('Capability', array('admin_operator', 'targets_view_ipextract'))): ?>
+					<li><a href="#target-ipextract"><span>Extract IP targets</span></a></li>
+				<?php endif; ?>
+			</ul>
+
+			<div id='target-specific'>
+				<div class='tab-block' style='min-height: 250px;'>
+					<input type='hidden' name='tab' value='single'>
+					<input type='hidden' name='auditId' value='<?php echo $this->id; ?>'>
+					<div class='span-17'>
+						<div class='span-8 colborder' style='min-height: 225px;'>
+							<strong>Add a new target of type</strong>
+							<div>
+								<select name='type' style='width: 200px;'>
+									<option value='hostname'>single host
+									<option value='network'>cidr
+									<option value='range'>range
+									<?php if (isset($this->config->links->miscomp)): ?>
+									<option value='cluster'>cluster
+									<?php endif; ?>
+								</select>
+							</div>
+
+							<div class='input hostname'>
+								<div class='prepend-top'>
+									<strong>Target</strong>
+									<div>
+										<input name='target' type='text' style='width: 200px;'>
+									</div>
+								</div>
+							</div>
+							<div class='input network'>
+								<div class='prepend-top'>
+									<strong>Network and mask</strong>
+									<div>
+										<input name='network' type='text' style='width: 200px;'> / 
+										<input name='netmask' type='text' style='width: 50px;' maxlength='2'>
+									</div>
+								</div>
+							</div>
+							<div class='input range'>
+								<div class='prepend-top'>
+									<strong>Start address</strong>
+									<div>
+										<input name='start' type='text' style='width: 200px;'>
+									</div>
+									<strong>End address</strong>
+									<div>
+										<input name='end' type='text' style='width: 200px;'>
+									</div>
+								</div>
+							</div>
+							<?php if (isset($this->config->links->miscomp)): ?>
+							<div class='input cluster'>
+								<div class='prepend-top'>
+									<strong>Cluster</strong>
+									<div>
+										<input name='cluster' type='text' style='width: 200px;'>
+									</div>
+								</div>
+							</div>
+							<?php endif; ?>
+						</div>
+						<div class='span-8 last'>
+							<span class='span-12' style='font-size: 1.2em;'>Examples</span>
+							<div class='description hostname'>
+								<div class='append-bottom quiet'>
+									Using this target type, you can specify a single host
+									in several different formats.
+								</div>
+
+								<div class='heavy'>By IPv4 address</div>
+								<div class='prepend-1 quiet append-bottom'>172.16.1.101</div>
+
+								<div class='heavy'>By IPv6 address or IPv4 in IPv6</div>
+								<div class='prepend-1 quiet'>2001:db8:85a3::8a2e:370:7334</div>
+								<div class='prepend-1 quiet append-bottom'>::ffff:192.1.56.10/96</div>
+
+								<div class='heavy'>By host name</div>
+								<div class='prepend-1 quiet'>localhost.localdomain</div>
+							</div>
+							<div class='description network'>
+								<div class='append-bottom quiet'>
+									Using this target type, you can specify a specific
+									network of targets in CIDR notation
+								</div>
+
+								<div class='heavy'>Network and mask</div>
+								<div class='prepend-1 quiet'>172.16.1.0 / 24</div>
+								<div class='prepend-1 quiet'>192.168.1.0 / 21</div>
+								<div class='prepend-1 quiet'>131.225.45.0 / 23</div>
+							</div>
+							<div class='description range'>
+								<div class='append-bottom quiet'>
+									Using this target type, you can specify a specific
+									network of targets given a range of addresses
+								</div>
+
+								<div class='heavy'>Start and end addresses</div>
+								<div class='prepend-1 quiet'>172.16.1.0 - 172.16.1.100</div>
+								<div class='prepend-1 quiet'>192.168.1.24 - 192.168.1.50</div>
+								<div class='prepend-1 quiet'>131.225.45.12 - 131.225.50.23</div>
+							</div>
+							<?php if (isset($this->config->links->miscomp)): ?>
+							<div class='description cluster'>
+								<div class='append-bottom quiet'>
+									Using this target type, you can specify a specific
+									cluster of targets to scan. The contents of the
+									cluster are retrieved from <a class='hypertext' target='_blank' href='<?php echo $this->config->links->miscomp; ?>'>Miscomp</a> at run-time
+								</div>
+
+								<div class='heavy'>Clusters</div>
+								<div class='prepend-1 quiet'>DCD NAS</div>
+								<div class='prepend-1 quiet'>AD-NET-SUPPORT</div>
+								<div class='prepend-1 quiet'>CD-SERVERS</div>
+							</div>
+							<?php endif; ?>
+						</div>
+					</div>
+
+					<div class='span-17'>
+						<div class='message error prepend-top'>
+							<span class='content'></span>
+							&nbsp;&nbsp;
+							<span class='hypertext close'>close</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id='target-list'>
+				<div class='tab-block' style='min-height: 250px;'>
+					<input type='hidden' name='tab' value='list'>
+					<input type='hidden' name='auditId' value='<?php echo $this->id; ?>'>
+					<textarea name='target' style='width: 98%; height: 200px;'></textarea>
+					<div class='small quiet'>
+						If you need to copy and paste in a block of targets,
+						you can use the form above. Valid forms of input are 
+						discussed in more detail <a class='hypertext' target='_blank' href='<?php echo $this->config->links->wiki; ?>'>here</a>
+					</div>
+					<div class='message error prepend-top'>
+						<span class='content'></span>
+						&nbsp;&nbsp;
+						<span class='hypertext close'>close</span>
+					</div>
+				</div>
+			</div>
+			<?php if ($this->session->acl->isAllowed('Capability', array('admin_operator', 'targets_view_ipextract'))): ?>
+			<div id='target-ipextract'>
+				<div class='tab-block' style='min-height: 250px;'>
+					<input type='hidden' name='tab' value='list'>
+					<input type='hidden' name='auditId' value='<?php echo $this->id; ?>'>
+					<textarea name='target' style='width: 98%; height: 200px;'></textarea>
+					<div class='small quiet'>
+						Any text inserted above will be searched for things
+						that look like individual IP addresses
+					</div>
+					<div class='message error prepend-top'>
+						<span class='content'></span>
+						&nbsp;&nbsp;
+						<span class='hypertext close'>close</span>
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<div class='span-18 last' style='height: 50px; background-color: #eee;'>
+		<div class='span-9' style='text-align: left; padding: 10px;'>
+			<input type='button' id='btn-include' class='include' value='Include'>
+			<input type='button' id='btn-exclude' class='exclude' value='Exclude'>
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+		<div class='span-8 last' style='text-align: right; padding: 10px;'>
+			<span class='hypertext targets-dialog-close'>close</span>
+		</div>
+	</div>
+</div>

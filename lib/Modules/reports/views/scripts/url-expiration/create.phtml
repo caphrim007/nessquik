@@ -1,0 +1,38 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/reports/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div class='quiet span-22 append-bottom'>
+		<p class='prepend-top'>
+		The list below is the current list of whitelisted URLs in your
+		Bluecoat appliance.
+		</p>
+		<p>
+		From here you can select which URLs you may want to remove from
+		the whitelist.
+		</p>
+		<p>
+		Notice that the list includes what the current categorization
+		is for the URL (as known by Bluecoat). This is what you should
+		use to determine whether or not a URL should be removed from
+		your whitelist.
+		</p>
+	</div>
+
+	<form id='form-submit'>
+		<div id='whitelistBlock' class='span-22 last clearfix form-ops append-bottom' style='text-align: center;'>
+			Please wait a moment while I fetch the URL list
+		</div>
+	</form>
+
+	<div id='form-ops' class='span-22 clearfix append-bottom' style='text-align: center;'>
+		<input id='btn-save' type='button' value='Save'>
+		<a class='hypertext' style='padding-left: 20px;' href='<?php echo sprintf("%s/reports/%s", $this->baseUrl(), $this->controller); ?>'>cancel</a>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

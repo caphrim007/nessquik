@@ -1,0 +1,38 @@
+<?php if (empty($this->results)): ?>
+	<!-- your hovercraft is full of eels -->
+<?php else: ?>
+<div class='selectable last targetList list'>
+	<table>
+		<thead>
+			<tr>
+				<th class='check'>&nbsp;</th>
+				<th colspan='2'>Target</th>
+			</tr>
+		</thead>
+		<tbody>
+<?php foreach ($this->results as $key => $target): ?>
+	<tr class='row'>
+		<input type='hidden' name='targetId' value='<?php echo $target['id']; ?>'>
+		<td class='check'>
+			<?php if ($target['type'] == 'HostnameTarget'): ?>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/target-host.png' alt='Hostname' title='Hostname'>
+			<?php elseif ($target['type'] == 'NetworkTarget'): ?>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/target-cidr.png' alt='Network' title='Network'>
+			<?php elseif ($target['type'] == 'RangeTarget'): ?>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/target-range.png' alt='Range' title='Range'>
+			<?php elseif ($target['type'] == 'ClusterTarget'): ?>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/target-miscomp.png' alt='Cluster' title='Cluster'>
+			<?php endif; ?>
+		</td>
+		<td style='width: 70%; border-bottom: 1px solid #cdcdcd;'>
+			<?php echo $target['target']; ?>
+		</td>
+		<td class='icons'>
+			<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='Remove target' title='Remove target'>
+		</td>
+	</tr>
+<?php endforeach; ?>
+		</tbody>
+	</table>
+</div>
+<?php endif; ?>

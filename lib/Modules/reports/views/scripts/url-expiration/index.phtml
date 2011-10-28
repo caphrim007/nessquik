@@ -1,0 +1,52 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/reports/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div class='span-22 append-bottom'>
+		<div class='span-22'>
+			<strong>About this report</strong>
+		</div>
+		<div class='quiet span-22'>
+			<p class='prepend-top'>
+			This report can be used to reconcile the expiration dates of URLs.
+			</p>
+			<p>
+			Since expiration dates are normally configured on a per-URL basis,
+			there may be times when you need to change the expiration dates
+			of URLs en-masse (such as if you originally configured the URLs to
+			have an expiration of infinity).
+			</p>
+			<p>
+			This report will allow you to select a batch of URLs, by an expiration
+			date or range, and change those URLs' expiration date.
+			</p>
+		</div>
+	</div>
+
+	<div class='span-22 last clearfix form-ops append-bottom' style='text-align: center;'>
+	<?php if (empty($this->report->lastReconcile)): ?>
+		<div class='span-22 last' style='background-color: #efefef; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;'>
+			<div class='update-plugins' style='padding: 10px;'>
+				<a class='hypertext' href='<?php echo sprintf("%s/reports/%s/create", $this->baseUrl(), $this->controller); ?>'>Perform a new reconciliation</a>
+			</div>
+		</div>
+	<?php else: ?>
+		<div class='span-11' style='background-color: #efefef; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;'>
+			<div class='save-scanner' style='padding: 10px;'>
+				<a class='hypertext' href='<?php echo sprintf("%s/reports/%s/history", $this->baseUrl(), $this->controller); ?>'>View past reports and results</a>
+			</div>
+		</div>
+		<div class='span-11 last' style='background-color: #efefef; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;'>
+			<div class='update-plugins' style='padding: 10px;'>
+				<a class='hypertext' href='<?php echo sprintf("%s/reports/%s/create", $this->baseUrl(), $this->controller); ?>'>Perform a new reconciliation</a>
+			</div>
+		</div>
+	<?php endif; ?>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

@@ -1,0 +1,64 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/reports/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div id='countryExposure' class='span-22 append-bottom'>
+		<div class='span-22'>
+			<strong>About this report</strong>
+		</div>
+		<div class='quiet span-22'>
+			<p class='prepend-top'>
+			This report can be used to reconcile the Infoblox DNS blackhole.
+			</p>
+			<p>
+			The DNS blackhole contains domains that you want to remove from
+			name resolution. By adding domains to the blackhole, clients will
+			never resolve a domain name to it's real IP address. Instead, they
+			will resolve the domain name to a specific, savory specified, IP
+			address.
+			</p>
+			<p>
+			This service does not stop individuals from pointing their
+			resolution settings to an offsite DNS server, or using IP
+			addresses explicitly to navigate to content instead of relying on DNS.
+			</p>
+			<p>
+			Periodically the blackholed domains in your Infoblox appliance may
+			no longer be on the net. When this occurs, you may deem it no longer
+			necessary to blackhole the domain.
+			</p>
+			<p>
+			This tool will allow you to view the current blackholed domains
+			and decide whether or not you want to remove them from the
+			blackhole.
+			</p>
+		</div>
+	</div>
+
+	<div class='span-22 last clearfix form-ops append-bottom' style='text-align: center;'>
+	<?php if (empty($this->report->lastReconcile)): ?>
+		<div class='span-22 last' style='background-color: #efefef; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;'>
+			<div class='update-plugins' style='padding: 10px;'>
+				<a class='hypertext' href='<?php echo sprintf("%s/reports/%s/create", $this->baseUrl(), $this->controller); ?>'>Perform a new reconciliation</a>
+			</div>
+		</div>
+	<?php else: ?>
+		<div class='span-11' style='background-color: #efefef; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;'>
+			<div class='save-scanner' style='padding: 10px;'>
+				<a class='hypertext' href='<?php echo sprintf("%s/reports/%s/history", $this->baseUrl(), $this->controller); ?>'>View past reports and results</a>
+			</div>
+		</div>
+		<div class='span-11 last' style='background-color: #efefef; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;'>
+			<div class='update-plugins' style='padding: 10px;'>
+				<a class='hypertext' href='<?php echo sprintf("%s/reports/%s/create", $this->baseUrl(), $this->controller); ?>'>Perform a new reconciliation</a>
+			</div>
+		</div>
+	<?php endif; ?>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

@@ -1,0 +1,102 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/account/views/scripts/roles/title.phtml'; ?>
+
+<div class='span-24 last' style='border-color: 1px solid #fff; position: relative;'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+	<div class='span-22 prepend-top append-bottom prepend-1 append-1'>
+	<form id='form-submit'>
+		<input type='hidden' name='accountId' value='<?php echo $this->accountId; ?>'>
+
+		<strong>Roles</strong>
+		<div class='small quiet'>
+			Select the roles that should be assigned to this account
+		</div>
+		<div class='permission-block'>
+			<div class='span-4'>
+				Available roles
+			</div>
+			<div class='span-6' style='text-align: right;'>
+				<span class='hypertext add-all'>add all &raquo;</span>
+			</div>
+			<div class='span-1'>&nbsp;</div>
+			<div class='span-4'>
+				Selected roles
+			</div>
+			<div class='span-6 last' style='text-align: right;'>
+				<span class='hypertext clear-all'>clear all &laquo;</span>
+			</div>
+			<div class='roles'>
+				<div class='span-10'>
+					<ol class='selectable available'>
+						<?php if (!empty($this->allRoles)): ?>
+						<?php foreach($this->allRoles as $role): ?>
+							<?php if ($this->inSelected($role['id'], $this->selectedRoles)): ?>
+							<li class='<?php echo $role['id']; ?>'>
+								<input type='hidden' name='available-role[]' value='<?php echo $role['id']; ?>'>
+								<img src='<?php echo $this->baseUrl(); ?>/usr/images/forward-selected.png'>&nbsp;&nbsp;
+								<span><?php echo $role['name']; ?></span>
+							<?php else: ?>
+							<li class='<?php echo $role['id']; ?>'>
+								<input type='hidden' name='available-role[]' value='<?php echo $role['id']; ?>'>
+								<img src='<?php echo $this->baseUrl(); ?>/usr/images/forward.png'>&nbsp;&nbsp;
+								<span><?php echo $role['name']; ?></span>
+							<?php endif; ?>
+						<?php endforeach; ?>
+						<?php endif; ?>
+					</ol>
+				</div>
+				<div class='span-1'>&nbsp;</div>
+				<div class='span-10 last'>
+					<ol class='selectable selected'>
+						<?php if (!empty($this->selectedRoles)): ?>
+						<?php foreach($this->selectedRoles as $selected): ?>
+							<?php $role = new Role($selected); ?>
+							<li class='<?php echo $role->id; ?>'>
+								<input type='hidden' name='selected-role[]' value='<?php echo $role->id; ?>'>
+								<img src='<?php echo $this->baseUrl(); ?>/usr/images/back.png'>&nbsp;&nbsp;
+								<span><?php echo $role->name; ?></span>
+						<?php endforeach; ?>
+						<?php endif; ?>
+					</ol>
+				</div>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Primary role</strong>
+		<div class='small quiet'>
+			The primary role is the role that all automated
+			tools will assign permissions to when adding or
+			removing permissions
+		</div>
+		<div class='primary-role'>
+			<?php if (!empty($this->selectedRoles)): ?>
+			<ul>
+				<?php foreach($this->selectedRoles as $selected): ?>
+					<?php $role = new Role($selected); ?>
+					<?php if ($this->account->primary_role == $role->id): ?>
+				<li><input type='radio' name='primary-role' value='<?php echo $role->id; ?>' checked='checked'><?php echo $role->name; ?>
+					<?php else: ?>
+				<li><input type='radio' name='primary-role' value='<?php echo $role->id; ?>'><?php echo $role->name; ?>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</ul>
+			<?php else: ?>
+			<div class='prepend-1 prepend-top append-bottom'>
+				You must assign at least one role to this account before you can set a primary role
+			</div>
+			<?php endif; ?>
+		</div>
+	</form>
+	</div>
+
+	<div class='span-24 last form-ops' style='text-align: center;'>
+		<input id='btn-save' type='button' value='Save'>
+		<a class='hypertext' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/account/modify/edit?id=<?php echo $this->accountId; ?>'>cancel</a>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

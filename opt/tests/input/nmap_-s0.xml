@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet href="/usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 4.11 scan initiated Thu Apr 19 19:52:04 2007 as: nmap -sO -oX - 131.225.82.83 -->
+<nmaprun scanner="nmap" args="nmap -sO -oX - 131.225.82.83" start="1177030324" startstr="Thu Apr 19 19:52:04 2007" version="4.11" xmloutputversion="1.01">
+<scaninfo type="ipproto" protocol="ip" numservices="256" services="0-255" />
+<verbose level="0" />
+<debugging level="0" />
+<host><status state="up" />
+<address addr="131.225.82.83" addrtype="ipv4" />
+<hostnames><hostname name="catbot.dhcp.fnal.gov" type="PTR" /></hostnames>
+<ports><extraports state="closed" count="251" />
+<port protocol="ip" portid="1"><state state="open" />
+<service name="icmp" conf="8" method="table" /></port>
+<port protocol="ip" portid="2"><state state="open|filtered" />
+<service name="igmp" conf="8" method="table" /></port>
+<port protocol="ip" portid="6"><state state="open" />
+<service name="tcp" conf="8" method="table" /></port>
+<port protocol="ip" portid="17"><state state="filtered" />
+<service name="udp" conf="8" method="table" /></port>
+<port protocol="ip" portid="41"><state state="open|filtered" />
+<service name="ipv6" conf="8" method="table" /></port>
+</ports>
+</host>
+<runstats><finished time="1177030598" timestr="Thu Apr 19 19:56:38 2007"/><hosts up="1" down="0" total="1" />
+<!-- Nmap run completed at Thu Apr 19 19:56:38 2007; 1 IP address (1 host up) scanned in 274.167 seconds -->
+</runstats></nmaprun>

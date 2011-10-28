@@ -1,0 +1,54 @@
+<div id='charts' class='span-22 prepend-top append-bottom prepend-1 append-1 config'>
+	<?php if (empty($this->charts)): ?>
+	<div class='quiet' style='text-align: center;'>
+		No chart metrics were found
+	</div>
+	<?php else: ?>
+	<form class='form-submit'>
+		<?php foreach ($this->charts as $key => $chart): ?>
+		<?php if (count($this->charts) == 1): ?>
+		<div class='metrxRow span-22'>
+		<?php elseif ((count($this->charts) - 1) == $key): ?>
+		<div class='metrxRow span-22'>
+		<?php elseif ($key == 0): ?>
+		<div class='metrxRow span-22' style='border-bottom: 1px solid #eee;'>
+		<?php else: ?>
+		<div class='metrxRow span-22' style='border-bottom: 1px solid #eee;'>
+		<?php endif; ?>
+			<input type='hidden' name='urlLink' value='<?php echo $this->baseUrl(); ?>/charts/<?php echo $chart->controllerUrl; ?>'>
+			<div class='span-2' style='text-align: center;'>
+				<?php if (isset($chart->icon)): ?>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/charts/<?php echo $chart->icon; ?>' style='width: 36px; height: 36px;'>
+				<?php else: ?>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/charts/default.png' style='width: 36px; height: 36px;'>
+				<?php endif; ?>
+			</div>
+			<div class='span-17 last'>
+				<div class='span-17 '>
+					<strong><?php echo $chart->label; ?></strong>
+				</div>
+				<div class='span-17 small quiet'>
+					<?php echo $chart->description; ?>
+				</div>
+			</div>
+			<div class='span-2 last links'>
+				<?php if (isset($chart->exports)): ?>
+					<div class='span-2 small quiet'>Download</div>
+					<?php $exports = explode(',', $chart->exports); ?>
+					<?php if (!empty($exports)): ?>
+						<?php foreach($exports as $key => $export): ?>
+							<a href='<?php echo $this->baseUrl(); ?>/charts/<?php echo $chart->controllerUrl; ?>/download?format=<?php echo $export; ?>' class='span-2 small hypertext'><?php echo $export ?></a>
+							<?php if ((count($exports) - 1) != $key): ?>
+							&nbsp;<span style='color: #ccc;'>|</span>&nbsp;
+							<?php endif; ?>
+						<?php endforeach; ?>
+					<?php endif; ?>
+				<?php else: ?>
+					&nbsp;
+				<?php endif; ?>
+			</div>
+		</div>
+		<?php endforeach ?>
+	</form>
+	<?php endif; ?>
+</div>

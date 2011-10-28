@@ -1,0 +1,119 @@
+<?php require _MODPATH.'/setup/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div class='span-22'>
+		<div class='span-22' style='font-size: 1.5em;'>
+			<a href='<?php echo $this->baseUrl(); ?>/setup' class='hypertext'>Setup</a> &raquo;
+			Authentication
+		</div>
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div>
+		<strong>About</strong>
+		<div class='prepend-top'>
+			<p>
+			We now need to create some methods of authentication.
+			</p>
+			<p>
+			Authentication in nessquik was designed with two goals in mind.
+			<ul>
+				<li>support many different types of authentication
+				<li>support layered authentication
+			</ul>
+			</p>
+			<p>
+			<br>
+			Using the forms below, you can configure both of these features. If you
+			need further guidance or examples, please refer to 
+			<a target='_blank' class='hypertext' href='<?php echo $this->config->links->wiki; ?>:<?php echo $this->config->misc->version; ?>:manuals:admin:authentication'>this wiki page</a> 
+			for more help
+			</p>
+		</div>
+
+		<hr class='quiet'/>
+
+		<div class='span-22 append-bottom'>
+			<div class='span-22 append-bottom'>
+				<div class='span-18'>
+					<strong>Currently configured authentication</strong>
+					<div class='small quiet'>
+						You can drag the various authentication types to change the
+						order in which they are used when authenticating a user
+					</div>
+				</div>
+				<div class='span-4 last'>
+					<span class='hypertext dialog-link'>add new method</span> |
+					<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/setup/authentication'>refresh</a>
+				</div>
+			</div>
+			<div class='span-20 block prepend-1'>
+				<div class='select-actions span-22 last'>
+					Select: <span class='hypertext select-all'>All</span>, <span class='hypertext select-none'>None</span>
+				</div>
+
+				<div class='search-results span-22 last'>
+					<div style='padding: 10px;' class='span-22'>
+						<div class='content'></div>
+					</div>
+					<div id='with-selected'>
+						With selected: <span class='hypertext selected-delete'>Delete</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div class='message error append-bottom'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+
+		<form id='form-submit-main'>
+			<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+				<input id='btn-save' type='button' value='Create an administrator account'>
+			</div>
+		</form>
+
+		<div class='span-22 append-bottom prepend-top'>
+			<div class='span-22'>
+				&laquo; <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/setup/scanner'>Scanner</a>
+			</div>
+		</div>
+
+		<div id='dialog'>
+			<div style='width: 100%; border-bottom: 1px solid #eee; background-color: #eee; height: 45px; min-height: 45px;'>
+				<div style='padding: 10px;'>
+					<div style='color: #303233; font-weight: bold;'>
+						Modify authentication configuration
+					</div>
+				</div>
+			</div>
+
+			<div class='span-21 last content' style='height: 650px; overflow: auto;'></div>
+
+			<div class='span-21 last' style='text-align: right; height: 45px; background-color: #eee;'>
+				<div class='span-10'>
+					<div style='padding: 10px; text-align: left;'>
+						<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+					</div>
+				</div>
+				<div class='span-11 last form-ops'>
+					<div style='padding: 10px;'>
+						<input class='btn-save' type='button' value='Save'>
+						<span class='hypertext dialog-close' style='padding-left: 20px;'>cancel</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php require _MODPATH.'/setup/views/scripts/footer/index.phtml'; ?>

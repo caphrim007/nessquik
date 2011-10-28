@@ -1,0 +1,111 @@
+<div id='Ldap' class='authentication-block span-20'>
+	<div class='span-12'>
+		<strong>LDAP Host</strong><span class='required'>*</span>
+		<div>
+			<input type='text' name='host' value='<?php echo @$this->info->params->host; ?>'>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>LDAP Port</strong>
+		<div>
+			<?php if(empty($this->info->params->port)): ?>
+			<input type='text' name='port' value='389'>
+			<?php else: ?>
+			<input type='text' name='port' value='<?php echo @$this->info->params->port; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Domain</strong>
+		<div>
+			<input type='text' name='accountDomainName' value='<?php echo @$this->info->params->accountDomainName; ?>'>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Bind username</strong>
+		<div>
+			<input type='text' name='username' value='<?php echo @$this->info->params->username; ?>'>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Bind password</strong>
+		<div>
+			<input type='text' name='password' value='<?php echo @$this->info->params->password; ?>'>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Base DN</strong><span class='required'>*</span>
+		<div>
+			<input type='text' name='baseDn' value='<?php echo @$this->info->params->baseDn; ?>'>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Account Filter</strong>
+		<div class='small quiet'>
+			You must specify a <span class='loud large'>%s</span> placeholder in the filter.
+			This will be replaced with the LDAP user name during authentication.
+		</div>
+		<div>
+			<?php if (empty($this->info->params->accountFilterFormat)): ?>
+			<input type='text' name='accountFilterFormat' value='(&(objectclass=person)(sAMAccountName=%s))'>
+			<?php else: ?>
+			<input type='text' name='accountFilterFormat' value='<?php echo $this->info->params->accountFilterFormat; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Miscellaneous</strong>
+		<div>
+			<?php if (empty($this->info->params->bindRequiresDn)): ?>
+			<input type='checkbox' name='bindRequiresDn'>Bind requires DN<br>
+			<?php else: ?>
+			<input type='checkbox' name='bindRequiresDn' checked='checked'>Bind requires DN<br>
+			<?php endif; ?>
+
+			<input type='checkbox' name='use-encryption'>Use encryption
+			<div class='prepend-1 encryption-block'>
+				<hr class='space'/>
+				<strong>Encryption type</strong>
+				<div>
+					<?php if (empty($this->info->params->useSsl)): ?>
+					<input type='radio' name='encryption-type' value='useSsl'>SSL<br>
+					<?php else: ?>
+					<input type='radio' name='encryption-type' value='useSsl' checked='checked'>SSL<br>
+					<?php endif; ?>
+
+					<?php if (empty($this->info->params->useStartTls)): ?>
+					<input type='radio' name='encryption-type' value='useStartTls'>TLS
+					<?php else: ?>
+					<input type='radio' name='encryption-type' value='useStartTls' checked='checked'>TLS
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='span-1'>&nbsp;</div>
+	<div class='span-6 last' style='text-align: justify;'>
+		<p>
+		You can configure nessquik to connect to an LDAP server of your
+		choice such as OpenLDAP or Active Directory.
+		</p>
+		<p>
+		After filling out the appropriate fields for your LDAP installation,
+		nessquik will attempt to bind to the server.
+		</p>
+		<p>
+		If binding fails, a message will be displayed so that you can
+		re-tweak the values until they are correct.
+		</p>
+		<p>
+		For more information about the fields, refer to 
+		<a target='_blank' class='hypertext' href='<?php echo $this->config->links->ldapOptions; ?>'>this</a> link.
+		</p>
+	</div>
+</div>

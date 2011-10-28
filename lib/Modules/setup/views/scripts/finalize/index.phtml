@@ -1,0 +1,55 @@
+<?php require _MODPATH.'/setup/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div class='span-16'>
+		<span style='font-size: 1.5em;'>All done!</span>
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div class='prepend-1'>
+		<p>
+		That's it, installation complete!
+		</p>
+		<p>
+		The majority of nessquik is now set up and ready to rock. Some things that you
+		will want to do next include configuring a scanner, creating policies, audits, etc.
+		</p>
+		<p>
+		Use the links below to navigate to the areas of nessquik that can better serve you.
+		Each link will open in a new tab so you can refer back to this page if you need to.
+		</p>
+		<ul>
+			<li><a target='_blank' class='hypertext' href='<?php echo $this->baseUrl(); ?>/admin/account'>Add more users</a>
+			<li><a target='_blank' class='hypertext' href='<?php echo $this->baseUrl(); ?>/policy'>Create new policies</a>
+			<li><a target='_blank' class='hypertext' href='<?php echo $this->baseUrl(); ?>/audit'>Create new audits</a>
+		</ul>
+
+		<p>
+		<br>
+		Otherwise, you can just hang out at the <a target='_blank' class='hypertext' href='<?php echo $this->baseUrl(); ?>'>index</a> page or the <a target='_blank' class='hypertext' href='<?php echo $this->baseUrl(); ?>/admin'>admin</a> page.
+		</p>
+		<p>
+		Also, before you forget, please <strong>delete the lib/Modules/setup</strong> directory.
+		This will ensure that others cannot overwrite your existing installation
+		</p>
+	</div>
+
+	<hr class='space'/>
+
+	<div class='append-bottom'>
+		<span style='font-size: 1.5em;'>Thanks again!</span>
+	</div>
+	<div class='span-22 append-bottom'>
+		<div class='span-21 prepend-1'>
+			We appreciate you giving nessquik a chance. If you find it helpful, please help
+			us spread the word about it so as to encourage others to use it.
+		</div>
+	</div>
+</div>
+
+<?php require _MODPATH.'/setup/views/scripts/footer/index.phtml'; ?>

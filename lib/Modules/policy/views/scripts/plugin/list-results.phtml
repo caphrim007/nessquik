@@ -1,0 +1,31 @@
+<?php if (empty($this->results)): ?>
+	<div class='prepend-top no-results-mesg'>
+		No plugins were found
+	</div>
+<?php else: ?>
+<div class='selectable last policy-list list'>
+	<table>
+		<thead>
+			<tr>
+				<th class='check'><input type='checkbox'></th>
+				<th colspan='2'>Plugin name</th>
+			</tr>
+		</thead>
+		<tbody>
+<?php foreach ($this->results as $key => $plugin): ?>
+	<tr class='row content'>
+		<td class='check'>
+			<input type='hidden' name='plugin' value='<?php echo $plugin['id']; ?>'>
+			<input type='hidden' name='state' value='<?php echo $plugin['state']; ?>'>
+			<img class='enable' src='<?php echo $this->baseUrl(); ?>/usr/images/bullet_green.png' alt='Click to disable this plugin' title='Click to disable this plugin'>
+			<img class='disable' src='<?php echo $this->baseUrl(); ?>/usr/images/bullet_white.png' alt='Click to enable this plugin' title='Click to enable this plugin'>
+		</td>
+		<td style='width: 70%; border-bottom: 1px solid #cdcdcd; vertical-align: center;'>
+			<span class='hypertext'><?php echo $plugin['name'] ; ?></span>
+		</td>
+	</tr>
+<?php endforeach; ?>
+		</tbody>
+	</table>
+</div>
+<?php endif; ?>

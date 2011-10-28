@@ -1,0 +1,28 @@
+<?php require _MODPATH.'/setup/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div class='span-22'>
+		<div class='span-22' style='font-size: 1.5em;'>
+			<a href='<?php echo $this->baseUrl(); ?>/setup' class='hypertext'>Setup</a> &raquo;
+			Scanner
+		</div>
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<form id='form-submit'>
+		<strong>About</strong>
+
+		<?php if (empty($this->servers)): ?>
+			<?php require _MODPATH.'/setup/views/scripts/scanner/forms/nonexistent.phtml'; ?>
+		<?php else: ?>
+			<?php require _MODPATH.'/setup/views/scripts/scanner/forms/existent.phtml'; ?>
+		<?php endif; ?>
+	</form>
+</div>
+
+<?php require _MODPATH.'/setup/views/scripts/footer/index.phtml'; ?>

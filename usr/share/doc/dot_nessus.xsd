@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<!-- 
+(C) 2007 - 2008 Tenable Network Security, Inc.
+
+Redistribution and use with or without modification, are permitted provided 
+that the following conditions are met:
+
+1. Redistributions must retain the above copyright notice, this list of 
+conditions and the following disclaimer.
+
+2. The name of the Tenable Network Security, Inc. may not be used to endorse 
+or promote products derived from this software without specific prior written 
+permission.
+
+3. Redistributions of modified versions clearly label the changes made to the 
+file and their author
+
+ THIS XSD FILE IS PROVIDED BY TENABLE NETWORK SECURITY, INC. ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL TENABLE NETWORK SECURITY BE LIABLE FOR ANY
+ DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+!-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+elementFormDefault="qualified">
+
+<xs:element name="NessusClientData">
+ <xs:complexType>
+   <xs:sequence>
+     <xs:element name="Targets" type="targetlist"/>
+     <xs:element name="Policies">
+	<xs:complexType>
+	  <xs:sequence>
+	    <xs:element name="Policy" type="policyinfo" minOccurs="0" maxOccurs="unbounded"/>
+	  </xs:sequence>
+	</xs:complexType>
+     </xs:element>
+     <xs:element name="Report" type="reportinfo" minOccurs="0" maxOccurs="unbounded"/>
+   </xs:sequence>
+ </xs:complexType>
+</xs:element>
+
+
+
+<xs:complexType name="reportinfo">
+ <xs:sequence>
+   <xs:element name="ReportName" type="xs:string"/>
+   <xs:element name="StartTime" type="xs:string"/>
+   <xs:element name="StopTime" type="xs:string"/>
+   <xs:element name="PolicyUUID" type="xs:string" minOccurs="0" maxOccurs="1" />
+   <xs:element name="Policy" type="policyinfo"/>
+   <xs:element name="Targets" type="targetlist"/>
+   <xs:element name="PluginSelection" type="xs:string"/>
+   <xs:element name="ReportHost" type="hostinfo" minOccurs="0" maxOccurs="unbounded"/>
+ </xs:sequence>
+</xs:complexType>
+
+
+<xs:complexType name="hostinfo">
+ <xs:sequence>
+   <xs:element name="HostName" type="xs:string"/>
+   <xs:element name="startTime" type="xs:string" minOccurs="0" maxOccurs="1" />
+   <xs:element name="stopTime" type="xs:string" minOccurs="0" maxOccurs="1" />
+   <xs:element name="StartTime" type="xs:string" minOccurs="0" maxOccurs="1" />
+   <xs:element name="StopTime" type="xs:string" minOccurs="0" maxOccurs="1" />
+   <xs:any processContents="lax" maxOccurs="8"/>
+   <xs:element name="ReportItem" type="iteminfo" minOccurs="0" maxOccurs="unbounded"/>
+ </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="iteminfo">
+ <xs:sequence>
+   <xs:element name="port" type="xs:string"/>
+   <xs:element name="severity" type="xs:int"/>
+   <xs:element name="pluginID" type="xs:int"/>
+   <xs:element name="pluginName" type="xs:string"/>
+   <xs:element name="data" type="xs:string" minOccurs="0"/>
+ </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="targetlist">
+ <xs:sequence>
+   <xs:element name="Target" type="targetinfo" minOccurs="0" maxOccurs="unbounded"/>
+ </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="targetinfo">
+ <xs:sequence>
+   <xs:element name="selected" type="xs:string"/>
+   <xs:element name="type" type="xs:string"/>
+   <xs:choice>
+     <xs:group ref="hostname"/>
+     <xs:group ref="network"/>
+     <xs:group ref="netmask"/>
+   </xs:choice>
+ </xs:sequence>
+</xs:complexType>
+
+<xs:group name="hostname">
+ <xs:sequence>
+   <xs:element name="value" type="xs:string"/>
+ </xs:sequence>
+</xs:group>
+
+<xs:group name="network">
+ <xs:sequence>
+   <xs:element name="start" type="xs:string"/>
+   <xs:element name="end" type="xs:string"/>
+ </xs:sequence>
+</xs:group>
+
+<xs:group name="netmask">
+ <xs:sequence>
+   <xs:element name="network" type="xs:string"/>
+   <xs:element name="netmask" type="xs:string"/>
+ </xs:sequence>
+</xs:group>
+
+
+<xs:complexType name="policyinfo">
+<xs:sequence>
+   <xs:element name="policyName" type="xs:string"/>
+   <xs:element name="policyComments" type="xs:string" minOccurs="0"/>
+   <xs:element name="uuid" type="xs:string"/>
+   <xs:element name="Preferences" type="prefinfo"/>
+   <xs:element name="PluginSelection" type="plugininfo"/>
+ </xs:sequence>
+<xs:attribute name="passwordsType" type="xs:string" use="optional"/>
+</xs:complexType>
+
+<xs:complexType name="prefinfo">
+ <xs:sequence>
+   <xs:any maxOccurs="unbounded" processContents="skip"/>
+ </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="plugininfo">
+ <xs:sequence>
+   <xs:any maxOccurs="unbounded" processContents="skip"/>
+ </xs:sequence>
+</xs:complexType>
+
+</xs:schema>

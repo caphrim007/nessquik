@@ -1,0 +1,3 @@
+Insert the following into your crontab file
+
+*/5 * * * * /opt/nessquik-client/scripts/scan-runner.php >/dev/null 2>&1

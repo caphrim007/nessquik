@@ -1,0 +1,77 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1 (0x1)
+        Signature Algorithm: sha1WithRSAEncryption
+        Issuer: CN=nessquik CA, C=US, ST=Illinois, L=Chicago, O=caphrim.net/emailAddress=caphrim007@gmail.com
+        Validity
+            Not Before: Sep 18 23:32:02 2009 GMT
+            Not After : Sep 18 23:32:02 2010 GMT
+        Subject: C=US, ST=Illinois, O=caphrim.net, OU=development, CN=ovaltine.caphrim.net/emailAddress=caphrim007@gmail.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+            RSA Public Key: (1024 bit)
+                Modulus (1024 bit):
+                    00:d6:f2:01:01:72:31:7a:2f:89:8d:7f:57:64:ef:
+                    a2:01:b8:91:3f:21:13:4e:03:22:fe:8a:99:95:e3:
+                    38:b6:e9:c9:9c:50:42:b1:23:a6:bd:13:94:39:1c:
+                    f9:8a:ad:45:34:9f:a6:45:8b:9d:6b:2d:66:7e:3d:
+                    4a:39:db:12:47:ea:cf:01:0d:0d:72:a5:aa:1f:b8:
+                    7c:a1:64:f6:ac:4d:57:e2:f9:f6:24:45:b0:c5:f4:
+                    3b:47:12:71:dd:04:19:0d:8e:56:b9:ec:0a:1d:b6:
+                    aa:8e:3b:12:55:0c:91:b6:36:59:23:e4:cd:89:fd:
+                    52:0d:b7:ff:05:7d:06:12:bb
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            X509v3 Subject Key Identifier: 
+                DB:2E:F1:FA:45:85:DC:1F:D6:3D:D5:47:60:DF:81:AD:81:70:95:DE
+            X509v3 Authority Key Identifier: 
+                keyid:D1:5A:08:18:CB:07:EE:EE:17:75:12:D7:9F:7E:E7:86:4D:98:AD:41
+                DirName:/CN=nessquik CA/C=US/ST=Illinois/L=Chicago/O=caphrim.net/emailAddress=caphrim007@gmail.com
+                serial:9F:40:C0:B9:05:6E:50:8B
+
+            Netscape CA Revocation Url: 
+                https://caphrim.net/downloads/ca-crl.pem
+    Signature Algorithm: sha1WithRSAEncryption
+        8d:a2:22:25:32:d4:27:85:a8:c6:01:7f:a1:cb:9e:d3:66:05:
+        13:71:b7:d2:e2:00:bc:59:6a:d0:2f:7b:34:fc:fb:9f:d2:6b:
+        26:5b:0b:1f:ec:c7:69:a3:9e:51:b0:28:fd:12:fe:20:a1:49:
+        13:d5:9c:0c:c9:96:7c:45:91:a9:e6:ef:a0:d4:54:a6:5f:f8:
+        59:a4:e8:ec:4f:86:aa:b8:28:12:77:fe:96:bd:de:db:37:c4:
+        56:fd:d9:92:f4:91:5c:15:37:19:9a:6c:f6:cb:01:bb:75:fa:
+        db:29:fc:5b:bc:cd:3b:39:bc:88:12:a4:01:85:8f:52:fc:e8:
+        24:2f:56:c7:2a:2c:00:e4:4b:22:37:8f:96:2c:7c:cf:15:78:
+        28:49:2b:1f:aa:8a:65:95:c2:75:82:ee:0e:cb:66:6d:b3:cc:
+        ca:c0:79:49:e9:e2:f8:8e:69:ee:c1:31:4a:f0:82:1c:02:dd:
+        46:57:fe:c1:b2:d1:e6:02:0d:5a:7d:13:42:76:2c:e0:2e:98:
+        25:9e:d1:64:4f:7c:0a:3a:1a:15:c7:79:c9:0d:d1:9c:7d:10:
+        1a:38:e3:35:9c:98:a3:0b:71:95:c4:70:30:86:5e:06:c6:94:
+        87:43:8e:50:89:65:fb:3b:66:45:db:bb:56:94:0c:2b:d5:a3:
+        21:6f:e5:ef
+-----BEGIN CERTIFICATE-----
+MIIEMDCCAxigAwIBAgIBATANBgkqhkiG9w0BAQUFADCBgzEUMBIGA1UEAxMLbmVz
+c3F1aWsgQ0ExCzAJBgNVBAYTAlVTMREwDwYDVQQIEwhJbGxpbm9pczEQMA4GA1UE
+BxMHQ2hpY2FnbzEUMBIGA1UEChMLY2FwaHJpbS5uZXQxIzAhBgkqhkiG9w0BCQEW
+FGNhcGhyaW0wMDdAZ21haWwuY29tMB4XDTA5MDkxODIzMzIwMloXDTEwMDkxODIz
+MzIwMlowgZAxCzAJBgNVBAYTAlVTMREwDwYDVQQIEwhJbGxpbm9pczEUMBIGA1UE
+ChMLY2FwaHJpbS5uZXQxFDASBgNVBAsTC2RldmVsb3BtZW50MR0wGwYDVQQDExRv
+dmFsdGluZS5jYXBocmltLm5ldDEjMCEGCSqGSIb3DQEJARYUY2FwaHJpbTAwN0Bn
+bWFpbC5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBANbyAQFyMXoviY1/
+V2TvogG4kT8hE04DIv6KmZXjOLbpyZxQQrEjpr0TlDkc+YqtRTSfpkWLnWstZn49
+SjnbEkfqzwENDXKlqh+4fKFk9qxNV+L59iRFsMX0O0cScd0EGQ2OVrnsCh22qo47
+ElUMkbY2WSPkzYn9Ug23/wV9BhK7AgMBAAGjggEiMIIBHjAJBgNVHRMEAjAAMB0G
+A1UdDgQWBBTbLvH6RYXcH9Y91Udg34GtgXCV3jCBuAYDVR0jBIGwMIGtgBTRWggY
+ywfu7hd1EteffueGTZitQaGBiaSBhjCBgzEUMBIGA1UEAxMLbmVzc3F1aWsgQ0Ex
+CzAJBgNVBAYTAlVTMREwDwYDVQQIEwhJbGxpbm9pczEQMA4GA1UEBxMHQ2hpY2Fn
+bzEUMBIGA1UEChMLY2FwaHJpbS5uZXQxIzAhBgkqhkiG9w0BCQEWFGNhcGhyaW0w
+MDdAZ21haWwuY29tggkAn0DAuQVuUIswNwYJYIZIAYb4QgEEBCoWKGh0dHBzOi8v
+Y2FwaHJpbS5uZXQvZG93bmxvYWRzL2NhLWNybC5wZW0wDQYJKoZIhvcNAQEFBQAD
+ggEBAI2iIiUy1CeFqMYBf6HLntNmBRNxt9LiALxZatAvezT8+5/SayZbCx/sx2mj
+nlGwKP0S/iChSRPVnAzJlnxFkanm76DUVKZf+Fmk6OxPhqq4KBJ3/pa93ts3xFb9
+2ZL0kVwVNxmabPbLAbt1+tsp/Fu8zTs5vIgSpAGFj1L86CQvVscqLADkSyI3j5Ys
+fM8VeChJKx+qimWVwnWC7g7LZm2zzMrAeUnp4viOae7BMUrwghwC3UZX/sGy0eYC
+DVp9E0J2LOAumCWe0WRPfAo6GhXHeckN0Zx9EBo44zWcmKMLcZXEcDCGXgbGlIdD
+jlCJZfs7ZkXbu1aUDCvVoyFv5e8=
+-----END CERTIFICATE-----

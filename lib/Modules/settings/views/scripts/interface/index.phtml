@@ -1,0 +1,156 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/settings/views/scripts/interface/title.phtml'; ?>
+
+<div id='interface' class='span-22 prepend-1 append-1 prepend-top append-bottom'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+	<form id='form-submit'>
+		<strong>Default page limits</strong>
+		<div class='small quiet span-24'>
+			These numbers refer to the maximum number
+			of items that you will see on the specific
+			page.
+		</div>
+		<div class='prepend-1 span-21 append-bottom'>
+			<div class='span-21 limitRow prepend-top'>
+				<div class='span-4'>Accounts</div>
+				<div class='span-8' style='padding-top: 3px;'>
+					<div class='span-8 limit'></div>
+				</div>
+				<div class='span-1'>&nbsp;</div>
+				<div class='span-8 last'>
+					<?php if (isset($this->session->settings->limitAccounts)): ?>
+					<input type='hidden' class='limitVal' name='limitAccounts' value='<?php echo $this->session->settings->limitAccounts; ?>'>
+					<span class='limitDisp quiet'><?php echo $this->session->settings->limitAccounts; ?></span>
+					<?php else: ?>
+					<input type='hidden' class='limitVal' name='limitAccounts' value='15'>
+					<span class='limitDisp quiet'>15</span>
+					<?php endif; ?>
+				</div>
+			</div>
+
+			<div class='span-21 limitRow prepend-top'>
+				<div class='span-4'>Audits</div>
+				<div class='span-8' style='padding-top: 3px;'>
+					<div class='span-8 limit'></div>
+				</div>
+				<div class='span-1'>&nbsp;</div>
+				<div class='span-8 last'>
+					<?php if (isset($this->session->settings->limitAudits)): ?>
+					<input type='hidden' class='limitVal' name='limitAudits' value='<?php echo $this->session->settings->limitAudits; ?>'>
+					<span class='limitDisp quiet'><?php echo $this->session->settings->limitAudits; ?></span>
+					<?php else: ?>
+					<input type='hidden' class='limitVal' name='limitAudits' value='15'>
+					<span class='limitDisp quiet'>15</span>
+					<?php endif; ?>
+				</div>
+			</div>
+
+			<div class='span-21 limitRow prepend-top'>
+				<div class='span-4'>Mappings</div>
+				<div class='span-8' style='padding-top: 3px;'>
+					<div class='span-8 limit'></div>
+				</div>
+				<div class='span-1'>&nbsp;</div>
+				<div class='span-8 last'>
+					<?php if (isset($this->session->settings->limitMappings)): ?>
+					<input type='hidden' class='limitVal' name='limitMappings' value='<?php echo $this->session->settings->limitMappings; ?>'>
+					<span class='limitDisp quiet'><?php echo $this->session->settings->limitMappings; ?></span>
+					<?php else: ?>
+					<input type='hidden' class='limitVal' name='limitMappings' value='15'>
+					<span class='limitDisp quiet'>15</span>
+					<?php endif; ?>
+				</div>
+			</div>
+
+			<div class='span-21 limitRow prepend-top'>
+				<div class='span-4'>Policies</div>
+				<div class='span-8' style='padding-top: 3px;'>
+					<div class='span-8 limit'></div>
+				</div>
+				<div class='span-1'>&nbsp;</div>
+				<div class='span-8 last'>
+					<?php if (isset($this->session->settings->limitPolicies)): ?>
+					<input type='hidden' class='limitVal' name='limitPolicies' value='<?php echo $this->session->settings->limitPolicies; ?>'>
+					<span class='limitDisp quiet'><?php echo $this->session->settings->limitPolicies; ?></span>
+					<?php else: ?>
+					<input type='hidden' class='limitVal' name='limitPolicies' value='15'>
+					<span class='limitDisp quiet'>15</span>
+					<?php endif; ?>
+				</div>
+			</div>
+
+			<div class='span-21 limitRow prepend-top'>
+				<div class='span-4'>Roles</div>
+				<div class='span-8' style='padding-top: 3px;'>
+					<div class='span-8 limit'></div>
+				</div>
+				<div class='span-1'>&nbsp;</div>
+				<div class='span-8 last'>
+					<?php if (isset($this->session->settings->limitRoles)): ?>
+					<input type='hidden' class='limitVal' name='limitRoles' value='<?php echo $this->session->settings->limitRoles; ?>'>
+					<span class='limitDisp quiet'><?php echo $this->session->settings->limitRoles; ?></span>
+					<?php else: ?>
+					<input type='hidden' class='limitVal' name='limitRoles' value='15'>
+					<span class='limitDisp quiet'>15</span>
+					<?php endif; ?>
+				</div>
+			</div>
+
+			<div class='span-21 limitRow prepend-top'>
+				<div class='span-4'>Scanners</div>
+				<div class='span-8' style='padding-top: 3px;'>
+					<div class='span-8 limit'></div>
+				</div>
+				<div class='span-1'>&nbsp;</div>
+				<div class='span-8 last'>
+					<?php if (isset($this->session->settings->limitScanners)): ?>
+					<input type='hidden' class='limitVal' name='limitScanners' value='<?php echo $this->session->settings->limitScanners; ?>'>
+					<span class='limitDisp quiet'><?php echo $this->session->settings->limitScanners; ?></span>
+					<?php else: ?>
+					<input type='hidden' class='limitVal' name='limitScanners' value='15'>
+					<span class='limitDisp quiet'>15</span>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Other defaults</strong>
+		<div class='small quiet'>
+			The settings below control various other switches that can
+			be changed to affect the default format of particular pages
+		</div>
+		<div class='prepend-1 append-bottom'>
+			<table style='width: 100%; border: 0;'>
+				<tr>
+					<td style='width: 20%;'>Default policies page view</td>
+					<td>
+						<select name='defaultPolicyView'>
+					<?php if ($this->session->settings->defaultPolicyView == 'S'): ?>
+							<option value='S' selected='selected'>Simple
+							<option value='A'>Advanced
+					<?php else: ?>
+							<option value='S'>Simple
+							<option value='A' selected='selected'>Advanced
+					<?php endif; ?>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class='error'>
+			An error occurred while trying to save the interface settings
+		</div>
+
+		<div class='span-22 clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Save'>
+			<a class='hypertext' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/settings/modify/edit'>cancel</a>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

@@ -1,0 +1,39 @@
+<?php if (empty($this->results)): ?>
+	<div class='prepend-top no-results-mesg'>
+		No queues were found
+	</div>
+<?php else: ?>
+	<div class='selectable last audit-list list'>
+		<table>
+			<thead>
+				<tr>
+					<th class='check'><input type='checkbox'></th>
+					<th>Queue name</th>
+					<th colspan='2'>Number of messages</th>
+				</tr>
+			</thead>
+			<tbody>
+	<?php foreach ($this->results as $key => $queue): ?>
+		<tr class='row'>
+			<td class='check'>
+				<input type='checkbox' name='queueId' value='<?php echo $queue['queue_name']; ?>'>
+			</td>
+			<td style='width: 50%; border-bottom: 1px solid #cdcdcd;'>
+				<a class='hypertext' href='<?php echo $this->baseUrl() ;?>/queues/modify/edit?id=<?php echo $queue['queue_name']; ?>'><?php echo $queue['queue_name'] ; ?></a>
+			</td>
+			<td class='messages'>
+				<?php if (empty($queue['counter'])): ?>
+					0
+				<?php else: ?>
+					<?php echo $queue['counter']; ?>
+				<?php endif; ?>
+			</td>
+			<td class='icons'>
+				<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='Delete queue' title='Delete queue'>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+<?php endif; ?>

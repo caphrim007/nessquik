@@ -1,0 +1,34 @@
+<div id='adv-http-login-page' class='advanced'>
+	<div class='span-21'>
+		<strong>Login page</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->httpLoginLoginPage == null): ?>
+			<input type='text' name='plugin_preference[httpLoginLoginPage]' value='/'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[httpLoginLoginPage]' value='<?php echo $this->policy->preferences->httpLoginLoginPage; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Login form</strong>
+		<div>
+			<?php if ($this->isNew): ?>
+			<input type='text' name='plugin_preference[httpLoginLoginForm]' value=''>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[httpLoginLoginForm]' value='<?php echo $this->policy->preferences->httpLoginLoginForm; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Login form fields</strong>
+		<div>
+			<?php if($this->isNew || $this->policy->preferences->httpLoginLoginFormFields == null): ?>
+			<input type='text' name='plugin_preference[httpLoginLoginFormFields]' value='user=%USER%&pass=%PASS%'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[httpLoginLoginFormFields]' value='<?php echo $this->policy->preferences->httpLoginLoginFormFields; ?>'>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

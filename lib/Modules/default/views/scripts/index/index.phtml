@@ -1,0 +1,113 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div id='dashboard'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+		<input type='hidden' name='hasAudits' value='<?php echo $this->hasAudits; ?>'>
+	</form>
+<?php if ($this->hasAudits): ?>
+	<div class='span-22 last append-bottom'>
+		<span style='font-size: 1.5em;'>Latest activity</span>
+	</div>
+	<div class='span-22 last append-bottom'>
+		<div class='span-6'>
+			<strong>Scanning overview</strong>
+			<div id='scanning-overview' class='span-6 colborder'>
+				<div class='span-6 prepend-top' style='padding: 0 0 5px 0; border-bottom: 1px solid #e5e5e5;'>
+					<div class='quiet span-3'>
+						<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/audit#audit-parked'>parked</a>
+					</div>
+					<div class='quiet span-3 last parked' style='text-align: center;'>0</div>
+				</div>
+				<div class='span-6' style='padding: 5px 0 5px 0; border-bottom: 1px solid #e5e5e5;'>
+					<div class='quiet span-3'>
+						<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/audit#audit-pending'>pending</a>
+					</div>
+					<div class='quiet span-3 last pending' style='text-align: center;'>0</div>
+				</div>
+				<div class='span-6' style='padding: 5px 0 5px 0; border-bottom: 1px solid #e5e5e5;'>
+					<div class='quiet span-3'>
+						<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/audit#audit-running'>running</a>
+					</div>
+					<div class='quiet span-3 last running' style='text-align: center;'>0</div>
+				</div>
+				<div class='span-6' style='padding: 5px 0 5px 0; border-bottom: 1px solid #e5e5e5;'>
+					<div class='quiet span-3'>
+						<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/audit#audit-finished'>finished</a>
+					</div>
+					<div class='quiet span-3 last finished' style='text-align: center;'>0</div>
+				</div>
+				<div class='span-6' style='padding: 5px 0 5px 0;'>
+					<div class='quiet span-3'>
+						<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/audit#audit-all'>all</a>
+					</div>
+					<div class='quiet span-3 last all' style='text-align: center;'>0</div>
+				</div>
+			</div>
+		</div>
+		<div class='span-1'>&nbsp;</div>
+		<div class='span-15 last'>
+			<div class='notifications'>
+				<strong>Notifications</strong>
+				<?php if (empty($this->notifications)): ?>
+				<div id='no-notifications-mesg' class='span-15'>
+					<div class='prepend-top append-bottom'>
+						You have no new notifications.
+					</div>
+				</div>
+				<?php else: ?>
+					<?php foreach($this->notifications as $key => $notification): ?>
+					<?php if (count($this->notifications) == 1): ?>
+					<div class='row span-15 no-border'>
+					<?php elseif ((count($this->notifications) - 1) == $key): ?>
+					<div class='row span-15 no-border' style='padding: 5px 0 0 0;'>
+					<?php elseif ($key == 0): ?>
+					<div class='row span-15' style='padding: 0 0 5px 0;'>
+					<?php else: ?>
+					<div class='row span-15' style='padding: 5px 0 5px 0;'>
+					<?php endif; ?>
+						<div class='span-1'>
+							type
+						</div>
+						<div class='span-11'>
+							message
+						</div>
+						<div class='span-2 quiet'>
+							Oct 28
+						</div>
+						<div class='icons'>
+							<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.png'>
+						</div>
+					</div>
+					<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+
+	<hr class='space'/>
+	<hr class='quiet'/>
+
+	<div class='span-22 last append-bottom prepend-top'>
+		<span style='font-size: 1.5em;'>Upcoming scans</span>
+	</div>
+	<div class='span-22 append-bottom'>
+		<div id='week-calendar'></div>
+	</div>
+<?php else: ?>
+<div class='span-22 last append-bottom'>
+	<span style='font-size: 1.5em;'>Get started with nessquik</span>
+</div>
+<div id='no-audits-mesg'>
+	<div class='span-22 append-bottom'>
+		You have not scheduled any scans yet, so I really don't have much to do.
+	</div>
+	<div class='span-22 append-bottom' style='text-align: center;'>
+		Schedule a new scan <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/audit/modify/edit?id=_new'>now</a>.
+	</div>
+</div>
+<?php endif; ?>
+
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

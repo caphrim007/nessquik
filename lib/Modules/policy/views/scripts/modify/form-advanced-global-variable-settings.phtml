@@ -1,0 +1,160 @@
+<div id='adv-global-variable-settings' class='advanced'>
+	<div class='span-21'>
+		<strong>Miscellaneous</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->globalVarProbeServicesEveryPort == null): ?>
+				<input type='checkbox' name='plugin_preference[globalVarProbeServicesEveryPort]' checked='checked'>Probe services on every port<br>
+				<input type='checkbox' name='plugin_preference[globalVarAcctsNotInPolicyLogin]'>Do not log in with user accounts not specified in the policy<br>
+				<input type='checkbox' name='plugin_preference[globalVarEnableCgi]'>Enable CGI scanning<br>
+				<input type='checkbox' name='plugin_preference[globalVarThoroughTests]'>Thorough tests (slow)
+
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preferences->globalVarProbeServicesEveryPort)): ?>
+				<input type='checkbox' name='plugin_preference[globalVarProbeServicesEveryPort]' checked='checked'>Probe services on every port<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[globalVarProbeServicesEveryPort]'>Probe services on every port<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->globalVarAcctsNotInPolicyLogin)): ?>
+				<input type='checkbox' name='plugin_preference[globalVarAcctsNotInPolicyLogin]' checked='checked'>Do not log in with user accounts not specified in the policy<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[globalVarAcctsNotInPolicyLogin]'>Do not log in with user accounts not specified in the policy<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->globalVarEnableCgi)): ?>
+				<input type='checkbox' name='plugin_preference[globalVarEnableCgi]' checked='checked'>Enable CGI scanning<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[globalVarEnableCgi]'>Enable CGI scanning<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->globalVarEnableExperimental)): ?>
+				<input type='checkbox' name='plugin_preference[globalVarEnableExperimental]' checked='checked'>Enable experimental scripts<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[globalVarEnableExperimental]'>Enable experimental scripts<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->globalVarThoroughTests)): ?>
+				<input type='checkbox' name='plugin_preference[globalVarThoroughTests]' checked='checked'>Thorough tests (slow)
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[globalVarThoroughTests]'>Thorough tests (slow)
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Network type</strong>
+		<div>
+			<select name='plugin_preference[globalVarNetworkType]'>
+			<?php if ($this->isNew): ?>
+				<option value='Mixed (use RFC 1918)' selected='selected'>Mixed (use RFC 1918)
+				<option value='Private LAN'>Private LAN
+				<option value='Public WAN (Internet)'>Public WAN (Internet)
+			<?php else: ?>
+				<?php if ($this->policy->preferences->globalVarNetworkType == 'Mixed (use RFC 1918)'): ?>
+					<option value='Mixed (use RFC 1918)' selected='selected'>Mixed (use RFC 1918)
+					<option value='Private LAN'>Private LAN
+					<option value='Public WAN (Internet)'>Public WAN (Internet)
+				<?php elseif ($this->policy->preference->globalVarNetworkType == 'Private LAN'): ?>
+					<option value='Mixed (use RFC 1918)'>Mixed (use RFC 1918)
+					<option value='Private LAN' selected='selected'>Private LAN
+					<option value='Public WAN (Internet)'>Public WAN (Internet)
+				<?php elseif ($this->policy->preference->globalVarNetworkType == 'Public WAN (Internet)'): ?>
+					<option value='Mixed (use RFC 1918)'>Mixed (use RFC 1918)
+					<option value='Private LAN'>Private LAN
+					<option value='Public WAN (Internet)' selected='selected'>Public WAN (Internet)
+				<?php else: ?>
+					<option value='Mixed (use RFC 1918)' selected='selected'>Mixed (use RFC 1918)
+					<option value='Private LAN'>Private LAN
+					<option value='Public WAN (Internet)'>Public WAN (Internet)
+				<?php endif; ?>
+			<?php endif; ?>
+			</select>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Report verbosity</strong>
+		<div>
+			<select name='plugin_preference[globalVarReportVerbosity]'>
+			<?php if ($this->isNew): ?>
+				<option value='Normal' selected='selected'>Normal
+				<option value='Quiet'>Quiet
+				<option value='Verbose'>Verbose
+			<?php else: ?>
+				<?php if ($this->policy->preferences->globalVarReportVerbosity == 'Normal'): ?>
+					<option value='Normal' selected='selected'>Normal
+					<option value='Quiet'>Quiet
+					<option value='Verbose'>Verbose
+				<?php elseif ($this->policy->preferences->globalVarReportVerbosity == 'Quiet'): ?>
+					<option value='Normal'>Normal
+					<option value='Quiet' selected='selected'>Quiet
+					<option value='Verbose'>Verbose
+				<?php elseif ($this->policy->preferences->globalVarReportVerbosity == 'Verbose'): ?>
+					<option value='Normal'>Normal
+					<option value='Quiet'>Quiet
+					<option value='Verbose' selected='selected'>Verbose
+				<?php else: ?>
+					<option value='Normal' selected='selected'>Normal
+					<option value='Quiet'>Quiet
+					<option value='Verbose'>Verbose
+				<?php endif; ?>
+			<?php endif; ?>
+			</select>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Report paranoia</strong>
+		<div>
+			<select name='plugin_preference[globalVarReportParanoia]'>
+			<?php if ($this->isNew): ?>
+				<option value='Normal' selected='selected'>Normal
+				<option value='Avoid false alarms'>Avoid false alarms
+				<option value='Paranoid (more false alarms)'>Paranoid (more false alarms)
+			<?php else: ?>
+				<?php if ($this->policy->preferences->globalVarReportParanoia == 'Normal'): ?>
+					<option value='Normal' selected='selected'>Normal
+					<option value='Avoid false alarms'>Avoid false alarms
+					<option value='Paranoid (more false alarms)'>Paranoid (more false alarms)
+				<?php elseif ($this->policy->preferences->globalVarReportParanoia == 'Avoid false alarms'): ?>
+					<option value='Normal'>Normal
+					<option value='Avoid false alarms' selected='selected'>Avoid false alarms
+					<option value='Paranoid (more false alarms)'>Paranoid (more false alarms)
+				<?php elseif ($this->policy->preferences->globalVarReportParanoia == 'Paranoid (more false alarms)'): ?>
+					<option value='Normal'>Normal
+					<option value='Avoid false alarms'>Avoid false alarms
+					<option value='Paranoid (more false alarms)' selected='selected'>Paranoid (more false alarms)
+				<?php else: ?>
+					<option value='Normal' selected='selected'>Normal
+					<option value='Avoid false alarms'>Avoid false alarms
+					<option value='Paranoid (more false alarms)'>Paranoid (more false alarms)
+				<?php endif; ?>
+			<?php endif; ?>
+			</select>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Debug level</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->globalVarDebugLevel == null): ?>
+			<input type='text' name='plugin_preference[globalVarDebugLevel]' value='0'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[globalVarDebugLevel]' value='<?php echo $this->policy->preferences->globalVarDebugLevel; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>HTTP User-Agent</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->globalVarHttpUserAgent == null): ?>
+			<input type='text' name='plugin_preference[globalVarHttpUserAgent]' value='Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[globalVarHttpUserAgent]' value='<?php echo $this->policy->preferences->globalVarHttpUserAgent; ?>'>
+			<?php endif; ?>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,95 @@
+<?php if (empty($this->results)): ?>
+	<div class='prepend-top no-results-mesg'>
+		No audits were found
+	</div>
+<?php else: ?>
+<div class='selectable last audit-list list'>
+	<table>
+		<thead>
+			<tr>
+				<th class='check'><input type='checkbox'></th>
+				<th>Audit name</th>
+				<th colspan='2'>Audit owner</th>
+			</tr>
+		</thead>
+		<tbody>
+<?php foreach ($this->results as $key => $audit): ?>
+	<?php if ($audit['audit_status'] == 'R'): ?>
+		<tr class='row'>
+			<td class='check'>
+				<input type='checkbox' name='auditId' value='<?php echo $audit['audit_id']; ?>'>
+			</td>
+			<td style='width: 50%; border-bottom: 1px solid #cdcdcd;'>
+				<a class='hypertext' href='<?php echo $this->baseUrl() ;?>/audit/modify/edit?id=<?php echo $audit['audit_id']; ?>'><?php echo $audit['audit_name'] ; ?></a>
+			</td>
+			<td class='owner'>
+				<?php echo $audit['username']; ?>
+			</td>
+			<td class='icons'>
+				<div class='action-icons'>
+					<img class='stop small-icon' src='<?php echo $this->baseUrl(); ?>/usr/images/process-stop.png' alt='Stop audit' title='Stop audit'>
+				</div>
+				<div class='progress-icons'>
+					<span class='small quiet'><?php //echo $audit['current'] . ' of ' . $audit['total']; ?></span>
+					&nbsp;&nbsp;&nbsp;
+					<img class='small-icon' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+				</div>
+			</td>
+		</tr>
+	<?php elseif ($audit['audit_status'] == 'P'): ?>
+		<tr class='row'>
+			<td class='check'>
+				<input type='checkbox' name='auditId' value='<?php echo $audit['audit_id']; ?>'>
+			</td>
+			<td style='width: 50%; border-bottom: 1px solid #cdcdcd;'>
+				<a class='hypertext' href='<?php echo $this->baseUrl() ;?>/audit/modify/edit?id=<?php echo $audit['audit_id']; ?>'><?php echo $audit['audit_name'] ; ?></a>
+			</td>
+			<td class='owner'>
+				<?php echo $audit['username']; ?>
+			</td>
+			<td class='icons'>
+				<img class='stop small-icon' src='<?php echo $this->baseUrl(); ?>/usr/images/process-stop.png' alt='Stop audit' title='Stop audit'>
+			</td>
+		</tr>
+	<?php elseif ($audit['audit_status'] == 'N'): ?>
+		<tr class='row'>
+			<td class='check'>
+				<input type='checkbox' name='auditId' value='<?php echo $audit['audit_id']; ?>'>
+			</td>
+			<td style='width: 50%; border-bottom: 1px solid #cdcdcd;'>
+				<a class='hypertext' href='<?php echo $this->baseUrl() ;?>/audit/modify/edit?id=<?php echo $audit['audit_id']; ?>'><?php echo $audit['audit_name'] ; ?></a>
+			</td>
+			<td class='owner'>
+				<?php echo $audit['username']; ?>
+			</td>
+			<td class='icons'>
+				<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='Delete audit' title='Delete audit'>
+				&nbsp;&nbsp;&nbsp;
+				<img class='start small-icon' src='<?php echo $this->baseUrl(); ?>/usr/images/go-next.png' alt='Start audit' title='Start audit'>
+			</td>
+		</tr>
+	<?php elseif ($audit['audit_status'] == 'F'): ?>
+		<tr class='row'>
+			<td class='check'>
+				<input type='checkbox' name='auditId' value='<?php echo $audit['audit_id']; ?>'>
+			</td>
+			<td style='width: 50%; border-bottom: 1px solid #cdcdcd;'>
+				<a class='hypertext' href='<?php echo $this->baseUrl() ;?>/audit/modify/edit?id=<?php echo $audit['audit_id']; ?>'><?php echo $audit['audit_name'] ; ?></a>
+			</td>
+			<td class='owner'>
+				<?php echo $audit['username']; ?>
+			</td>
+			<td class='icons'>
+				<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='Delete audit' title='Delete audit'>
+				&nbsp;&nbsp;&nbsp;
+				<img class='start small-icon' src='<?php echo $this->baseUrl(); ?>/usr/images/view-refresh.png' alt='Restart audit' title='Restart audit'>
+				&nbsp;&nbsp;&nbsp;
+				<img class='park small-icon' src='<?php echo $this->baseUrl(); ?>/usr/images/hibernate.png' alt='Restart audit' title='Park audit'>
+			</td>
+		</tr>
+	<?php endif; ?>
+<?php endforeach; ?>
+		</tbody>
+	</table>
+</div>
+<?php endif; ?>

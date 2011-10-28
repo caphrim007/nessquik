@@ -1,0 +1,3 @@
+Make new CSRs with this command
+
+openssl req -new -nodes -keyout myserver.key -out server.csr

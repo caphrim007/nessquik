@@ -1,0 +1,28 @@
+<?php if (empty($this->urls)): ?>
+	No URLs were found
+<?php else: ?>
+	<table id='whitelistTable' class='span-22 tablesorter'>
+		<thead>
+			<tr>
+				<th style='text-align: center;'>
+					<input type='checkbox' id='selectToggle'>
+				</th>
+				<th style='width: 16%;'>Date created</th>
+				<th style='width: 54%;'>URL</th>
+				<th style='width: 30%;'>Categorization</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach ($this->urls as $url): ?>
+			<tr class='row'>
+				<td style='text-align: center;'>
+					<input type='checkbox' name='selected-url[]' value='<?php echo $url['id']; ?>'>
+				</td>
+				<td style='text-align: center;'><?php echo $url['created_at']; ?></td>
+				<td style='vertical-align: top;'><?php echo $url['uri']; ?></td>
+				<td style='vertical-align: top;'><?php echo implode('<br>', $url['categorization']); ?></td>
+			</tr>
+		<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php endif; ?>

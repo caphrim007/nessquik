@@ -1,0 +1,48 @@
+@charset "UTF-8";
+#nessusv2-inline {BACKGROUND-COLOR: #2a4d66; font-family: tahoma,helvetica,sans-serif; font-size: 13px}
+#nessusv2-inline A {TEXT-DECORATION: none}
+#nessusv2-inline A {COLOR: #333; FONT-FAMILY: tahoma,helvetica,sans-serif, font-size: 13px}
+#nessusv2-inline A:link {COLOR: #333; FONT-FAMILY: tahoma,helvetica,sans-serif; TEXT-DECORATION:underline;font-size:13px}
+#nessusv2-inline A:active {COLOR: #333; FONT-FAMILY: tahoma,helvetica,sans-serif; TEXT-DECORATION:underline;font-size:13px}
+#nessusv2-inline a:hover {color: #000; font-family: tahoma,helvetica,sans-serif; text-decoration:none;font-size:13px}
+#nessusv2-inline TD {COLOR: #333; FONT-FAMILY: tahoma,helvetica,sans-serif; FONT-SIZE:13px; word-wrap:break-word;}
+#nessusv2-inline TR {COLOR: #333; FONT-FAMILY: tahoma,helvetica,sans-serif; FONT-SIZE:13px}
+#nessusv2-inline .even {background-color: #FFF;}
+#nessusv2-inline .odd {background-color: #DCDCDC;}
+#nessusv2-inline .sev_low {color: #397AB2}
+#nessusv2-inline .sev_med {color: #FDBE00}
+#nessusv2-inline .sev_high {color: red}
+#nessusv2-inline .ip_sev_low {color:#397AB2;font-weight:bold;font-size:1.5em;padding:3px}
+#nessusv2-inline .ip_sev_med {color:#FDBE00;font-weight:bold;font-size:1.5em;padding:3px}
+#nessusv2-inline .ip_sev_high {color:red;font-weight:bold;font-size:1.5em;padding:3px}
+#nessusv2-inline .hostlist {color:#FFF;font-size:2em;font-weight:bold;padding:3px}
+#nessusv2-inline .backTo a {color:#FFF;font-family:tahoma,helvetica,sans-serif;text-decoration:underline}
+#nessusv2-inline .backTo a:link {color:#FFF;font-family:tahoma,helvetica,sans-serif;text-decoration:underline}
+#nessusv2-inline .backTo a:active {color:#FFF;font-family:tahoma,helvetica,sans-serif;text-decoration:underline}
+#nessusv2-inline .backTo a:hover {color:#DFDFDF;font-family:tahoma,helvetica,sans-serif;text-decoration:none}
+#nessusv2-inline .backToContainer {padding: 4px 0 4px 0}
+#nessusv2-inline .vuln_info {font-weight:bold;text-decoration:underline}
+#nessusv2-inline .scan_time {font-weight:bold;text-decoration:underline}
+#nessusv2-inline .host_info {font-weight:bold;text-decoration:underline}
+#nessusv2-inline .plugin_sev_low {background-color:#397AB2}
+#nessusv2-inline .plugin_sev_med {background-color:#FDBE00}
+#nessusv2-inline .plugin_sev_high {background-color:red}
+#nessusv2-inline .plugin_label {color:#FFF;font-weight:bold;padding:3px}
+#nessusv2-inline .port_header {background-color:#67889f}
+#nessusv2-inline .port_header_label {font-weight:bold;color:#FFF;padding: 3px}
+#nessusv2-inline .toggle {color: #FFF}
+#nessusv2-inline .divider {padding-top: 2px}
+#nessusv2-inline .info_text {padding-left: 8px;}
+#nessusv2-inline .default_header {background-color:#67889f}
+#nessusv2-inline .info_bg {background-color:#EEF2F3; }
+#nessusv2-inline .plugin_output {
+	width: 600px;
+	overflow: auto;
+	white-space: -moz-pre-wrap; /* Mozilla */
+	white-space: -hp-pre-wrap; /* HP printers */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+}

@@ -1,0 +1,16 @@
+<?php if (!empty($this->results)): ?>
+	<?php foreach($this->results as $tag): ?>
+		<?php $tagObj = new Tag($tag['id']); ?>
+		<?php if ($this->inSelected($tag['id'], $this->selected)): ?>
+		<li class='<?php echo $tag['id']; ?>'>
+			<input type='hidden' name='available-tag[]' value='<?php echo $tag['id']; ?>'>
+			<img src='<?php echo $this->baseUrl(); ?>/usr/images/forward-selected.png'>&nbsp;&nbsp;
+			<span><?php echo $tagObj->getName(); ?></span>
+		<?php else: ?>
+		<li class='<?php echo $tag['id']; ?>'>
+			<input type='hidden' name='available-tag[]' value='<?php echo $tag['id']; ?>'>
+			<img src='<?php echo $this->baseUrl(); ?>/usr/images/forward.png'>&nbsp;&nbsp;
+			<span><?php echo $tagObj->getName(); ?></span>
+		<?php endif; ?>
+	<?php endforeach; ?>
+<?php endif; ?>

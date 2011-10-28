@@ -1,0 +1,49 @@
+<div id="general" class='clearfix'>
+	<div class='span-13 colborder prepend-top'>
+		<strong>Audit name</strong>
+		<div>
+			<input class='general' name='name' type='text' value='New audit' style='width: 100%;'>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Run this audit from the following scanner</strong>
+		<div>
+		<?php if (empty($this->scanners)): ?>
+			<div class='small quiet prepend-1 prepend-top'>You do not have access to any scanners</div>
+		<?php else: ?>
+		<select class='scanner' name='scanner'>
+			<?php foreach($this->scanners as $scanner): ?>
+				<?php if ($this->audit->scanner_id == $scanner->id): ?>
+				<option value='<?php echo $scanner->id; ?>' selected='selected'><?php echo $scanner->name; ?>
+				<?php else: ?>
+				<option value='<?php echo $scanner->id; ?>'><?php echo $scanner->name; ?>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</select>
+		<?php endif; ?>
+		</div>
+	</div>
+	<div class='span-6 last' style='text-align: justify;'>
+		<p>
+		nessquik maintains of list of frequently audited targets which is
+		updated automatically every time a target is scanned.
+		</p>
+		<p>
+		A site audit takes a broad subnet that you provide, and returns
+		a list of targets that have not been scanned within some time
+		frame.
+		</p>
+		<p>
+		It is an easy way for you to audit "everything else" if you have
+		an installation where local admins frequently spot scan various
+		machines and you don't want to be troubled with having to remember
+		what was scanned.
+		</p>
+		<p>
+		After your initial configuration here, you will be redirected to
+		the complete audit configuration where you can tweak all the
+		standard audit settings.
+		</p>
+	</div>
+</div>

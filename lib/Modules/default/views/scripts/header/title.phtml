@@ -1,0 +1,23 @@
+<div class='span-24 append-bottom' style='background-color: #ededed; line-height: 35px; height: 35px;'>
+	<div class='span-12'>
+		<div style='padding-left: 10px;'>
+			<span style='font-size: 1.6em;'><?php echo $this->title; ?></span>
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+	</div>
+	<div class='span-12 last' style='text-align: right;'>
+		<div style='padding-right: 10px;'>
+		<?php if (empty($this->actions)): ?>
+			&nbsp;
+		<?php else: ?>
+			<?php foreach($this->actions as $key => $action): ?>
+				<?php if (count($this->actions) - 1 == $key): ?>
+			<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/<?php echo $action['url']; ?>'><?php echo $action['name']; ?></a>
+				<?php else: ?>
+			<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/<?php echo $action['url']; ?>'><?php echo $action['name']; ?></a> | 
+				<?php endif; ?>
+			<?php endforeach; ?>
+		<?php endif; ?>
+		</div>
+	</div>
+</div>

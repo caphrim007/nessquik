@@ -1,0 +1,6 @@
+#!/bin/bash
+psql < remake-nessquik.sql
+
+export PGUSER="nessquik"
+export PGPASSWORD=""
+psql -h dtmb.fnal.gov nessquik < nessquik.sql

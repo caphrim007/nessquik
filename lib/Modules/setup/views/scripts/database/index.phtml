@@ -1,0 +1,95 @@
+<?php require _MODPATH.'/setup/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div class='span-22' style='font-size: 1.5em;'>
+		<a href='<?php echo $this->baseUrl(); ?>/setup' class='hypertext'>Setup</a> &raquo;
+		Database
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<form id='form-submit'>
+		<strong>About</strong>
+		<div class='prepend-top'>
+			<p>
+			I'm making the assumption here that you have already loaded the schema for nessquik into
+			your database. If you have not done that yet, please follow the 
+			<a target='_blank' class='hypertext' href='<?php echo $this->config->links->wiki; ?>:2.6:manuals:admin:installation'>instructions</a>
+			for your operating system on how to do that.
+			</p>
+			<p>
+			Let's start by setting up the parameters you'll use for connecting to the nessquik database
+			</p>
+		</div>
+
+		<hr class='quiet'/>
+
+		<div class='span-22 append-bottom'>
+			<div class='span-10'>
+				<strong>Database host</strong>
+				<div>
+					<input type='text' name='host' value='<?php echo $this->config->database->default->params->host; ?>' class='span-10'>
+				</div>
+			</div>
+
+			<div class='span-2'>&nbsp;</div>
+
+			<div class='span-10 last'>
+				<strong>Database port</strong>
+				<div>
+					<input type='text' name='port' value='<?php echo $this->config->database->default->params->port; ?>'>
+				</div>
+			</div>
+		</div>
+
+		<div class='span-22 append-bottom'>
+			<strong>Database name</strong>
+			<div>
+				<input type='text' name='dbname' value='<?php echo $this->config->database->default->params->dbname; ?>' class='span-10'>
+			</div>
+		</div>
+
+		<div class='span-22 append-bottom'>
+			<div class='span-10'>
+				<strong>Username</strong>
+				<div>
+					<input type='text' name='username' value='<?php echo $this->config->database->default->params->username; ?>' class='span-10'>
+				</div>
+			</div>
+
+			<div class='span-2'>&nbsp;</div>
+
+			<div class='span-10 last'>
+				<strong>Password</strong>
+				<div>
+					<input type='text' name='password' value='<?php echo $this->config->database->default->params->password; ?>' class='span-10'>
+				</div>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div class='message error append-bottom'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+
+		<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Test connection'>
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+
+		<div class='span-22 append-bottom prepend-top'>
+			<div class='span-22'>
+				&laquo; <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/setup'>Setup</a>
+			</div>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/setup/views/scripts/footer/index.phtml'; ?>

@@ -1,0 +1,54 @@
+<div id='reports' class='span-22 prepend-top append-bottom prepend-1 append-1 config'>
+	<?php if (empty($this->reports)): ?>
+	<div class='quiet' style='text-align: center;'>
+		No report metrics were found
+	</div>
+	<?php else: ?>
+	<form class='form-submit'>
+		<?php foreach ($this->reports as $key => $table): ?>
+		<?php if (count($this->reports) == 1): ?>
+		<div class='metrxRow span-22'>
+		<?php elseif ((count($this->reports) - 1) == $key): ?>
+		<div class='metrxRow span-22'>
+		<?php elseif ($key == 0): ?>
+		<div class='metrxRow span-22' style='border-bottom: 1px solid #eee;'>
+		<?php else: ?>
+		<div class='metrxRow span-22' style='border-bottom: 1px solid #eee;'>
+		<?php endif; ?>
+			<input type='hidden' name='urlLink' value='<?php echo $this->baseUrl(); ?>/reports/<?php echo $table->controllerUrl; ?>'>
+			<div class='span-2' style='text-align: center;'>
+				<?php if (isset($table->icon)): ?>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/reports/<?php echo $table->icon; ?>' style='width: 36px; height: 36px;'>
+				<?php else: ?>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/reports/default.png' style='width: 36px; height: 36px;'>
+				<?php endif; ?>
+			</div>
+			<div class='span-17 last'>
+				<div class='span-17 '>
+					<strong><?php echo $table->label; ?></strong>
+				</div>
+				<div class='span-17 small quiet'>
+					<?php echo $table->description; ?>
+				</div>
+			</div>
+			<div class='span-2 last links'>
+				<?php if (isset($table->exports)): ?>
+					<div class='span-2 small quiet'>Download</div>
+					<?php $exports = explode(',', $table->exports); ?>
+					<?php if (!empty($exports)): ?>
+						<?php foreach($exports as $key => $export): ?>
+							<a href='<?php echo $this->baseUrl(); ?>/reports/<?php echo $table->controllerUrl; ?>/download?format=<?php echo $export; ?>' class='span-2 small hypertext'><?php echo $export ?></a>
+							<?php if ((count($exports) - 1) != $key): ?>
+							&nbsp;<span style='color: #ccc;'>|</span>&nbsp;
+							<?php endif; ?>
+						<?php endforeach; ?>
+					<?php endif; ?>
+				<?php else: ?>
+					&nbsp;
+				<?php endif; ?>
+			</div>
+		</div>
+		<?php endforeach ?>
+	</form>
+	<?php endif; ?>
+</div>

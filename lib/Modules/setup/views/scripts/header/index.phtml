@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>nessquik</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="-1">
+		<meta name="copyright" content="&copy;">
+		<meta name="Author" content="Tim Rupp">
+		<link rel='icon' type='image/png' href='<?php echo $this->baseUrl(); ?>/usr/images/favicon.png'>
+		<link rel='stylesheet' type='text/css' href='<?php echo $this->baseUrl(); ?>/usr/html/styles/styles.css'>
+		<link rel='stylesheet' type='text/css' href='<?php echo $this->baseUrl(); ?>/usr/html/styles/jquery-ui.css'>
+		<link rel='stylesheet' type='text/css' href='<?php echo $this->baseUrl(); ?>/usr/html/styles/jquery-ui.override.css'>
+
+		<link rel='stylesheet' href='<?php echo $this->baseUrl(); ?>/usr/html/styles/blueprint/screen.css' type='text/css' media='screen, projection'>
+		<!--[if lt IE 8]><link rel='stylesheet' href='<?php echo $this->baseUrl(); ?>/usr/html/styles/blueprint/ie.css' type='text/css' media='screen, projection'><![endif]-->
+		<link rel='stylesheet' href='<?php echo $this->baseUrl(); ?>/usr/html/styles/blueprint.override.css' type='text/css' media='screen, projection'>
+
+		<?php @include sprintf('%s/%s/views/scripts/%s/styles.phtml', _MODPATH, $this->module, $this->controller); ?>
+
+		<script src='<?php echo $this->baseUrl(); ?>/usr/html/javascript/jquery/jquery.min.js' type='text/javascript'></script>
+		<script src='<?php echo $this->baseUrl(); ?>/usr/html/javascript/jquery/ui/jquery-ui.custom.js' type='text/javascript'></script>
+		<script src='<?php echo $this->baseUrl(); ?>/usr/html/javascript/firebugx.js' type='text/javascript'></script>
+
+		<?php @include sprintf('%s/%s/views/scripts/%s/javascript.phtml', _MODPATH, $this->module, $this->controller); ?>
+		<?php @include sprintf('%s/%s/views/scripts/%s/rss.phtml', _MODPATH, $this->module, $this->controller); ?>
+	</head>
+	<body>
+		<div class='container'>
+			<div class='prepend-top'>&nbsp;</div>
+			<div id='header' class='span-24 last' style='min-height: 61px;'>
+				<div class='prepend-top append-bottom span-24'>
+					<span class='large logo'>
+						<a href='<?php echo $this->baseUrl(); ?>'>nessquik</a>
+					</span>
+				</div>
+			</div>
+			<div class='prepend-1 append-1 span-22 last' style='background-color: #fff;'>
+				<div class='prepend-top'>

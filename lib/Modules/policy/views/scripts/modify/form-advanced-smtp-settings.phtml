@@ -1,0 +1,34 @@
+<div id='adv-smtp-settings' class='advanced'>
+	<div class='span-21'>
+		<strong>Third party domain</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->smtpThirdPartyDomain == null): ?>
+			<input type='text' name='plugin_preference[smtpThirdPartyDomain]' value='example.com'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[smtpThirdPartyDomain]' value='<?php echo $this->policy->preferences->smtpThirdPartyDomain; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>From address</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->smtpFrom == null): ?>
+			<input type='text' name='plugin_preference[smtpFrom]' value='nobody@example.com'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[smtpFrom]' value='<?php echo $this->policy->preferences->smtpFrom; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>To address</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->smtpTo == null): ?>
+			<input type='text' name='plugin_preference[smtpTo]' value='postmaster@[AUTO_REPLACED_IP]'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[smtpTo]' value='<?php echo $this->policy->preferences->smtpTo; ?>'>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

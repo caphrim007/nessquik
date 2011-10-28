@@ -1,0 +1,63 @@
+<?php if (empty($this->results)): ?>
+	<div class='prepend-top no-results-mesg'>
+		No policies were found
+	</div>
+<?php else: ?>
+<div class='selectable last policy-list list'>
+	<table>
+		<thead>
+			<tr>
+				<th class='check'>&nbsp;</th>
+				<th colspan='2'>Policy name</th>
+			</tr>
+		</thead>
+		<tbody>
+
+	<?php if ($this->isNew): ?>
+		<?php foreach ($this->results as $key => $policy): ?>
+			<tr class='row'>
+				<td class='check'>
+					<?php if ($key == 0): ?>
+					<input type='radio' name='policyId' value='<?php echo $policy['id']; ?>' checked='checked'>
+					<?php else: ?>
+					<input type='radio' name='policyId' value='<?php echo $policy['id']; ?>'>
+					<?php endif; ?>
+				</td>
+				<td style='width: 70%; border-bottom: 1px solid #cdcdcd;'>
+					<?php echo $policy['policy_name'] ; ?>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+	<?php else: ?>
+		<?php foreach ($this->results as $key => $policy): ?>
+			<?php if ($policy['policy_id'] == $this->curPolicyId): ?>
+				<tr class='row'>
+					<td class='check'>
+						&raquo;
+					</td>
+					<td style='width: 70%; border-bottom: 1px solid #cdcdcd;'>
+						<?php echo $policy['policy_name'] ; ?>
+						&nbsp;
+						<span style='color: #999;'>( currently selected policy )</span>
+					</td>
+				</tr>
+			<?php else: ?>
+				<tr class='row'>
+					<td class='check'>
+						<?php if ($policy['policy_id'] == $this->audit->policy): ?>
+						<input type='radio' name='policyId' value='<?php echo $policy['policy_id']; ?>' checked='checked'>
+						<?php else: ?>
+						<input type='radio' name='policyId' value='<?php echo $policy['policy_id']; ?>'>
+						<?php endif; ?>
+					</td>
+					<td style='width: 70%; border-bottom: 1px solid #cdcdcd;'>
+						<?php echo $policy['policy_name'] ; ?>
+					</td>
+				</tr>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	<?php endif; ?>
+		</tbody>
+	</table>
+</div>
+<?php endif; ?>

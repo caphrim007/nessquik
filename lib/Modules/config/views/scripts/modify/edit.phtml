@@ -1,0 +1,30 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/config/views/scripts/modify/title.phtml'; ?>
+
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div id='audits' class='block clearfix menu-content span-24'>
+		<div id='content' class='content'>
+			<?php require _MODPATH.'/config/views/scripts/modify/forms/database.phtml'; ?>
+			<?php require _MODPATH.'/config/views/scripts/modify/forms/email.phtml'; ?>
+			<?php require _MODPATH.'/config/views/scripts/modify/forms/paths.phtml'; ?>
+			<?php require _MODPATH.'/config/views/scripts/modify/forms/ws.phtml'; ?>
+			<?php require _MODPATH.'/config/views/scripts/modify/forms/xmpp.phtml'; ?>
+		</div>
+	</div>
+
+	<div id='save-failure' class='message error'></div>
+
+	<div class='span-24 last clearfix form-ops' style='text-align: center;'>
+		<form class='form-config' method='post' action='<?php echo $this->baseUrl(); ?>/config/modify/save'>
+			<input id='btn-save' type='button' value='Save'>
+			&nbsp;&nbsp;&nbsp;
+			<a class='hypertext cancel' href='<?php echo $this->baseUrl(); ?>/admin'>cancel</a>
+		</form>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

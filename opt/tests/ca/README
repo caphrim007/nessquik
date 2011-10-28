@@ -1,0 +1,49 @@
+This folder just contains test certificates that I generated to
+test certificate authentication and CRL revocation.
+
+References
+http://sial.org/howto/openssl/ca/
+http://www.apacheweek.com/features/crl
+http://openssl.org/docs/apps/ca.html
+http://gagravarr.org/writing/openssl-certs/ca.shtml
+
+
+See revoked issuers in the CRL
+
+[root@ovaltine ca]# openssl crl -issuer -noout -in ca-crl.pem 
+issuer=/CN=nessquik CA/C=US/ST=Illinois/L=Chicago/O=caphrim.net/emailAddress=caphrim007@gmail.com
+[root@ovaltine ca]# man crl
+[root@ovaltine ca]# openssl crl -issuer -hash -noout -in ca-crl.pem 
+issuer=/CN=nessquik CA/C=US/ST=Illinois/L=Chicago/O=caphrim.net/emailAddress=caphrim007@gmail.com
+1a142f5e
+
+
+
+Verbose output of the CRL
+
+[root@ovaltine ca]# openssl crl -text -noout -in ca-crl.pem 
+Certificate Revocation List (CRL):
+        Version 1 (0x0)
+        Signature Algorithm: sha1WithRSAEncryption
+        Issuer: /CN=nessquik CA/C=US/ST=Illinois/L=Chicago/O=caphrim.net/emailAddress=caphrim007@gmail.com
+        Last Update: Sep 18 23:59:14 2009 GMT
+        Next Update: Oct 18 23:59:14 2009 GMT
+Revoked Certificates:
+    Serial Number: 01
+        Revocation Date: Sep 18 23:59:14 2009 GMT
+    Signature Algorithm: sha1WithRSAEncryption
+        3e:3a:b9:76:ca:a5:a8:5f:58:c9:51:4e:8c:4c:66:35:1f:9c:
+        2a:bc:6e:19:b3:a9:54:9a:3e:0e:09:5c:8d:ff:8b:c7:05:ff:
+        79:29:79:e9:81:b0:8b:d3:25:6f:9b:91:98:14:3c:a6:7f:a6:
+        8e:f8:7b:8f:e2:da:83:f8:0f:7e:57:66:27:7e:26:f5:d4:7d:
+        b0:78:e8:eb:30:ae:17:69:38:96:8f:6e:d8:b7:5d:1d:12:35:
+        e0:81:7a:17:b3:d1:11:49:39:00:0c:3f:49:bd:90:c3:e9:6e:
+        de:53:9d:60:9a:a3:a2:89:54:ae:46:c3:d9:f8:19:ee:23:66:
+        09:63:1a:bb:09:dc:95:8d:ec:ce:f8:1a:96:56:26:76:66:59:
+        2a:bf:8f:be:b9:b4:ad:d8:e7:11:1e:2c:40:e8:9b:93:e3:d5:
+        7c:95:68:58:b6:d1:f5:40:b8:10:c1:b4:43:65:d7:39:d0:78:
+        33:e3:60:16:28:d7:93:6a:91:44:10:68:ed:bd:f2:5f:8d:53:
+        8e:ff:16:26:47:93:4f:fd:ad:1b:55:de:d6:9d:f1:3e:53:24:
+        45:c0:28:31:e6:8f:db:4d:94:62:1b:4c:9e:98:bc:48:5b:fa:
+        81:98:6f:cb:f6:53:c7:bd:86:37:a7:13:0a:ff:13:16:d0:86:
+        4a:60:b8:9a

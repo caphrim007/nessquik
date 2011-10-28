@@ -1,0 +1,24 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/account/views/scripts/mappings/title.phtml'; ?>
+
+<div>
+	<form id='search'>
+		<input type='hidden' name='page' value='1'>
+		<input type='hidden' name='old-page' value='1'>
+		<input type='hidden' name='accountId' value='<?php echo $this->account->id; ?>'>
+	</form>
+</div>
+<div class='span-15 colborder'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+		<input type='hidden' name='accountId' value='<?php echo $this->account->id; ?>'>
+	</form>
+	<form id='form-submit'>
+		<div id='mappings' class='block clearfix menu-content span-24'>
+			<div id='content' class='content' style='padding: 10px;'></div>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/account/views/scripts/mappings/faq.phtml'; ?>
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

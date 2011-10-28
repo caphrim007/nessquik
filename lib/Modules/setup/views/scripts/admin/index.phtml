@@ -1,0 +1,129 @@
+<?php require _MODPATH.'/setup/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div class='span-22'>
+		<div class='span-22' style='font-size: 1.5em;'>
+			<a href='<?php echo $this->baseUrl(); ?>/setup' class='hypertext'>Setup</a> &raquo;
+			Administrator Account
+		</div>
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<form id='form-submit'>
+		<strong>About</strong>
+		<div class='prepend-top'>
+			<p>
+			We'll now create an account that you can use for the administrative portions
+			of nessquik.
+			</p>
+			<p>
+			The account that is created here will be granted administrator level access
+			to nessquik and given permission to scan anything.
+			</p>
+			<p>
+			Afterwards, you'll be free to adjust other admin stuff in nessquik.
+			</p>
+		</div>
+		<?php if ($this->hasLdap === true): ?>
+		<div class='prepend-top has-ldap'>
+			<div class='span-22 prepend-top'>
+				<strong>Using Ldap?</strong>
+				<p>
+				It looks like you configured nessquik to include LDAP authentication. If you'd
+				like to, you can try logging in using the form below.
+				</p>
+				<p>
+				If your login is successful, nessquik will assign the administrator level stuff to
+				your account.
+				</p>
+
+				<div class='span-22 append-bottom'>
+					<form id='form-ldap'>
+					<div class='span-10 prepend-top'>
+						<strong class='quiet'>Ldap username</strong>
+						<div>
+							<input type='text' name='username' value='' class='span-10'>
+						</div>
+					</div>
+
+					<div class='span-2'>&nbsp;</div>
+
+					<div class='span-10 last prepend-top'>
+						<strong class='quiet'>Ldap password</strong>
+						<div>
+							<input type='text' name='password' value='' class='span-10'>
+						</div>
+					</div>
+					</form>
+				</div>
+
+				<div class='span-22 message error append-bottom'>
+					<span class='content'></span>
+					&nbsp;&nbsp;
+					<span class='hypertext close'>close</span>
+				</div>
+
+				<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+					<input class='btn-save' type='button' value='Create account'>
+					<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+					&nbsp;&nbsp;&nbsp;
+					<span class='hypertext no-ldap'>No thanks, I do not want to use LDAP</span>
+				</div>
+			</div>
+		</div>
+		<?php endif; ?>
+
+		<div class='database-account'>
+			<div class='span-22 prepend-top append-bottom'>
+				<strong>Create an administrator account</strong>
+				<div class='span-22 append-bottom'>
+					<form id='form-db'>
+					<div class='span-10 prepend-top'>
+						<strong class='quiet'>Username</strong>
+						<div>
+							<input type='text' name='username' value='admin' class='span-10'>
+						</div>
+					</div>
+
+					<div class='span-2'>&nbsp;</div>
+
+					<div class='span-10 last prepend-top'>
+						<strong class='quiet'>Password</strong>
+						<div>
+							<input type='text' name='password' value='' class='span-10'>
+						</div>
+					</div>
+					</form>
+				</div>
+
+				<div class='span-22 message error append-bottom'>
+					<span class='content'></span>
+					&nbsp;&nbsp;
+					<span class='hypertext close'>close</span>
+				</div>
+
+				<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+					<input class='btn-save' type='button' value='Create account'>
+					<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+					<?php if ($this->hasLdap === true): ?>
+					&nbsp;&nbsp;&nbsp;
+					<span class='hypertext yes-ldap'>Actually, I do want to use LDAP</span>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+
+		<div class='span-22 append-bottom prepend-top'>
+			<div class='span-22'>
+				&laquo; <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/setup/authentication'>Authentication</a>
+			</div>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/setup/views/scripts/footer/index.phtml'; ?>

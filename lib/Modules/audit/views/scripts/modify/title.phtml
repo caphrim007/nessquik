@@ -1,0 +1,34 @@
+<div id='title' class='span-24' style='background-color: #ededed; line-height: 35px; height: 35px;'>
+	<div class='span-5'>
+<?php if ($this->isNew === true): ?>
+		<div style='padding-left: 10px; font-size: 1.4em;'>
+			<a href='<?php echo $this->baseUrl(); ?>/audit' class='hypertext'>Audits</a> &raquo;
+			<span>Create audit</span>
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+<?php else: ?>
+		<div style='padding-left: 10px; font-size: 1.6em;'>
+			<a href='<?php echo $this->baseUrl(); ?>/audit' class='hypertext'>Audits</a> &raquo;
+			Edit
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+<?php endif; ?>
+	</div>
+
+	<div id='menu' class='span-19 last' style='text-align: right;'>
+		<div class='pluginLinks'>
+			<ul>
+				<li><a href="#general" class='darkHypertext'>General</a>
+				<li><a href="#targets" class='darkHypertext'>Targets</a>
+				<li><a href="#policy" class='darkHypertext'>Policy</a>
+				<?php if (!$this->isNew): ?>
+					<?php if ($this->audit->report->hasReports()): ?>
+						<li><a href="#reports" class='darkHypertext'>Reports</a>
+					<?php endif; ?>
+				<?php endif; ?>
+				<li><a href="#scheduling" class='darkHypertext'>Scheduling</a>
+				<li><a href="#notifications" class='darkHypertext'>Notifications</a>
+			</ul>
+		</div>
+	</div>
+</div>

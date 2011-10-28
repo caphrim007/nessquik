@@ -1,0 +1,115 @@
+		<div class='prepend-top'>
+			<p>
+			Let's take a moment to configure the initial scanner that you can use.
+			</p>
+			<p>
+			This scanner will be set as the default scanner to use for updating the
+			plugins list and script names list that nessquik uses to display plugins
+			to end users. You can change this later in the admin section of nessquik
+			if you'd like.
+			</p>
+			<p>
+			<span style='font-weight: bold;'>Note:</span> You'll want to specify a
+			user account that has administrative access to Nessus.
+		</div>
+
+		<hr class='quiet'/>
+
+		<div class='span-22 append-bottom'>
+			<strong>Server name</strong><span class='required'>*</span>
+			<div>
+				<input type='text' name='server-name' style='width: 50%;' value='New server'>
+			</div>
+
+			<hr class='space'/>
+
+			<strong>Description</strong>
+			<div>
+				<textarea name='description' style='width: 50%; height: 75px;'></textarea>
+			</div>
+
+			<hr class='space'/>
+
+			<strong>Adapter</strong>
+			<div>
+				<select id='adapter' name='adapter'>
+					<option value='NessusXmlRpc' selected='selected'>Nessus XML-RPC
+				</select>
+			</div>
+
+			<hr class='space'/>
+
+			<div class='span-10'>
+				<strong>Host</strong><span class='required'>*</span>
+				<div>
+					<input type='text' name='host' value='localhost'>
+				</div>
+			</div>
+			<div class='span-10'>
+				<strong>Port</strong><span class='required'>*</span>
+				<div>
+					<input type='text' name='port' value='1241'>
+				</div>
+			</div>
+
+			<hr class='space'/>
+
+			<div class='span-10'>
+				<strong>Username</strong><span class='required'>*</span>
+				<div>
+					<input type='text' name='username' value='vscan'>
+				</div>
+			</div>
+			<div class='span-10'>
+				<strong>Password</strong><span class='required'>*</span>
+				<div>
+					<input type='text' name='password' value=''>
+				</div>
+			</div>
+
+			<hr class='space'/>
+
+			<div id='pluginDirectory'>
+				<strong>Plugin Directory</strong>
+				<div class='small quiet'>
+					The plugin directory is used to update the plugins table which
+					allows you to choose new plugins in your audit policies.
+				</div>
+				<div class='span-10'>
+					<input type='text' name='pluginDir' value='/opt/nessus/lib/nessus/plugins/' style='width: 100%;'>
+				</div>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div class='message error append-bottom'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+
+		<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+			<div class='span-11' style='background-color: #efefef; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;'>
+				<div class='save-scanner' style='padding: 10px;'>
+					<input class='btn-save' type='button' value='Save scanner'>
+				</div>
+			</div>
+			<div class='span-11 last' style='background-color: #efefef; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;'>
+				<div class='update-plugins' style='padding: 10px;'>
+					<input class='btn-save' type='button' value='Update plugins' disabled='disabled'>
+				</div>
+			</div>
+		</div>
+		<div class='span-22 updates-mesg small quiet prepend-top' style='text-align: center;'>
+			The update operations could take several minutes to complete please be patient.
+		</div>
+
+		<div class='span-22 append-bottom prepend-top'>
+			<div class='span-11'>
+				&laquo; <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/setup/automation'>Automation</a>
+			</div>
+			<div class='span-11 last' style='text-align: right;'>
+				<img class='progress'  src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+			</div>
+		</div>

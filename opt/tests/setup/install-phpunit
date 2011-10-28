@@ -1,0 +1,4 @@
+#!/bin/bash
+pear channel-discover pear.phpunit.de
+pear channel-discover pear.symfony-project.com
+pear install phpunit/PHPUnit

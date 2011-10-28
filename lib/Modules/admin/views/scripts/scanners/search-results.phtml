@@ -1,0 +1,33 @@
+<?php if (empty($this->results)): ?>
+	<div class='prepend-top no-results-mesg'>
+		No scanners were found
+	</div>
+<?php else: ?>
+<div class='selectable last scanner-list list'>
+	<table>
+		<thead>
+			<tr>
+				<th class='check'><input type='checkbox'></th>
+				<th>Scanner name</th>
+				<th colspan='2'>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+<?php foreach ($this->results as $scanner): ?>
+	<tr class='row'>
+		<td class='check'>
+			<input type='checkbox' name='scannerId' value='<?php echo $scanner['id']; ?>'>
+		</td>
+		<td class='scanner-name'>
+			<a class='hypertext' href='<?php echo $this->baseUrl() ;?>/scanners/modify/edit?id=<?php echo $scanner['id']; ?>'><?php echo $scanner['name'] ; ?></a>
+		</td>
+		<td class='scanner-description'><?php echo $scanner['description']; ?></td>
+		<td class='icons'>
+			<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='Delete scanner' title='Delete scanner'>
+		</td>
+	</tr>
+<?php endforeach; ?>
+		</tbody>
+	</table>
+</div>
+<?php endif; ?>

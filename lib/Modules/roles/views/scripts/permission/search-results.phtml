@@ -1,0 +1,63 @@
+<?php if (empty($this->results) && $this->page == 1): ?>
+	<div class='notice'>
+	<?php if ($this->type == 'capability'):?>
+		No role capabilities are defined. Add one now.
+	<?php elseif ($this->type == 'hostname'): ?>
+		No network targets are defined. Add one now.
+	<?php elseif ($this->type == 'network'): ?>
+		Not hostname targets are defined. Add one now.
+	<?php endif; ?>
+	</div>
+<?php else: ?>
+	<div class='selectable span-19 prepend-top'>
+	<?php foreach($this->results as $key => $permission): ?>
+	<?php if (count($this->results) == 1): ?>
+	<div class='row parked span-19 no-border'>
+	<?php elseif ((count($this->results) - 1) == $key): ?>
+	<div class='row parked span-19 no-border' style='padding: 5px 0 0 0;'>
+	<?php elseif ($key == 0): ?>
+	<div class='row parked span-19' style='padding: 0 0 5px 0;'>
+	<?php else: ?>
+	<div class='row parked span-19' style='padding: 5px 0 5px 0;'>
+	<?php endif; ?>
+		<div class='span-1'>
+			<input type='checkbox' name='permissionId' value='<?php echo $permission['permission_id']; ?>'>
+		</div>
+		<div class='name span-15'>
+			<?php echo $permission['permission_resource'] ; ?>
+		</div>
+		<div class='icons span-3 last'>
+			<input type='hidden' name='type' value='<?php echo $this->type; ?>'>
+			<input type='hidden' name='permissionId' value='<?php echo $permission['permission_id']; ?>'>
+			<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='delete permission'>
+		</div>
+	</div>
+	<?php endforeach; ?>
+	</div>
+<?php endif; ?>
+
+<?php if (count($this->results) == $this->limit): ?>
+<div class='span-19 prepend-top'>
+	<div class='span-9'>&nbsp;</div>
+	<div class='span-10 last' style='text-align: right;'>
+		<?php if ($this->page > 1): ?>
+		<span class='show-less hypertext'>&laquo; less</span>
+		<?php else: ?>
+		&nbsp;
+		<?php endif; ?>
+		&nbsp;&nbsp;&nbsp;
+		<span class='show-more hypertext'>more &raquo;</span>
+	</div>
+</div>
+<?php else: ?>
+<div class='span-19 prepend-top'>
+	<div class='span-9'>&nbsp;</div>
+	<?php if ($this->page > 1): ?>
+	<div class='span-10 last' style='text-align: right;'>
+		<span class='show-less hypertext'>&laquo; less</span>
+	</div>
+	<?php else: ?>
+	<div class='span-10 last'>&nbsp;</div>
+	<?php endif; ?>
+</div>
+<?php endif; ?>

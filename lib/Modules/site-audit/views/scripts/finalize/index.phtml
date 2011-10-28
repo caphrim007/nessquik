@@ -1,0 +1,60 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div id='page-heading' class='span-22 last'>
+	<div class='span-22' style='font-size: 1.5em;'>
+		<a href='<?php echo $this->baseUrl(); ?>/site-audit' class='hypertext'>Site audit</a> &raquo;
+		Finalize
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<form id='form-submit'>
+		<div class='prepend-top append-bottom'>
+			<p>
+			Your site audit is now configured and ready for you to finalize it.
+			Nothing will be saved until you finalize the audit.
+			</p>
+			<p>
+			Afterwards, you will need to log-in as the user account you created
+			for this audit
+			<ul>
+				<li><span style='font-weight: bold;'><?php echo $this->account->username; ?></span>
+			</ul>
+			<br>
+			then select the audits to run and schedule them to run
+			as you would do for any other audit.
+			</p>
+		</div>
+
+		<div class='message error append-bottom'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+
+		<div id='pleaseBePatient' class='small quiet'>
+			Please be patient while this step is run. Depending on the size of the
+			network we are dividing, this could take a couple minutes to finish.
+		</div>
+
+		<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Finalize this site audit'>
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+		<div id='finishedSaving' class='span-22 last clearfix' style='text-align: center; font-weight: bold;'>
+			This site audit has been created.
+		</div>
+		
+		<div id='backLink' class='span-22 append-bottom prepend-top'>
+			<div class='span-22'>
+				&laquo; <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/site-audit/exclude'>Exclude</a>
+			</div>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

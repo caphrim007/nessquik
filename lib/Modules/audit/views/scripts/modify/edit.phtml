@@ -1,0 +1,65 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/audit/views/scripts/modify/title.phtml'; ?>
+
+<div class='span-24 last' style='border-color: 1px solid #fff; position: relative;'>
+	<form id='form-edit'>
+		<input type='hidden' name='baseUrl' value='<?php echo $this->baseUrl(); ?>'>
+		<input type='hidden' name='isNew' value='<?php echo $this->isNew; ?>'>
+		<input type='hidden' name='auditId' value='<?php echo $this->id; ?>'>
+		<input type='hidden' name='reportId' value=''>
+		<?php if (!$this->isNew): ?>
+			<input type='hidden' name='curPolicyId' value='<?php echo $this->audit->policy; ?>'>
+		<?php endif; ?>
+	</form>
+
+	<form id='form-targets-include'>
+		<input type='hidden' name='auditId' value='<?php echo $this->id; ?>'>
+		<input type='hidden' name='target' value=''>
+		<input type='hidden' name='type' value='HostnameTarget'>
+		<input type='hidden' name='doAction' value='include'>
+	</form>
+
+	<form id='form-targets-exclude'>
+		<input type='hidden' name='auditId' value='<?php echo $this->id; ?>'>
+		<input type='hidden' name='target' value=''>
+		<input type='hidden' name='type' value='HostnameTarget'>
+		<input type='hidden' name='doAction' value='exclude'>
+	</form>
+
+	<form id='form-targets-include-search'>
+		<input type='hidden' name='auditId' value='<?php echo $this->id; ?>'>
+		<input type='hidden' name='page' value='1'>
+		<input type='hidden' name='doAction' value='include'>
+	</form>
+	<form id='form-targets-exclude-search'>
+		<input type='hidden' name='auditId' value='<?php echo $this->id; ?>'>
+		<input type='hidden' name='page' value='1'>
+		<input type='hidden' name='doAction' value='exclude'>
+	</form>
+
+	<div id='audits' class='block clearfix menu-content span-24'>
+		<div id='content' class='content'>
+			<form id='form-submit'>
+			<?php require 'form-general.phtml'; ?>
+			<?php require 'form-targets.phtml'; ?>
+			<?php require 'form-policy.phtml'; ?>
+			<?php require 'form-scheduling.phtml'; ?>
+			<?php if (!$this->isNew): ?>
+				<?php if ($this->audit->report->hasReports()): ?>
+					<?php require 'form-reports.phtml'; ?>
+				<?php endif; ?>
+			<?php endif; ?>
+			<?php require 'form-notifications.phtml'; ?>
+			</form>
+		</div>
+	</div>
+
+	<div class='span-22 prepend-1 append-1 clearfix form-ops' style='text-align: right;'>
+		<input id='btn-save' type='button' value='Save audit'>
+		<a class='hypertext cancel' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/audit'>cancel</a>
+	</div>
+
+	<?php require 'forms/scaffolding.phtml' ?>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

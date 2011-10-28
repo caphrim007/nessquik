@@ -1,0 +1,81 @@
+<div id='adv-smb-settings' class='advanced'>
+	<div class='span-21'>
+		<strong>SMB Registry</strong>
+		<div>
+			<?php if ($this->isNew): ?>
+				<input type='checkbox' name='plugin_preference[smbRegistryStartTheService]'>Start the registry service during the scan
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preferences->smbRegistryStartTheService)): ?>
+				<input type='checkbox' name='plugin_preference[smbRegistryStartTheService]' checked='checked'>Start the registry service during the scan
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[smbRegistryStartTheService]'>Start the registry service during the scan
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>SMB scope</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->smbScopeReqInfoAboutDomain == null): ?>
+				<input type='checkbox' name='plugin_preference[smbScopeReqInfoAboutDomain]' checked='checked'>Request information about the domain
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preference->smbScopeReqInfoAboutDomain)): ?>
+				<input type='checkbox' name='plugin_preference[smbScopeReqInfoAboutDomain]' checked='checked'>Request information about the domain
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[smbScopeReqInfoAboutDomain]'>Request information about the domain
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>SMB use domain SID to enumerate users</strong>
+		<div class='prepend-1 prepend-top'>
+			Start UID
+			<div>
+				<?php if ($this->isNew || $this->policy->preferences->smbDomainSidStartUid == null): ?>
+				<input type='text' name='plugin_preference[smbDomainSidStartUid]' value='1000'>
+				<?php else: ?>
+				<input type='text' name='plugin_preference[smbDomainSidStartUid]' value='<?php echo $this->policy->preferences->smbDomainSidStartUid; ?>'>
+				<?php endif; ?>
+			</div>
+
+			<hr class='space'/>
+
+			End UID
+			<div>
+				<?php if ($this->isNew || $this->policy->preferences->smbDomainSidEndUid == null): ?>
+				<input type='text' name='plugin_preference[smbDomainSidEndUid]' value='1200'>
+				<?php else: ?>
+				<input type='text' name='plugin_preference[smbDomainSidEndUid]' value='<?php echo $this->policy->preferences->smbDomainSidEndUid; ?>'>
+				<?php endif; ?>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>SMB use host SID to enumerate users</strong>
+		<div class='prepend-1 prepend-top'>
+			Start UID
+			<div>
+				<?php if ($this->isNew || $this->policy->preferences->smbHostSidStartUid == null): ?>
+				<input type='text' name='plugin_preference[smbHostSidStartUid]' value='1000'>
+				<?php else: ?>
+				<input type='text' name='plugin_preference[smbHostSidStartUid]' value='<?php echo $this->policy->preferences->smbHostSidStartUid; ?>'>
+				<?php endif; ?>
+			</div>
+
+			<hr class='space'/>
+
+			End UID
+			<div>
+				<?php if ($this->isNew || $this->policy->preferences->smbHostSidEndUid == null): ?>
+				<input type='text' name='plugin_preference[smbHostSidEndUid]' value='1200'>
+				<?php else: ?>
+				<input type='text' name='plugin_preference[smbHostSidEndUid]' value='<?php echo $this->policy->preferences->smbHostSidEndUid; ?>'>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+</div>

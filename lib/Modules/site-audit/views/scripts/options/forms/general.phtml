@@ -1,0 +1,17 @@
+<div id="general" class='clearfix'>
+	<div class='span-22 prepend-top'>
+		<strong>Run this audit from the following scanner</strong>
+		<div>
+		<?php if (empty($this->scanners)): ?>
+			<div class='small quiet prepend-1 prepend-top'>You do not have access to any scanners</div>
+			<input type='hidden' name='scanner' value=''>
+		<?php else: ?>
+		<select class='scanner' name='scanner'>
+			<?php foreach($this->scanners as $scanner): ?>
+				<option value='<?php echo $scanner->id; ?>'><?php echo $scanner->name; ?>
+			<?php endforeach; ?>
+		</select>
+		<?php endif; ?>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/settings/views/scripts/modify/title.phtml'; ?>
+
+<div class='prepend-1 append-1 span-22 prepend-top'>
+	<div class='settings-block span-22'>
+		<div class='header bigtext'>Account Information</div>
+		<div class='span-22' style='padding: 10px;'>
+			<?php if ($this->session->acl->isAllowed('Capability', array('admin_operator', 'can_change_password'))): ?>
+			<div class='span-7'>
+				<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/settings/password'>Change password</a>
+			</div>
+			<?php endif; ?>
+			<div class='span-7'>
+				<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/settings/contact'>Name and contacts</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class='prepend-1 append-1 span-22 prepend-top append-bottom'>
+	<div class='settings-block span-22'>
+		<div class='header bigtext'>Account Preferences</div>
+		<div class='span-22' style='padding: 10px;'>
+			<div class='span-7'>
+				<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/settings/interface'>User interface</a>
+			</div>
+			<div class='span-7'>
+				&nbsp;<!--<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/settings/false-positives'>False positives</a>-->
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

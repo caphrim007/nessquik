@@ -1,0 +1,61 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div id='page-heading' class='span-22 last'>
+	<div class='span-22' style='font-size: 1.5em;'>
+		<a href='<?php echo $this->baseUrl(); ?>/site-audit' class='hypertext'>Site audit</a> &raquo;
+		Subnet
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<form id='form-submit'>
+		<strong>About</strong>
+		<div class='prepend-top'>
+			<p>
+			The site audit should cover your entire address space. For large organizations
+			this may mean a /16 subnet. If this is the case, nessquik will attempt to break
+			this large subnet into smaller pieces and create individual audits out of each
+			one.
+			</p>
+			<p>
+			Enter your subnet below and it will be divided up appropriately by nessquik.
+			</p>
+		</div>
+
+		<hr class='quiet'/>
+
+		<input type='hidden' name='id' value='<?php echo $this->id; ?>'>
+		<div class='span-22 append-bottom'>
+			<div class='span-10'>
+				<strong>Network and mask</strong>
+				<div>
+					<input name='network' type='text' style='width: 200px;'> / 
+					<input name='netmask' type='text' style='width: 50px;' maxlength='2'>
+				</div>
+			</div>
+		</div>
+
+		<div class='span-22 message error append-bottom'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+
+		<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Create audits from this subnet'>
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+
+		<div class='span-22 append-bottom prepend-top'>
+			<div class='span-22'>
+				&laquo; <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/site-audit/options'>Options</a>
+			</div>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

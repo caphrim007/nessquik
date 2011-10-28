@@ -1,0 +1,54 @@
+<?php require _MODPATH.'/setup/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div class='span-16'>
+		<span style='font-size: 1.5em;'>Welcome to nessquik</span>
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div class='prepend-1'>
+		<p>
+		It looks like this is the first time you've visited us, so let's take a moment to get
+		your nessquik set up so that you can begin using the system.
+		</p>
+		<p>
+		Thanks for using nessquik. We hope you find the system useful.
+		</p>
+	</div>
+
+	<hr class='space'/>
+
+	<?php if (empty($this->writable)): ?>
+	<div class='append-bottom'>
+		<span style='font-size: 1.5em;'>Continue installation</span>
+	</div>
+	<div class='span-22 append-bottom'>
+		<div class='span-21 prepend-1'>
+			<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/setup/database'>Let's get started</a>
+		</div>
+	</div>
+	<?php else: ?>
+	<div class='append-bottom'>
+		<span style='font-size: 1.5em;'>Whoops</span>
+	</div>
+	Seems like you need to fix some directory permission problems. See below.
+	<div class='error span-22 prepend-top'>
+		<ul>
+			<?php foreach($this->writable as $path): ?>
+				<li><?php echo $path; ?> is not writable
+			<?php endforeach; ?>
+		</ul>
+	</div>
+
+	<div class='span-22'>
+		<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/setup'>Re-check permissions</a>
+	</div>
+	<?php endif; ?>
+</div>
+
+<?php require _MODPATH.'/setup/views/scripts/footer/index.phtml'; ?>

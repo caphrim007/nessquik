@@ -1,0 +1,67 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/reports/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div class='span-22'>
+		<div class='span-22'>
+			<strong>Reconciliation History</strong>
+		</div>
+		<div class='quiet span-22'>
+			<p class='prepend-top'>
+			Below is a historical list of reconciliation reports.
+			</p>
+			<p>
+			You can view the results of each reconcilation by clicking
+			on the appropriate report.
+			</p>
+		</div>
+	</div>
+
+	<div class='span-22 append-bottom'>
+		<?php if (empty($this->results)): ?>
+			<p style='text-align: center;'>No reports were found</p>
+		<?php else: ?>
+		<div id='tableData' class='span-22'>
+			<table class='span-22 tablesorter'>
+				<thead>
+					<tr>
+						<th>Date Created</th>
+						<th>Account Used</th>
+						<th>Number of URLs Removed</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php foreach ($this->results as $report): ?>
+					<tr class='row'>
+						<td><?php echo $report->value['created']; ?></td>
+						<td><?php echo $report->value['whoRemoved']; ?></td>
+						<td><?php echo count($report->value['removedList']); ?></td>
+					</tr>
+				<?php endforeach; ?>
+				</tbody>
+			</table>
+		</div>
+		<div id='pager' class='span-22' style='text-align: center;'>
+			<form>
+				<img class="first" src="<?php echo $this->baseUrl(); ?>/usr/images/first.png">
+				<img class="prev" src="<?php echo $this->baseUrl(); ?>/usr/images/prev.png">
+				<input type="text" class="pagedisplay">
+				<img class="next" src="<?php echo $this->baseUrl(); ?>/usr/images/next.png">
+				<img class="last" src="<?php echo $this->baseUrl(); ?>/usr/images/last.png">
+				<select class="pagesize">
+					<option value="10" selected="selected">10</option>
+					<option value="20">20</option>
+					<option value="30">30</option>
+					<option value="40">40</option>
+				</select>
+			</form>
+		</div>
+		<?php endif; ?>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

@@ -1,0 +1,128 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/settings/views/scripts/contact/title.phtml'; ?>
+
+<div class='prepend-1 append-1 prepend-top append-bottom span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='baseUrl' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+	<form id='form-submit'>
+		<div id='delete-contacts'>
+			<input class='skeleton' type='hidden' name='delete-list[]' value=''>
+		</div>
+
+		<div class='span-22'>
+			<div class='span-22'>
+				<strong>There are some who call me...</strong>
+				<div class='small quiet'>
+					When we contact you, we use your name or super hero alias.
+					How would you like us to address you when we send out our notifications?
+				</div>
+			</div>
+			<div>
+				<?php if ($this->account->proper_name == ''): ?>
+				<input type='text' class='span-22' name='proper_name' value='The Illustrious <?php echo $this->account->username; ?>'>
+				<?php else: ?>
+				<input type='text' class='span-22' name='proper_name' value='<?php echo $this->account->proper_name; ?>'>
+				<?php endif; ?>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div id='email-block' class='block span-22'>
+			<div class='span-22'>
+				<div class='span-22'>
+					<strong>Email</strong>
+				</div>
+				<div class='span-22'>
+					<div class='small quiet span-21'>
+						Each of these addresses will be notified when we need to contact you via email
+					</div>
+					<div class='span-1 last add-recipient' style='text-align: center;'>
+						<span class='hypertext'>add</span>
+					</div>
+				</div>
+			</div>
+			<div class='list span-22'>
+				<?php if (empty($this->account->contacts->email)): ?>
+				<div class='span-22 recipient'>
+					<div class='span-21'>
+						<input type='text' name='emailContact[]' class='span-21'>
+					</div>
+					<div class='span-1 last icons' style='text-align: center;'>
+						<img class='trash' style='padding-top: 10px;' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+					</div>
+				</div>
+				<?php else: ?>
+				<?php foreach($this->account->contacts->email as $email): ?>
+				<div class='span-22 recipient'>
+					<div class='span-21'>
+						<input type='text' name='emailContact[]' value='<?php echo $email; ?>' class='span-21'>
+					</div>
+					<div class='span-1 last icons' style='text-align: center;'>
+						<img class='trash' style='padding-top: 10px;' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+					</div>
+				</div>
+				<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div id='messaging-block' class='block span-22'>
+			<div class='span-22'>
+				<div class='span-22'>
+					<strong>Messaging</strong>
+				</div>
+				<div class='span-22'>
+					<div class='small quiet span-21'>
+						Each of these addresses will be notified when we need to contact you via instant messenger
+					</div>
+					<div class='span-1 last add-recipient' style='text-align: center;'>
+						<span class='hypertext'>add</span>
+					</div>
+				</div>
+			</div>
+
+			<div class='list span-22'>
+				<?php if (empty($this->account->contacts->xmpp)): ?>
+				<div class='span-22 recipient'>
+					<div class='span-21'>
+						<input type='text' name='xmppContact[]' class='span-21'>
+					</div>
+					<div class='span-1 last icons' style='text-align: center;'>
+						<img class='trash' style='padding-top: 10px;' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+					</div>
+				</div>
+				<?php else: ?>
+				<?php foreach($this->account->contacts->xmpp as $xmpp): ?>
+				<div class='span-22 recipient'>
+					<div class='span-21'>
+						<input type='text' name='xmppContact[]' value='<?php echo $xmpp; ?>' class='span-21'>
+					</div>
+					<div class='span-1 last icons' style='text-align: center;'>
+						<img class='trash' style='padding-top: 10px;' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+					</div>
+				</div>
+				<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div class='message'>
+			<div class='content error prepend-top append-bottom'</div>
+		</div>
+
+		<div class='span-22 clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Save'>
+			<a class='hypertext' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/settings/modify/edit'>cancel</a>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/settings/views/scripts/contact/scaffolding.phtml'; ?>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

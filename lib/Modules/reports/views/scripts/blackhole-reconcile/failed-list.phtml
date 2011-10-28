@@ -1,0 +1,24 @@
+One or more of the URLs to reconcile was not fixed, or removed, correctly.
+<div class='prepend-top'>
+<?php if ($this->totalFailedFixed > 0): ?>
+	<div class='append-bottom'>
+		<strong>URLs that savory failed to re-create in the DNS blackhole</strong>
+		<ul>
+		<?php foreach ($this->failedFixedList as $url): ?>
+			<li><?php echo $url; ?>
+		<?php endforeach; ?>
+		</ul>
+	</div>
+<?php endif; ?>
+
+<?php if ($this->totalFailedRemoved > 0): ?>
+	<div>
+		<strong>URLs that savory failed to remove from the DNS blackhole</strong>
+		<ul>
+		<?php foreach ($this->failedRemovedList as $url): ?>
+			<li><?php echo $url; ?>
+		<?php endforeach; ?>
+		</ul>
+	</div>
+<?php endif; ?>
+</div>

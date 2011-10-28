@@ -1,0 +1,13 @@
+<div id='general' class='span-22 prepend-top append-bottom prepend-1 append-1 config'>
+	<strong>Audit name</strong>
+	<div class='block append-bottom'>
+		<?php if ($this->isNew): ?>
+			<input class='general' name='name' type='text' value='New audit' style='width: 100%;'>
+		<?php else: ?>
+			<input class='general' name='name' type='text' value='<?php echo $this->audit->name; ?>' style='width: 100%;'>
+		<?php endif; ?>
+	</div>
+
+	<strong>Select a scanner to use</strong>
+	<?php require _MODPATH.'/audit/views/scripts/modify/forms/scanner-list.phtml'; ?>
+</div>

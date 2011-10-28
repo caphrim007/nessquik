@@ -1,0 +1,118 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div class='span-22'>
+		<span style='font-size: 1.5em;'>Charts</span>
+		<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div id='countryExposure' class='span-22 append-bottom'>
+		<div class='span-22'>
+			<strong>Country Exposure</strong>
+		</div>
+		<div class='small quiet append-bottom span-22'>
+			This map shows the countries which the URLs in savory originate from.
+			The darker the country, the more URLs we have recorded for that country
+		</div>
+		<div class='progress span-22'>
+			<img src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+		<div class='message error span-22'>
+			<div class='content'></div>
+		</div>
+		<div id='countryExposureChart' class='span-22' style='width: 440px; height: 220px;'></div>
+	</div>
+
+<!--
+	<div class='span-22 append-bottom'>
+		<strong>URL Activity (all time)</strong>
+		<div class='small quiet append-bottom'>
+			These charts show various activity in savory concering URL creation
+			across the life of the application
+		</div>
+		<div id='urlActivityDowAllTime' style='width: 440px; height: 220px;'></div>
+	</div>
+-->
+
+	<div id='urlActivityLastDayBar' class='span-22 prepend-top append-bottom'>
+		<div class='span-22'>
+			<strong>URL Activity (since yesterday)</strong>
+		</div>
+		<div class='small quiet append-bottom span-22'>
+			This chart shows URL creation activity in savory over the last 24 hours
+		</div>
+		<div class='progress span-22'>
+			<img src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+		<div class='message error span-22'>
+			<div class='content'></div>
+		</div>
+		<div id='urlActivityLastDayBarChart' class='span-22' style='width: 800px; height: 300px;'></div>
+	</div>
+
+	<div id='urlActivityLastWeekScatter' class='span-22 prepend-top append-bottom'>
+		<div class='span-22'>
+			<strong>URL Activity (the last week)</strong>
+		</div>
+		<div class='small quiet append-bottom span-22'>
+			This chart is a scatter plot which shows URL creation activity in savory
+			over the last week.
+			The larger the dot, the more URLs that were created at the specific hour on
+			the specific day.
+		</div>
+		<div class='progress span-22'>
+			<img src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+		<div class='message error span-22'>
+			<div class='content'></div>
+		</div>
+		<div id='urlActivityLastWeekScatterChart' class='span-22' style='width: 800px; height: 300px;'></div>
+	</div>
+
+	<div id='urlActivityLastMonthBar' class='span-22 prepend-top append-bottom'>
+		<div class='span-22'>
+			<div class='span-11'>
+				<strong>URL Activity (the last month)</strong>
+			</div>
+			<div class='span-10 last small' style='text-align: right;'>
+				Download as <a href='<?php echo $this->baseUrl(); ?>/charts/download/url-activity-last-month-bar?format=csv' class='hypertext' title='Download URL activity for last month in CSV format'>CSV</a>
+			</div>
+		</div>
+		<div class='small quiet append-bottom span-22'>
+			This chart is a scatter plot which shows URL creation activity in savory
+			over the last month.
+		</div>
+		<div class='progress span-22'>
+			<img src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+		<div class='message error span-22'>
+			<div class='content'></div>
+		</div>
+		<div id='urlActivityLastMonthBarChart' class='span-22' style='width: 850px; height: 300px;'></div>
+	</div>
+
+	<div id='urlActivityByAccountLastWeekStacked' class='span-22 prepend-top append-bottom'>
+		<div class='span-22'>
+			<strong>URL Activity, by user (the last week)</strong>
+		</div>
+		<div class='small quiet append-bottom span-22'>
+		This chart is stacked bar graph which shows URL creation activity, by user,
+		in savory over the last week
+		</div>
+		<div class='progress span-22'>
+			<img src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+		<div class='message error span-22'>
+			<div class='content'></div>
+		</div>
+		<div id='urlActivityByAccountLastWeekStackedChart' class='span-22' style='width: 800px; height: 300px;'></div>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

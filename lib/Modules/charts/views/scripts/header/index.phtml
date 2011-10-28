@@ -1,0 +1,25 @@
+<div class='span-22 last'>
+	<div class='span-12' style='font-size: 1.5em;'>
+		<a href='<?php echo $this->baseUrl(); ?>/metrx#charts' class='hypertext'>Charts</a> &raquo;
+		<?php echo $this->chart->label; ?>
+		<div class='progress span-22'>
+			<img src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+	</div>
+	<?php if (isset($this->chart->exports)): ?>
+	<div class='span-10 last small' style='text-align: right;'>
+		Download as
+
+		<?php $exports = explode(',', $this->chart->exports); ?>
+		<?php foreach($exports as $key => $export): ?>
+			<a href='<?php echo $this->baseUrl(); ?>/charts/<?php echo $this->controller; ?>/download?format=<?php echo $export; ?>' class='span-2 hypertext'><?php echo $export ?></a>
+			<?php if ((count($exports) - 1) != $key): ?>
+			&nbsp;<span style='color: #ccc;'>|</span>&nbsp;
+			<?php endif; ?>
+		<?php endforeach; ?>
+	</div>
+	<?php else: ?>
+	<div class='span-10 last'>&nbsp;</div>
+	<?php endif; ?>
+</div>
+<hr class='space'/>

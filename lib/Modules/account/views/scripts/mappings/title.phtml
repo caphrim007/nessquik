@@ -1,0 +1,47 @@
+<?php if ($this->action == 'create'): ?>
+<div id='title' class='span-24' style='background-color: #ededed; line-height: 35px; height: 35px; position: relative;'>
+	<div class='span-12'>
+		<div style='padding-left: 10px; font-size: 1.6em;'>
+			<a href='<?php echo $this->baseUrl(); ?>/admin/account' class='hypertext'>Accounts</a> &raquo;
+			<a href='<?php echo $this->baseUrl(); ?>/account/modify/edit?id=<?php echo $this->accountId; ?>' class='hypertext'><?php echo $this->account->username; ?></a> &raquo;
+			<a href='<?php echo $this->baseUrl(); ?>/account/mappings?accountId=<?php echo $this->accountId; ?>' class='hypertext'>Mappings</a> &raquo;
+			Create
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+	</div>
+	<div id='title-menu-holder' class='span-12 last' style='position: relative;'>
+	<ul id="menu" style='float: right;'>
+		<li class='trigger'>
+			<a href='<?php echo $this->baseUrl(); ?>/account/mappings/create?accountId=<?php echo $this->accountId; ?>'><img class='hypertext' style='margin-top: 8px; float: left; width: 16px; height: 16px;' src='<?php echo $this->baseUrl(); ?>/usr/images/create.png'><span style='float: left;' class='activeText darkHypertext'>Create</span></a>
+		</li>
+		<li class='trigger'>
+			<img id='faqIcon' class='hypertext' style='margin-top: 8px; float: left; width: 16px; height: 16px;' src='<?php echo $this->baseUrl(); ?>/usr/images/faq.png'>
+			&nbsp;
+		</li>
+	</ul>
+	</div>
+</div>
+
+<?php else: ?>
+<div id='title' class='span-24' style='background-color: #ededed; line-height: 35px; height: 35px; position: relative;'>
+	<div class='span-12'>
+		<div style='padding-left: 10px; font-size: 1.6em;'>
+			<a href='<?php echo $this->baseUrl(); ?>/admin/account' class='hypertext'>Accounts</a> &raquo;
+			<a href='<?php echo $this->baseUrl(); ?>/account/modify/edit?id=<?php echo $this->accountId; ?>' class='hypertext'><?php echo $this->account->username; ?></a> &raquo;
+			Mappings
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+	</div>
+	<div id='title-menu-holder' class='span-12 last' style='position: relative;'>
+	<ul id="menu" style='float: right;'>
+		<li class='trigger'>
+			<a href='<?php echo $this->baseUrl(); ?>/account/mappings/create?accountId=<?php echo $this->accountId; ?>'><img class='hypertext' style='margin-top: 8px; float: left; width: 16px; height: 16px;' src='<?php echo $this->baseUrl(); ?>/usr/images/create.png'><span style='float: left;' class='activeText darkHypertext'>Create</span></a>
+		</li>
+		<li class='trigger'>
+			<img id='faqIcon' class='hypertext' style='margin-top: 8px; float: left; width: 16px; height: 16px;' src='<?php echo $this->baseUrl(); ?>/usr/images/faq.png'>
+			&nbsp;
+		</li>
+	</ul>
+	</div>
+</div>
+<?php endif; ?>

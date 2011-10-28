@@ -1,0 +1,49 @@
+<!-- scaffolding for recipients box on notifications page -->
+<div id='scaffolding'>
+	<div class='include'>
+		<div class='hostname row span-21' style='padding: 5px 0 5px 0;'>
+			<div class='span-1'>
+				<input type='hidden' name='included[hostname][]' value='null'>
+				<input type='checkbox' value='null'>
+			</div>
+			<div class='quiet small span-3'>Hostname</div>
+			<div class='span-13 name'>&nbsp;</div>
+			<div class='icons span-3'>
+				<input type='hidden' name='id' value='null'>
+				<input type='hidden' name='type' value='hostname'>
+				<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='remove'>
+			</div>
+			<div class='span-1 last'>&nbsp;</div>
+		</div>
+
+		<div class='network row span-21' style='padding: 5px 0 5px 0;'>
+			<div class='span-1'>
+				<input type='hidden' name='included[network][]' value='null'>
+				<input type='checkbox' value='null'>
+			</div>
+			<div class='quiet small span-3'>Network</div>
+			<div class='span-13 name'>&nbsp;</div>
+			<div class='icons span-3'>
+				<input type='hidden' name='id' value='null'>
+				<input type='hidden' name='type' value='network'>
+				<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='remove'>
+			</div>
+			<div class='span-1 last'>&nbsp;</div>
+		</div>
+
+		<div class='range row span-21' style='padding: 5px 0 5px 0;'>
+			<div class='span-1'>
+				<input type='hidden' name='included[range][]' value='null'>
+				<input type='checkbox' value='null'>
+			</div>
+			<div class='quiet small span-3'>Range</div>
+			<div class='span-13 name'>&nbsp;</div>
+			<div class='icons span-3'>
+				<input type='hidden' name='id' value='null'>
+				<input type='hidden' name='type' value='range'>
+				<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='remove'>
+			</div>
+			<div class='span-1 last'>&nbsp;</div>
+		</div>
+	</div>
+</div>

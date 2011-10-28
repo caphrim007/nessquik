@@ -1,0 +1,21 @@
+<?php if (empty($this->results)): ?>
+	No results were found
+<?php else: ?>
+	<input id='totalDocs' type='hidden' value='<?php echo $this->totalDocs; ?>'>
+	<table class='span-22 tablesorter'>
+		<thead>
+			<tr>
+				<th>Date created</th>
+				<th>URL</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach ($this->results as $url): ?>
+			<tr class='row'>
+				<td><?php echo $url['createdAt']; ?></td>
+				<td><?php echo $url['uri']; ?></td>
+			</tr>
+		<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php endif; ?>

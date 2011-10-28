@@ -1,0 +1,6 @@
+# Insert the following into your crontab file. Your
+# paths may be different. Change them as necessary.
+
+*/1 * * * * /opt/nqc/bin/scan-runner.php > /dev/null 2>&1
+*/1 * * * * /var/www/html/nessquik/bin/cron.php > /dev/null 2>&1
+10 00 * * * /var/www/html/nessquik/bin/update-plugins.sh

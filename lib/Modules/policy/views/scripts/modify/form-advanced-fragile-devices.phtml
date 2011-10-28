@@ -1,0 +1,23 @@
+<div id='adv-fragile-devices' class='advanced'>
+	<div class='span-21'>
+		<strong>Miscellaneous</strong>
+		<div>
+			<?php if ($this->isNew): ?>
+				<input type='checkbox' name='plugin_preference[fragileDevicesNetworkPrinters]'>Scan network printers<br>
+				<input type='checkbox' name='plugin_preference[fragileDevicesNovellNetware]'>Scan Novell Netware hosts
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preferences->fragileDevicesNetworkPrinters)): ?>
+				<input type='checkbox' name='plugin_preference[fragileDevicesNetworkPrinters]' checked='checked'>Scan network printers<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[fragileDevicesNetworkPrinters]'>Scan network printers<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->fragileDevicesNovellNetware)): ?>
+				<input type='checkbox' name='plugin_preference[fragileDevicesNovellNetware]' checked='checked'>Scan Novell Netware hosts
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[fragileDevicesNovellNetware]'>Scan Novell Netware hosts
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,75 @@
+<div id='ws' class='span-22 prepend-top append-bottom prepend-1 append-1 config'>
+	<form class='form-submit'>
+		<div class='span-22 append-bottom'>
+			<strong>Web service URIs : nessquik</strong>
+			<div class='small quiet'>
+				URI used by nessquik for client services communicating
+				with the backend server via the XML-RPC API
+			</div>
+
+			<div class='prepend-1 prepend-top'>
+				<div class='span-20'>
+					URI to web service offered by nessquik
+					<div>
+						<?php if (isset($this->config->ws->api->nq->uri)): ?>
+						<input type='text' name='nq_api_uri' value='<?php echo $this->config->ws->api->nq->uri; ?>' class='span-20'>
+						<?php else: ?>
+						<input type='text' name='nq_api_uri' value='http://localhost/nessquik/api/v1/xmlrpc' class='span-20'>
+						<?php endif; ?>
+					</div>
+				</div>
+
+				<div class='span-20'>
+					<div class='span-9'>
+						Username
+						<div>
+							<?php if (isset($this->config->ws->api->nq->username)): ?>
+							<input type='text' name='nq_api_username' value='<?php echo $this->config->ws->api->nq->username; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='nq_api_username' value='_api' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+
+					<div class='span-2'>&nbsp;</div>
+
+					<div class='span-9 last'>
+						Password
+						<div>
+							<?php if (isset($this->config->ws->api->nq->password)): ?>
+							<input type='text' name='nq_api_password' value='<?php echo $this->config->ws->api->nq->password; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='nq_api_password' value='password' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<?php if ($this->session->acl->isAllowed('Capability', 'edit_ws_cstapi')): ?>
+
+		<div class='span-22 append-bottom'>
+			<strong>Web service URIs : CSTAPI</strong>
+			<div class='small quiet'>
+				URI used by nessquik for services communicating with
+				the CSTAPI for account related functionality.
+			</div>
+
+			<div class='prepend-1 prepend-top'>
+				<div class='span-20'>
+					URI to web service offered by CSTAPI
+					<div>
+						<?php if (isset($this->config->ws->api->cstapi->uri)): ?>
+						<input type='text' name='cstapi_uri' value='<?php echo $this->config->ws->api->cstapi->uri; ?>' class='span-20'>
+						<?php else: ?>
+						<input type='text' name='cstapi_uri' value='https://cstweb.fnal.gov/api/xmlrpc/index.php' class='span-20'>
+						<?php endif; ?>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<?php endif; ?>
+	</form>
+</div>

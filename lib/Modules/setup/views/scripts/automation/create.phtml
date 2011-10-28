@@ -1,0 +1,26 @@
+<?php if (empty($this->regex)): ?>
+	<div class='quiet' style='text-align: center;'>
+		No automations were created. Have they already been created?
+	</div>
+<?php else: ?>
+	<table id='auto-table' class='tablesorter'>
+		<thead>
+			<tr>
+				<th>Regex</th>
+				<th>Description</th>
+				<th>Type</th>
+				<th>Application</th>
+			</tr>
+		</thead>
+		<tbody>
+	<?php foreach($this->regex as $regex): ?>
+		<tr>
+			<td><?php echo $regex->pattern; ?></td>
+			<td><?php echo $regex->desc; ?></td>
+			<td><?php echo $regex->type; ?></td>
+			<td><?php echo $regex->application; ?></td>
+		</tr>
+	<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php endif; ?>

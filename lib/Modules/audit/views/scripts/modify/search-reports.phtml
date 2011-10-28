@@ -1,0 +1,62 @@
+<?php if (empty($this->results)): ?>
+	<div style='color: #aaa; font-size: 10px; padding: 10px;'>
+		No reports were found
+	</div>
+<?php else: ?>
+	<div class='selectable span-21 prepend-top'>
+	<?php foreach ($this->results as $key => $report): ?>
+	<?php if (count($this->results) == 1): ?>
+	<div class='row span-21 no-border'>
+	<?php elseif ((count($this->results) - 1) == $key): ?>
+	<div class='row span-21 no-border' style='padding: 5px 0 0 0;'>
+	<?php elseif ($key == 0): ?>
+	<div class='row span-21' style='padding: 0 0 5px 0;'>
+	<?php else: ?>
+	<div class='row span-21' style='padding: 5px 0 5px 0;'>
+	<?php endif; ?>
+		<div class='span-1'>
+			<input type='checkbox' name='reportId' value='<?php echo $report['id']; ?>'>
+		</div>
+		<div class='span-17 name'>
+			<span class='hypertext'><?php echo $report['name'] ; ?></span>
+		</div>
+		<div class='span-3 last icons'>
+			<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='Delete report' title='Delete report'>
+			&nbsp;&nbsp;&nbsp;
+			<img class='download small-icon' src='<?php echo $this->baseUrl(); ?>/usr/images/document-save.png' alt='Download report' title='Download report'>
+			&nbsp;&nbsp;&nbsp;
+			<img class='email small-icon' src='<?php echo $this->baseUrl(); ?>/usr/images/internet-mail.png' alt='Email report' title='Email report'>
+		</div>
+	</div>
+	<?php endforeach; ?>
+
+	<?php if (count($this->results) == $this->limit): ?>
+	<div class='span-21 prepend-top'>
+		<div class='span-10'>
+			With selected: <span class='hypertext selected-delete'>Delete</span>
+		</div>
+		<div class='span-11 last' style='text-align: right;'>
+			<?php if ($this->page > 1): ?>
+			<span class='show-less hypertext'>&laquo; less</span>
+			<?php else: ?>
+			&nbsp;
+			<?php endif; ?>
+			&nbsp;&nbsp;&nbsp;
+			<span class='show-more hypertext'>more &raquo;</span>
+		</div>
+	</div>
+	<?php else: ?>
+	<div class='span-21 prepend-top'>
+		<div class='span-10'>
+			With selected: <span class='hypertext selected-delete'>Delete</span>
+		</div>
+		<?php if ($this->page > 1): ?>
+		<div class='span-11 last' style='text-align: right;'>
+			<span class='show-less hypertext'>&laquo; less</span>
+		</div>
+		<?php else: ?>
+		<div class='span-11 last'>&nbsp;</div>
+		<?php endif; ?>
+	</div>
+	<?php endif; ?>
+<?php endif; ?>

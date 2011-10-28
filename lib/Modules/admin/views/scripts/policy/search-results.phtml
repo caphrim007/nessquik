@@ -1,0 +1,41 @@
+<?php if (empty($this->results)): ?>
+	<div class='prepend-top no-results-mesg'>
+		No policies were found
+	</div>
+<?php else: ?>
+	<div class='selectable last audit-list list'>
+		<table>
+			<thead>
+				<tr>
+					<th class='check'><input type='checkbox'></th>
+					<th>Policy name</th>
+					<th colspan='2'>Policy owner</th>
+				</tr>
+			</thead>
+			<tbody>
+	<?php foreach ($this->results as $key => $policy): ?>
+		<tr class='row'>
+			<td class='check'>
+				<input type='checkbox' name='policyId' value='<?php echo $policy['id']; ?>'>
+			</td>
+			<td style='width: 50%; border-bottom: 1px solid #cdcdcd;'>
+				<a class='hypertext' href='<?php echo $this->baseUrl() ;?>/policy/modify/edit?id=<?php echo $policy['id']; ?>'><?php echo $policy['name'] ; ?></a>
+			</td>
+			<td class='owner'>
+				<?php $policyObj = new Policy($policy['id']); ?>
+				<?php $account = $policyObj->getOwner(); ?>
+				<?php if ($account === false): ?>
+					unknown
+				<?php else: ?>
+					<?php echo $account->username; ?>
+				<?php endif; ?>
+			</td>
+			<td class='icons'>
+				<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='Delete policy' title='Delete policy'>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+<?php endif; ?>

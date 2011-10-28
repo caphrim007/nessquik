@@ -1,0 +1,61 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/tables/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div class='span-22 append-bottom clearfix' style='text-align: center;'>
+		<?php if (count($this->results) == 0): ?>
+			<div class='span-22 quiet'>
+				No favicons have been recorded yet
+			</div>
+		<?php else: ?>
+			<table style='background-color: #fff;' cellspacing='10'>
+
+			<tr>
+
+			<?php $firstRow = true; ?>
+			<?php foreach($this->results as $key => $doc): ?>
+				<td style='text-align: center;'>
+					<img class='favIcon' src='<?php echo $this->baseUrl(); ?>/urls/favicon/view?docId=<?php echo $doc->key; ?>' title='URL favicon' alt='URL favicon' style='width: 16px; height: 16px;'>
+				</td>
+	
+				<?php if (($key + 1) % 10 == 0): ?>
+					</tr><tr>
+				<?php endif; ?>
+			<?php endforeach; ?>
+
+			</tr>
+
+			</table>
+		<?php endif; ?>
+	</div>
+
+	<div id='dialog' class='span-16'>
+		<div class='span-16' style='height: 50px; background-color: #fff;'>
+			&nbsp;
+		</div>
+
+		<div class='span-16' style='height: 300px; background-color: #fff;'>
+			<div class='span-6' style='text-align: center; height: 350px;'>
+				<br><br><br><br>
+				<img class='diagFavIcon' src='' style='width: 128px; height: 128px; vertical-align: middle;'>
+			</div>
+			<div class='span-9 last' style='border-left: 1px solid #ccc; height: 350px;'>
+				<div class='prepend-1'>
+					Stuff
+				</div>
+			</div>
+		</div>
+
+		<div class='span-16' style='text-align: right; height: 50px; background-color: #fff;'>
+			<div style='padding: 10px;'>
+				<span class='hypertext dialog-close'>close</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

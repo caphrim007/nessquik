@@ -1,0 +1,134 @@
+<div id='options' class='span-22 prepend-top append-bottom prepend-1 append-1 config'>
+	<div class='span-6 append-1'>
+		<strong>Number of hosts in parallel</strong>
+		<div>
+			<?php if ($this->isNew): ?>
+			<input type='text' name='preference[maxHosts]' value='80' style='width: 100%;'>
+			<?php else: ?>
+			<input type='text' name='preference[maxHosts]' value='<?php echo $this->policy->preferences->maxHosts; ?>' style='width: 100%;'>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<div class='span-6 append-1'>
+		<strong>Number of checks in parallel</strong>
+		<div>
+			<?php if ($this->isNew): ?>
+			<input type='text' name='preference[maxChecks]' value='5' style='width: 100%;'>
+			<?php else: ?>
+			<input type='text' name='preference[maxChecks]' value='<?php echo $this->policy->preferences->maxChecks; ?>' style='width: 100%;'>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<div class='span-7'>
+		<strong>Port scanner range</strong>
+		<div>
+			<?php if($this->isNew): ?>
+			<input type='text' name='preference[portRange]' value='default' style='width: 100%;'>
+			<?php else: ?>
+			<input type='text' name='preference[portRange]' value='<?php echo $this->policy->preferences->portRange; ?>' style='width: 100%;'>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<hr class='space'/>
+
+	<strong>Miscellaneous</strong>
+	<div class='prepend-1'>
+		<?php if ($this->isNew): ?>
+			<input type='checkbox' name='preference[safeChecks]' checked='checked'>Safe checks<br>
+		<?php else: ?>
+			<?php if ($this->filter->filter($this->policy->preferences->safeChecks)): ?>
+			<input type='checkbox' name='preference[safeChecks]' checked='checked'>Safe checks<br>
+			<?php else: ?>
+			<input type='checkbox' name='preference[safeChecks]'>Safe checks<br>
+			<?php endif; ?>
+		<?php endif; ?>
+
+		<div class='show-advanced'>
+			<?php if ($this->isNew): ?>
+				<input type='checkbox' name='preference[reverseLookup]'>Designate hosts by their DNS name<br>
+				<input type='checkbox' name='preference[unscannedClosed]'>Consider unscanned ports as closed<br>
+				<input type='checkbox' name='preference[saveKnowledgeBase]'>Save knowledge base on disk<br>
+				<input type='checkbox' name='preference[logWholeAttack]'>Log details of the scan on the server
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preferences->reverseLookup)): ?>
+				<input type='checkbox' name='preference[reverseLookup]' checked='checked'>Designate hosts by their DNS name<br>
+				<?php else: ?>
+				<input type='checkbox' name='preference[reverseLookup]'>Designate hosts by their DNS name<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->unscannedClosed)): ?>
+				<input type='checkbox' name='preference[unscannedClosed]' checked='checked'>Consider unscanned ports as closed<br>
+				<?php else: ?>
+				<input type='checkbox' name='preference[unscannedClosed]'>Consider unscanned ports as closed<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->saveKnowledgeBase)): ?>
+				<input type='checkbox' name='preference[saveKnowledgeBase]' checked='checked'>Save knowledge base on disk<br>
+				<?php else: ?>
+				<input type='checkbox' name='preference[saveKnowledgeBase]'>Save knowledge base on disk<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->logWholeAttack)): ?>
+				<input type='checkbox' name='preference[logWholeAttack]' checked='checked'>Log details of the scan on the server
+				<?php else: ?>
+				<input type='checkbox' name='preference[logWholeAttack]'>Log details of the scan on the server
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<div class='show-advanced'>
+		<hr class='space'/>
+
+		<strong>Port scanners to use</strong>
+		<div class='prepend-1'>
+			<?php if ($this->isNew): ?>
+				<input type='checkbox' name='plugin_selection[individual_plugin][14274]' checked='checked'>SNMP scan<br>
+				<input type='checkbox' name='plugin_selection[individual_plugin][11219]'>SYN scan<br>
+				<input type='checkbox' name='plugin_selection[individual_plugin][10335]' checked='checked'>TCP scan<br>
+				<input type='checkbox' name='plugin_selection[individual_plugin][14272]' checked='checked'>Netstat SSH scan<br>
+				<input type='checkbox' name='plugin_selection[individual_plugin][34220]' checked='checked'>Netstat WMI scan<br>
+				<input type='checkbox' name='plugin_selection[individual_plugin][10180]' checked='checked'>Ping the remote host<br>
+			<?php else: ?>
+				<?php if ($this->policy->plugins->pluginDisabled('14274')): ?>
+				<input type='checkbox' name='plugin_selection[individual_plugin][14274]'>SNMP scan<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_selection[individual_plugin][14274]' checked='checked'>SNMP scan<br>
+				<?php endif; ?>
+
+				<?php if ($this->policy->plugins->pluginDisabled('11219')): ?>
+				<input type='checkbox' name='plugin_selection[individual_plugin][11219]'>SYN scan<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_selection[individual_plugin][11219]' checked='checked'>SYN scan<br>
+				<?php endif; ?>
+
+				<?php if ($this->policy->plugins->pluginDisabled('10335')): ?>
+				<input type='checkbox' name='plugin_selection[individual_plugin][10335]'>TCP scan<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_selection[individual_plugin][10335]' checked='checked'>TCP scan<br>
+				<?php endif; ?>
+
+				<?php if ($this->policy->plugins->pluginDisabled('14272')): ?>
+				<input type='checkbox' name='plugin_selection[individual_plugin][14272]'>Netstat SSH scan<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_selection[individual_plugin][14272]' checked='checked'>Netstat SSH scan<br>
+				<?php endif; ?>
+
+				<?php if ($this->policy->plugins->pluginDisabled('34220')): ?>
+				<input type='checkbox' name='plugin_selection[individual_plugin][34220]'>Netstat WMI scan<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_selection[individual_plugin][34220]' checked='checked'>Netstat WMI scan<br>
+				<?php endif; ?>
+
+				<?php if ($this->policy->plugins->pluginDisabled('10180')): ?>
+				<input type='checkbox' name='plugin_selection[individual_plugin][10180]'>Ping the remote host<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_selection[individual_plugin][10180]' checked='checked'>Ping the remote host<br>
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

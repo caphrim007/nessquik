@@ -1,0 +1,125 @@
+@charset "UTF-8";
+/* Search dialog box
+----------------------------------*/
+.search-dialog {
+	-moz-border-radius: 4px ;
+	-webkit-border-radius: 4px;
+}
+.search-dialog a.ui-dialog-titlebar-close {
+	display: none;
+}
+
+/* Account map dialog box
+----------------------------------*/
+.mapping-dialog {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+.mapping-dialog a.ui-dialog-titlebar-close {
+	display: none;
+}
+
+/* Performance memcache dialog box
+----------------------------------*/
+.memcache-dialog {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+.memcache-dialog a.ui-dialog-titlebar-close {
+	display: none;
+}
+/* Permissions dialog box
+----------------------------------*/
+.permissions-dialog {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+.permissions-dialog a.ui-dialog-titlebar-close {
+	display: none;
+}
+/* Targets search dialog box
+----------------------------------*/
+.targets-dialog {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+.targets-dialog a.ui-dialog-titlebar-close {
+	display: none;
+}
+/* Reports dialog box
+----------------------------------*/
+.reports-dialog {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+.reports-dialog a.ui-dialog-titlebar-close {
+	display: none;
+}
+/* Reports email dialog box
+----------------------------------*/
+.email-dialog {
+	-moz-border-radius: 4px 4px;
+	-webkit-border-radius: 4px 4px;
+}
+.email-dialog a.ui-dialog-titlebar-close {
+	display: none;
+}
+/* Reports download dialog box
+----------------------------------*/
+.download-dialog {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+.download-dialog a.ui-dialog-titlebar-close {
+	display: none;
+}
+/* Setup authentication configuration dialog box
+----------------------------------*/
+.authentication-dialog {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+.authentication-dialog a.ui-dialog-titlebar-close {
+	display: none;
+}
+/* Audit start time dialog box
+----------------------------------*/
+.starttime-dialog {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+.starttime-dialog a.ui-dialog-titlebar-close {
+	display: none;
+}
+/* MOTD dialog box
+----------------------------------*/
+.motd-dialog {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+.motd-dialog a.ui-dialog-titlebar-close {
+	display: none;
+}
+
+.ui-widget-content {
+	border: 1px solid #fff !important;
+}
+.faqDialog {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+
+/* Overrides for the interface page of the settings module */
+#interface .ui-widget-content { border: 1px solid #aaa !important; }
+#interface .ui-corner-all { -moz-border-radius: 4px; -webkit-border-radius: 4px; }
+#interface .ui-widget-header { background: #84AAD1; font-weight: bold; }
+#interface .ui-state-active, #interface .ui-widget-content .ui-state-active { border: 1px solid #eee; background-color: #dadada; font-weight: normal; color: #212121; outline: none; }
+#interface .ui-state-default, #interface.ui-widget-content .ui-state-default { border: 1px solid #d3d3d3; font-weight: normal; color: #555555; outline: none; background-color: #dadada; }
+
+/* Overrides for all dialog boxes */
+.ui-dialog { position: absolute; padding: 0; width: 300px; overflow: hidden}
+.ui-dialog .ui-dialog-titlebar { display: none; }
+.ui-dialog .ui-dialog-title { float: left; margin: .1em 0 .2em; } 
+.ui-dialog .ui-dialog-content { border: 0; background: none; overflow: none; zoom: 1; }
+
+#dialog .ui-tabs .ui-tabs-panel { border-left: 1px solid #fff !important; }

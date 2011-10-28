@@ -1,0 +1,23 @@
+<div id='general' class='span-22 prepend-top prepend-1 append-1'>
+	<div class='span-22'>
+		<strong>Role name</strong>
+		<div class='block append-bottom span-22'>
+			<?php if ($this->isNew): ?>
+				<input class='span-22' type='text' name='role-name' value='New role'>
+			<?php else: ?>
+				<input class='span-22' type='text' name='role-name' value='<?php echo $this->role->name; ?>'>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<div class='span-22'>
+		<strong>Role description</strong>
+		<div class='block append-bottom span-22'>
+			<?php if ($this->isNew): ?>
+				<textarea class='span-22' name='role-description' style='height: 75px;'></textarea>
+			<?php else: ?>
+				<textarea class='span-22' name='role-description' style='height: 75px;'><?php echo @$this->role->description; ?></textarea>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

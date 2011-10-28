@@ -1,0 +1,41 @@
+
+			<hr class='space'/>
+
+			</div>
+
+			<?php if ($this->module == 'account' && $this->controller == 'login'): ?>
+			<div id='footer' class='prepend-top span-18' style='background: transparent;'>
+				<?php if (file_exists(_MODPATH.'/account/views/scripts/login/motd.phtml')): ?>
+					<div id='motd' class='span-9' style='text-align: left;'>
+						<?php require _MODPATH.'/account/views/scripts/login/motd.phtml'; ?>
+					</div>
+				<?php else: ?>
+					<div class='span-9'>&nbsp;</div>
+				<?php endif; ?>
+				<div class='span-9 last' style='text-align: right; background: transparent;'>
+					<div class='append-bottom'>
+						<ul>
+							<li><a class='hypertext' href='<?php echo $this->baseUrl(); ?>/about'>version <?php echo $this->config->misc->version; ?></a>
+							<li><a class='hypertext' target='_blank' href='<?php echo $this->config->links->wiki; ?>'>wiki</a>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<?php else: ?>
+			<div id='footer' class='container prepend-top span-24' style='background: transparent;'>
+				<div class='span-12'>&nbsp;</div>
+				<div class='span-12 last' style='text-align: right; background: transparent;'>
+					<div class='append-bottom'>
+						<ul>
+							<li><a class='hypertext' href='<?php echo $this->baseUrl(); ?>/about'>version <?php echo $this->config->misc->version; ?></a>
+							<li><a class='hypertext' target='_blank' href='<?php echo $this->config->links->wiki; ?>'>wiki</a>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
+		</div>
+
+		<div class='prepend-top append-bottom'>&nbsp;</div>
+	</body>
+</html>

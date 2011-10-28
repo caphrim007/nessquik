@@ -1,0 +1,48 @@
+<?php if (empty($this->urls)): ?>
+	No URLs were found
+<?php else: ?>
+	<table id='blackholeTable' class='span-22 tablesorter'>
+		<thead>
+			<tr>
+				<th class='span-1' style='text-align: center;'>
+					<input type='checkbox' id='selectToggle'>
+				</th>
+				<th class='span-4'>Date last blackholed</th>
+				<th class='span-10'>URL</th>
+				<th class='span-5 last'>Infoblox status</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach ($this->urls as $url): ?>
+			<?php $doc = $url->getDocument(); ?>
+			<tr class='row'>
+				<td style='text-align: center;'>
+					<input type='checkbox' name='remove-url[]' value='<?php echo $url->id; ?>'>
+					<input type='hidden' name='reinstall-url[]' value='<?php echo $url->id; ?>' disabled='disabled'>
+				</td>
+				<td style='text-align: center;'>
+					<span class='fixBroken'><?php echo $doc->created_at; ?></td></span>
+				<td style='vertical-align: top;'>
+					<span class='fixBroken'><?php echo $url->uri; ?></span>
+					<div class='undoFixBrokenMesg span-10 loud' style='font-weight: bold;'>
+						This URL will be re-added to DNS
+					</div>
+				</td>
+				<td style='vertical-align: top; text-align: center;'>
+					<?php if (!in_array($url->id, $this->infoblox)): ?>
+					<div class='fixBroken'>
+						<img class='hypertext warning' src='<?php echo $this->baseUrl(); ?>/usr/images/warning.png' alt='URL was not found in Infoblox DNS blackhole' title='URL was not found in Infoblox DNS blackhole'>
+					</div>
+					<?php endif; ?>
+					<div class='undoFixBroken' style='text-align: center;'>
+						<span class='hypertext undoFixBrokenLink'>Undo</span>
+					</div>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+		</tbody>
+	</table>
+	<div id='with-selected' style='text-align: left;'>
+		With selected: <span class='hypertext selected-recreate'>Recreate</span>
+	</div>
+<?php endif; ?>

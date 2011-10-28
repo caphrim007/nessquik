@@ -1,0 +1,76 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+<?php if ($this->isNew): ?>
+	<div class='span-22' style='font-size: 1.5em;'>
+		<a href='<?php echo $this->baseUrl(); ?>/admin/authentication' class='hypertext'>Authentication</a> &raquo;
+		Create
+	</div>
+<?php else: ?>
+	<div class='span-22' style='font-size: 1.5em;'>
+		<a href='<?php echo $this->baseUrl(); ?>/admin/authentication' class='hypertext'>Authentication</a> &raquo;
+		Edit
+	</div>
+<?php endif; ?>
+</div>
+<hr class='space'/>
+<div class='span-22 last'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+	<form id='form-submit'>
+		<input type='hidden' name='id' value='<?php echo $this->id; ?>'>
+		<strong>Method name</strong>
+		<div>
+			<?php if (empty($this->info->name)): ?>
+			<input type='text' name='auth-name' style='width: 50%;' value='New auth'>
+			<?php else: ?>
+			<input type='text' name='auth-name' style='width: 50%;' value='<?php echo $this->info->name; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Method type</strong>
+		<div>
+			<select id='auth-type' name='auth-type'>
+				<?php if ($this->info->adapter == 'Ldap'): ?>
+				<option value='DbTable'>Database
+				<option value='Ldap' selected='selected'>LDAP
+				<option value='Cert'>X.509 Certificate
+				<?php elseif ($this->info->adapter == 'Cert'): ?>
+				<option value='DbTable'>Database
+				<option value='Ldap'>LDAP
+				<option value='Cert' selected='selected'>X.509 Certificate
+				<?php else: ?>
+				<option value='DbTable' selected='selected'>Database
+				<option value='Ldap'>LDAP
+				<option value='Cert'>X.509 Certificate
+				<?php endif; ?>
+			</select>
+		</div>
+	</form>
+
+	<hr class='space'/>
+	<hr class='quiet'/>
+	<hr class='space'/>
+
+	<?php require 'adapters/certificate.phtml'; ?>
+	<?php require 'adapters/ldap.phtml'; ?>
+	<?php require 'adapters/database.phtml'; ?>
+
+	<hr class='space'/>
+
+	<div class='message error append-bottom'>
+		<span class='content'></span>
+		&nbsp;&nbsp;
+		<span class='hypertext close'>close</span>
+	</div>
+
+	<div class='span-20 last clearfix form-ops' style='text-align: center;'>
+		<input id='btn-save' type='button' value='Save'>
+		<a class='hypertext' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/admin/authentication'>cancel</a>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

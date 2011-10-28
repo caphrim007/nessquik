@@ -1,0 +1,32 @@
+<?php if (!empty($this->roles)): ?>
+	<?php foreach($this->roles as $key => $val): ?>
+		<?php if (($key % 2) == 0): ?>
+			<tr class='even'>
+		<?php else: ?>
+			<tr class='odd'>
+		<?php endif; ?>
+				<td>
+					<?php echo $val['name']; ?>
+				</td>
+				<td>
+					<a href='admin.php?module=account&controller=roles&action=edit&id=<?php echo $val['role_id']; ?>'>edit role</a>
+				</td>
+				<td>
+					<a href='admin.php?module=account&controller=permissions&action=edit&id=<?php echo $val['role_id']; ?>'>edit permissions</a>
+				</td>
+			</tr>
+	<?php endforeach; ?>
+<?php endif; ?>
+
+<?php if ((count($this->roles) % 2) == 0): ?>
+	<tr class='even'>
+<?php else: ?>
+	<tr class='odd'>
+<?php endif; ?>
+		<td>
+			<input class='input-txt' id='edit-name' type='text' value='' size='32' name='name' maxlength='64'>
+		</td>
+		<td colspan='2'>
+			<input class='input-btn' id='edit-submit' type='submit' class='input-btn' value='Add role'>
+		</td>
+	</tr>

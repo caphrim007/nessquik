@@ -1,0 +1,104 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div class='prepend-1 append-1 prepend-top span-22'>
+	<div class='span-10 admin-block colborder'>
+		<h3>Account management</h3>
+		<div>
+			<p>Manage nessquik users, groups and access to site features.</p>
+			<dl>
+				<dt>
+					<a href='<?php echo $this->baseUrl(); ?>/admin/account'>Accounts</a>
+				</dt>
+				<dd class='quiet'>List, add, and edit accounts.</dd>
+
+				<dt>
+					<a href='<?php echo $this->baseUrl(); ?>/admin/account-defaults'>Account defaults</a>
+				</dt>
+				<dd class='quiet'>Modify default account settings.</dd>
+
+				<dt>
+					<a href='<?php echo $this->baseUrl(); ?>/admin/authentication'>Authentication</a>
+				</dt>
+				<dd class='quiet'>Configure forms of authentication for accounts.</dd>
+
+				<dt>
+					<a href='<?php echo $this->baseUrl(); ?>/admin/roles'>Roles</a>
+				</dt>
+				<dd class='quiet'>List, edit, or add account roles.</dd>
+			</dl>
+		</div>
+	</div>
+
+	<div class='span-11 admin-block last'>
+		<h3>Audit and Policy management</h3>
+		<div>
+			<p>Control audits being run on audit servers</p>
+			<dl>
+				<dt>
+					<a href='<?php echo $this->baseUrl(); ?>/admin/audit'>Audits</a>
+				</dt>
+				<dd class='quiet'>List, schedule, and edit audits.</dd>
+
+				<dt>
+					<a href='<?php echo $this->baseUrl(); ?>/admin/policy'>Policies</a>
+				</dt>
+				<dd class='quiet'>List, add, and edit policies.</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+
+<div class='prepend-1 append-1 prepend-top span-22'>
+	<div class='span-10 admin-block colborder'>
+		<h3>Site configuration</h3>
+		<div>
+			<p>Adjust general nessquik configuration options. </p>
+			<dl>
+				<dt>
+					<a href='<?php echo $this->baseUrl(); ?>/admin/scanners'>Audit servers</a>
+				</dt>
+				<dd class='quiet'>Create and modify audit server information</dd>
+
+				<dt>
+					<a href='<?php echo $this->baseUrl(); ?>/admin/logging'>Logging</a>
+				</dt>
+				<dd class='quiet'>Settings for logging and alerts.</dd>
+
+				<dt>
+					<a href='<?php echo $this->baseUrl(); ?>/admin/maintenance'>Maintenance</a>
+				</dt>
+				<dd class='quiet'>Adjust nessquik maintenance tasks and configuration</dd>
+
+				<dt>
+					<a href='<?php echo $this->baseUrl(); ?>/config/modify/edit'>Miscellaneous</a>
+				</dt>
+				<dd class='quiet'>Change remaining uncategorized settings</dd>
+			</dl>
+		</div>
+	</div>
+
+	<div class='span-11 admin-block last'>
+		<h3>Tools</h3>
+		<div>
+			<p>Various tools providing more functionality</p>
+			<dl>
+				<dt>
+					<a href='<?php echo $this->baseUrl(); ?>/metrx'>Metrx</a>
+				</dt>
+				<dd class='quiet'>Charts, tables, reports and other metrics</dd>
+
+				<dt>
+					<a href='<?php echo $this->baseUrl(); ?>/admin/queues'>Queues</a>
+				</dt>
+				<dd class='quiet'>List and edit message queues</dd>
+
+				<dt>
+					<a href='<?php echo $this->baseUrl(); ?>/site-audit'>Site audit</a>
+				</dt>
+				<dd class='quiet'>Assists in creating an audit spanning your entire organization.</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

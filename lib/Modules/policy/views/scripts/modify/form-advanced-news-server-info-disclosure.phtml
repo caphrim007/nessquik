@@ -1,0 +1,56 @@
+<div id='adv-news-server-info-disclosure' class='advanced'>
+	<div class='span-21'>
+		<strong>Miscellaneous</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->nntpInfoDisclosureLocalDistribution == null): ?>
+				<input type='checkbox' name='plugin_preference[nntpInfoDisclosureLocalDistribution]' checked='checked'>Local distribution<br>
+				<input type='checkbox' name='plugin_preference[nntpInfoDisclosureNoArchive]'>No archive
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preferences->nntpInfoDisclosureLocalDistribution)): ?>
+				<input type='checkbox' name='plugin_preference[nntpInfoDisclosureLocalDistribution]' checked='checked'>Local distribution<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[nntpInfoDisclosureLocalDistribution]'>Local distribution<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->nntpInfoDisclosureNoArchive)): ?>
+				<input type='checkbox' name='plugin_preference[nntpInfoDisclosureNoArchive]' checked='checked'>No archive
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[nntpInfoDisclosureNoArchive]'>No archive
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>From address</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->nntpInfoDisclosureFromAddress == null): ?>
+			<input type='text' name='plugin_preference[nntpInfoDisclosureFromAddress]' value='nessquik <listme@listme.dsbl.org>'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[nntpInfoDisclosureFromAddress]' value='<?php echo $this->policy->preferences->nntpInfoDisclosureFromAddress; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Test group name regex</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->nntpInfoDisclosureGroupNameRegex == null): ?>
+			<input type='text' name='plugin_preference[nntpInfoDisclosureGroupNameRegex]' value='f[a-z]\.tests?'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[nntpInfoDisclosureGroupNameRegex]' value='<?php echo $this->policy->preferences->nntpInfoDisclosureGroupNameRegex; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Max crosspost</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->nntpInfoDisclosureMaxCrosspost == null): ?>
+			<input type='text' name='plugin_preference[nntpInfoDisclosureMaxCrosspost]' value='7'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[nntpInfoDisclosureMaxCrosspost]' value='<?php echo $this->policy->preferences->nntpInfoDisclosureMaxCrosspost; ?>'>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

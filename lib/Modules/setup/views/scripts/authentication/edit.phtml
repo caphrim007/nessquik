@@ -1,0 +1,49 @@
+<div class='span-20'>
+	<div style='padding: 5px;'>
+		<form id='form-edit'>
+			<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+		</form>
+		<form id='form-submit'>
+			<input type='hidden' name='id' value='<?php echo $this->id; ?>'>
+			<strong>Method name</strong>
+			<div>
+				<?php if (empty($this->info->name)): ?>
+				<input type='text' name='auth-name' style='width: 50%;' value='New auth'>
+				<?php else: ?>
+				<input type='text' name='auth-name' style='width: 50%;' value='<?php echo $this->info->name; ?>'>
+				<?php endif; ?>
+			</div>
+
+			<hr class='space'/>
+
+			<strong>Method type</strong>
+			<div>
+				<select id='auth-type' name='auth-type'>
+					<option value='DbTable' selected='selected'>Database
+					<option value='Fnal_Cert'>FNAL X.509 Certificate
+					<option value='Fnal_Ldap'>FNAL LDAP
+					<option value='Ldap'>LDAP
+					<option value='Cert'>X.509 Certificate
+				</select>
+			</div>
+		</form>
+
+		<hr class='space'/>
+		<hr class='quiet'/>
+		<hr class='space'/>
+
+		<?php require 'adapters/fnal_certificate.phtml'; ?>
+		<?php require 'adapters/certificate.phtml'; ?>
+		<?php require 'adapters/ldap.phtml'; ?>
+		<?php require 'adapters/fnal_ldap.phtml'; ?>
+		<?php require 'adapters/database.phtml'; ?>
+
+		<hr class='space'/>
+
+		<div class='message error append-bottom'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+	</div>
+</div>

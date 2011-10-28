@@ -1,0 +1,36 @@
+[info]
+name = "Critical Vulnerabilities"
+author = "FNAL CST"
+last-updated = "05-25-2007"
+
+;
+; These were taken from the items listed as 'C' in TIssue
+;
+[plugins]
+single[] = 10394	; SMB log in
+single[] = 10407	; X Server Detection
+single[] = 10673	; Microsoft's SQL Blank Password
+single[] = 11835	; Microsoft RPC Interface Buffer Overrun (KB824146) (network check)
+single[] = 12054	; ASN.1 Parsing Vulnerabilities (NTLM check)
+single[] = 12204	; Microsoft Hotfix for KB835732 IIS SSL check
+single[] = 12209	; Microsoft Hotfix for KB835732 (SMB check)
+single[] = 13639	; IIS Redirection Vulnerability (registry check) (841373)
+single[] = 13640	; Task Scheduler Vulnerability (841873)
+single[] = 13641	; Vulnerability in HTML Help Could Allow Code Execution (840315)
+single[] = 13642	; Buffer overrun in Windows Shell (839645)
+single[] = 13852	; MS Task Scheduler vulnerability
+single[] = 14724	; Buffer Overrun in JPEG Processing (833987)
+single[] = 14818	; Possible GDI+ compromise
+single[] = 14834	; radmin on port 10002 - possible GDI compromise
+single[] = 15456	; Vulnerability in NetDDE Could Allow Code Execution (841533)
+single[] = 15458	; Microsoft Excel Code Execution (886836)
+single[] = 15894	; Cumulative Security Update for Internet Explorer (889293)
+single[] = 15962	; WINS Code Execution (registry check) (870763)
+single[] = 15970	; WINS Code Execution (870763) (network check)
+single[] = 19408	; Vulnerability in Plug and Play Service Could Allow Remote Code Execution (899588) - Network Check
+single[] = 19427	; VERITAS Backup Exec Agent Multiple Remote Vulnerabilities
+single[] = 19704	; TWiki rev Parameter Command Execution Vulnerability
+single[] = 20008	; Vulnerabilities in MSDTC Could Allow Remote Code Execution (902400) - Network check
+single[] = 21564	; VNC Server Authentication Bypass Vulnerability
+single[] = 22194	; Vulnerability in Server Service Could Allow Remote Code Execution (921883) - Network check
+single[] = 24998	; Kerberos Telnet Authentication Bypass

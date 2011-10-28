@@ -1,0 +1,46 @@
+<div id='dialog' class='container span-18 last'>
+	<div style='background-color: #eee; min-height: 55px;' class='span-18 last search-heading'>
+		<div style='padding: 10px;'>
+			<div style='color: #303233; font-weight: bold;' class='span-16'>
+				Search for plugins
+			</div>
+
+			<div class='span-18'>
+				<form id='plugin-search'>
+					<input type='hidden' name='plugin-page' value='1'>
+					<input type='hidden' name='family-page' value='1'>
+
+					<select id='search-by' name='type'>
+						<option value='id'>id
+						<option value='name'>name
+						<option value='family'>family
+						<option value='nasl'>script filename
+						<option value='description'>description
+					</select>
+
+					<input id='search-by-value' type='text' style='width: 450px !important;' name='query'>
+					<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class='search-results span-18 last' style='min-height: 350px;'>
+		<div class='results-container'>
+			<div class='span-18 last'>
+				<div class='content'></div>
+			</div>
+		</div>
+	</div>
+
+	<div class='span-18 last' style='height: 50px; background-color: #eee;'>
+		<div class='span-9' style='text-align: left; padding: 10px;'>
+			<input type='button' id='btn-include' class='include' value='Include'>
+			<input type='button' id='btn-exclude' class='exclude' value='Exclude'>
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+		<div class='span-8 last' style='text-align: right; padding: 10px;'>
+			<span class='hypertext targets-dialog-close'>close</span>
+		</div>
+	</div>
+</div>

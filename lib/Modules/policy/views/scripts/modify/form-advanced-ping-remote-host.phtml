@@ -1,0 +1,87 @@
+<div id='adv-ping-remote-host' class='advanced'>
+	<div class='span-21'>
+		<strong>Miscellaneous</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->pingRemoteHostDoArpPing == null): ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDoArpPing]' checked='checked'>Do an ARP ping<br>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDoTcpPing]' checked='checked'>Do a TCP ping<br>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDoIcmpPing]' checked='checked'>Do an ICMP ping<br>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDoUdpPing]'>Do an applicative UDP ping (DNS,RPC...)<br>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDeadHostsInReport]'>Make the dead hosts appear in the report<br>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostLiveHostsInReport]'>Log live hosts in the report<br>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostTestLocalNessusHost]' checked='checked'>Test the local Nessus host<br>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostFastNetworkDiscovery]'>Fast network discovery<br>
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preferences->pingRemoteHostDoArpPing)): ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDoArpPing]' checked='checked'>Do an ARP ping<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDoArpPing]'>Do an ARP ping<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->pingRemoteHostDoTcpPing)): ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDoTcpPing]' checked='checked'>Do a TCP ping<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDoTcpPing]'>Do a TCP ping<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->pingRemoteHostDoIcmpPing)): ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDoIcmpPing]' checked='checked'>Do an ICMP ping<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDoIcmpPing]'>Do an ICMP ping<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->pingRemoteHostDoUdpPing)): ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDoUdpPing]' checked='checked'>Do an applicative UDP ping (DNS,RPC...)<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDoUdpPing]'>Do an applicative UDP ping (DNS,RPC...)<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->pingRemoteHostDeadHostsInReport)): ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDeadHostsInReport]' checked='checked'>Make the dead hosts appear in the report<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostDeadHostsInReport]'>Make the dead hosts appear in the report<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->pingRemoteHostLiveHostsInReport)): ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostLiveHostsInReport]' checked='checked'>Log live hosts in the report<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostLiveHostsInReport]'>Log live hosts in the report<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->pingRemoteHostTestLocalNessusHost)): ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostTestLocalNessusHost]' checked='checked'>Test the local Nessus host<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostTestLocalNessusHost]'>Test the local Nessus host<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->pingRemoteHostFastNetworkDiscovery)): ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostFastNetworkDiscovery]' checked='checked'>Fast network discovery<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[pingRemoteHostFastNetworkDiscovery]'>Fast network discovery<br>
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>TCP ping destination port(s)</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->pingRemoteHostTcpDestPort == null): ?>
+			<input type='text' name='plugin_preference[pingRemoteHostTcpDestPort]' value='built-in'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[pingRemoteHostTcpDestPort]' value='<?php echo $this->policy->preferences->pingRemoteHostTcpDestPort; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Number of retries (ICMP)</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->pingRemoteHostNumberOfIcmpRetries == null): ?>
+			<input type='text' name='plugin_preference[pingRemoteHostNumberOfIcmpRetries]' value='2'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[pingRemoteHostNumberOfIcmpRetries]' value='<?php echo $this->policy->preferences->pingRemoteHostNumberOfIcmpRetries; ?>'>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,172 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div class='span-12' style='font-size: 1.5em;'>
+		Maintenance
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+		<input type='hidden' name='isNew' value='<?php echo $this->isNew; ?>'>
+		<input type='hidden' name='id' value='<?php echo $this->id; ?>'>
+	</form>
+	<form id='form-submit'>
+		<input type='hidden' name='choose-specific' value='0'>
+		<div id='delete'>
+			<input class='skeleton' type='hidden' name='delete-list[]' value=''>
+		</div>
+
+		<strong>System maintenance plugin directory</strong><span class='required'>*</span>
+		<div class='quiet small'>
+			This directory must be readable by the user which runs the maintenance.php cron job
+		</div>
+		<div>
+			<?php if (empty($this->info->plugins->directory->system)): ?>
+			<input type='text' name='system-directory' style='width: 50%;' value='/var/www/html/nessquik/lib/Maintenance/Plugin'>
+			<?php else: ?>
+			<input type='text' name='system-directory' style='width: 50%;' value='<?php echo $this->info->plugins->directory->system; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>User maintenance plugin directory</strong>
+		<div>
+			<?php if (empty($this->info->plugins->directory->user)): ?>
+			<input type='text' name='user-directory' style='width: 50%;' value=''>
+			<?php else: ?>
+			<input type='text' name='user-directory' style='width: 50%;' value='<?php echo $this->info->plugins->directory->user; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<div id='specify-single-plugins'>
+			<div id='activate-single'>
+				<span class='hypertext activate-toggle'>I want to choose specific plugins to run</span>
+				<span class='hypertext deactivate-toggle'>I do not want to choose specific plugins</span>
+			</div>
+
+			<hr class='space'/>
+
+			<div id='single-form' class='prepend-1'>
+				<strong>User maintenance single plugins path</strong><span class='required'>*</span>
+				<div>
+					<?php if (empty($this->info->plugins->single->path)): ?>
+					<input type='text' name='single-path' style='width: 50%;' value=''>
+					<?php else: ?>
+					<input type='text' name='single-path' style='width: 50%;' value='<?php echo $this->info->plugins->single->path; ?>'>
+					<?php endif; ?>
+				</div>
+
+				<hr class='space'/>
+
+				<div id='include' class='block'>
+					<div class='span-7'>
+						<strong>Include plugin</strong>
+					</div>
+					<div class='span-7 last'>
+						<span class='add-new hypertext'>add</span>
+					</div>
+					<div class='list'>
+						<?php if (empty($this->info['plugins']['single']['register'])): ?>
+						<div class='row span-21 empty'>
+							<input type='text' name='include[]' class='span-8'>
+							<span class='remove trash-icon'>
+								<img src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+							</span>
+						</div>
+						<?php elseif (is_array($this->info['plugins']['single']['register'])): ?>
+						<?php foreach($this->info['plugins']['single']['register'] as $plugin): ?>
+						<div class='row span-21'>
+							<input type='hidden' name='maint-id[]' value='<?php echo $plugin; ?>'>
+							<input type='text' name='include[<?php echo $plugin; ?>]' value='<?php echo $plugin; ?>' class='span-8'>
+							<span class='remove trash-icon'>
+								<img src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+							</span>
+						</div>
+						<?php endforeach; ?>
+						<?php else: ?>
+						<div class='row span-21'>
+							<input type='hidden' name='maint-id[]' value='<?php echo $this->info->plugins->single->register; ?>'>
+							<input type='text' name='include[<?php echo $this->info->plugins->single->register; ?>]' value='<?php echo $this->info->plugins->single->register; ?>' class='span-8'>
+							<span class='remove trash-icon'>
+								<img src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+							</span>
+						</div>
+						<?php endif; ?>
+					</div>
+					<div class='skeleton'>
+						<div class='row span-21'>
+							<input type='text' name='include[]' class='span-8'>
+							<span class='remove trash-icon'>
+								<img src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<hr class='space'/>
+
+				<div id='exclude' class='block'>
+					<div class='span-7'>
+						<strong>Exclude plugin</strong>
+					</div>
+					<div class='span-7 last'>
+						<span class='add-new hypertext'>add</span>
+					</div>
+					<div class='list'>
+						<?php if (empty($this->info['plugins']['single']['unregister'])): ?>
+						<div class='row span-21 empty'>
+							<input type='text' name='exclude[]' class='span-8'>
+							<span class='remove trash-icon'>
+								<img src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+							</span>
+						</div>
+						<?php elseif (is_array($this->info['plugins']['single']['unregister'])): ?>
+						<?php foreach($this->info['plugins']['single']['unregister'] as $plugin): ?>
+						<div class='row span-21'>
+							<input type='text' name='exclude[<?php echo $plugin; ?>]' value='<?php echo $plugin; ?>' class='span-8'>
+							<span class='remove trash-icon'>
+								<img src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+							</span>
+						</div>
+						<?php endforeach; ?>
+						<?php else: ?>
+						<div class='row span-21'>
+							<input type='text' name='exclude[<?php echo $this->info->plugins->single->unregister; ?>]' value='<?php echo $this->info->plugins->single->unregister; ?>' class='span-8'>
+							<span class='remove trash-icon'>
+								<img src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+							</span>
+						</div>
+						<?php endif; ?>
+					</div>
+					<div class='skeleton'>
+						<div class='row span-21'>
+							<input type='text' name='exclude[]' class='span-8'>
+							<span class='remove trash-icon'>
+								<img src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div class='messages'>
+			<div class='error span-22'></div>
+			<hr class='space'/>
+		</div>
+
+		<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Save'>
+			<a class='hypertext' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/admin'>cancel</a>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

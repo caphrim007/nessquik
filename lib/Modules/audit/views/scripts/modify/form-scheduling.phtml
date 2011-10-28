@@ -1,0 +1,271 @@
+<div id='scheduling' class='span-22 prepend-top append-bottom prepend-1 append-1 config'>
+	<?php if ($this->isNew || $this->schedule['enableScheduling'] == 'doesNotRepeat'): ?>
+		<input type='hidden' name='scheduling' value='0'>
+	<?php else: ?>
+		<input type='hidden' name='scheduling' value='<?php echo $this->audit->scheduling; ?>'>
+	<?php endif; ?>
+	<div id='form-scheduling'>
+		<?php if ($this->isNew || ($this->audit->startOnTime == null)): ?>
+			<?php $scheduled = new Zend_Date; ?>
+			<input type='hidden' name='date-scheduled' id='date-scheduled' value='<?php echo $scheduled->get(Zend_Date::W3C); ?>'>
+		<?php else: ?>
+			<input type='hidden' name='date-scheduled' id='date-scheduled' value='<?php echo $this->audit->startOnTime->get(Zend_Date::W3C); ?>'>
+		<?php endif; ?>
+	<div class='span-21'>
+		<div class='message error'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+
+		<div id='enabledSchedulingBlock'>
+		<strong>Repeat this audit</strong>
+		<div class='span-21'>
+			<div class='span-6'>
+				<select id='enableScheduling' name='enableScheduling'>
+					<?php if ($this->isNew || $this->schedule['enableScheduling'] == 'doesNotRepeat'): ?>
+						<option value='doesNotRepeat' selected='selected'>Does not repeat
+						<option value='daily'>Daily
+						<option value='everyWeekday'>Every weekday (Mon-Fri)
+						<option value='everyMonWedFri'>Every Mon., Wed., and Fri.
+						<option value='everyTueThu'>Every Tues., and Thurs.
+						<option value='weekly'>Weekly
+						<option value='monthly'>Monthly
+						<option value='yearly'>Yearly
+					<?php else: ?>
+						<?php if ($this->schedule['enableScheduling'] == 'doesNotRepeat'): ?>
+						<option value='doesNotRepeat' selected='selected'>Does not repeat
+						<?php else: ?>
+						<option value='doesNotRepeat'>Does not repeat
+						<?php endif; ?>
+
+						<?php if ($this->schedule['enableScheduling'] == 'daily'): ?>
+						<option value='daily' selected='selected'>Daily
+						<?php else: ?>
+						<option value='daily'>Daily
+						<?php endif; ?>
+
+						<?php if ($this->schedule['enableScheduling'] == 'everyWeekday'): ?>
+						<option value='everyWeekday' selected='selected'>Every weekday (Mon-Fri)
+						<?php else: ?>
+						<option value='everyWeekday'>Every weekday (Mon-Fri)
+						<?php endif; ?>
+
+						<?php if ($this->schedule['enableScheduling'] == 'everyMonWedFri'): ?>
+						<option value='everyMonWedFri' selected='selected'>Every Mon., Wed., and Fri.
+						<?php else: ?>
+						<option value='everyMonWedFri'>Every Mon., Wed., and Fri.
+						<?php endif; ?>
+
+						<?php if ($this->schedule['enableScheduling'] == 'everyTueThu'): ?>
+						<option value='everyTueThu' selected='selected'>Every Tues., and Thurs.
+						<?php else: ?>
+						<option value='everyTueThu'>Every Tues., and Thurs.
+						<?php endif; ?>
+
+						<?php if ($this->schedule['enableScheduling'] == 'weekly'): ?>
+						<option value='weekly' selected='selected'>Weekly
+						<?php else: ?>
+						<option value='weekly'>Weekly
+						<?php endif; ?>
+
+						<?php if ($this->schedule['enableScheduling'] == 'monthly'): ?>
+						<option value='monthly' selected='selected'>Monthly
+						<?php else: ?>
+						<option value='monthly'>Monthly
+						<?php endif; ?>
+
+						<?php if ($this->schedule['enableScheduling'] == 'yearly'): ?>
+						<option value='yearly' selected='selected'>Yearly
+						<?php else: ?>
+						<option value='yearly'>Yearly
+						<?php endif; ?>
+					<?php endif; ?>
+				</select>
+			</div>
+			<div id='atTime' class='span-15 last'>
+				<div class='span-1'>at</div>
+				<div class='span-7 last'>
+					<input type='text' name='startOnTime' id='startOnTime'>
+				</div>
+			</div>
+
+			<hr class='space'/>
+
+			<div id='textScheduling' class='success scheduling'></div>
+			<div id='repeatEvery' class='scheduling'>
+				<strong>Repeat every</strong>
+				<div class='prepend-1'>
+					<select name='repeatEvery' style='width: 100px;'>
+						<?php if ($this->isNew || $this->schedule['enableScheduling'] == 'doesNotRepeat'): ?>
+							<?php for($x = 1; $x <= 30; $x++): ?>
+								<option value='<?php echo $x; ?>'><?php echo $x; ?>
+							<?php endfor; ?>
+						<?php else: ?>
+							<?php for($x = 1; $x <= 30; $x++): ?>
+								<?php if ($this->schedule['repeatEvery'] == $x): ?>
+								<option value='<?php echo $x; ?>' selected='selected'><?php echo $x; ?>
+								<?php else: ?>
+								<option value='<?php echo $x; ?>'><?php echo $x; ?>
+								<?php endif; ?>
+							<?php endfor; ?>
+						<?php endif; ?>
+					</select>
+					<span id='repeatEveryText'></span>
+				</div>
+
+				<hr class='space'/>
+			</div>
+			<div id='repeatOn' class='scheduling'>
+				<strong>Repeat on</strong>
+				<div>
+					<div class='span-1'>&nbsp;</div>
+
+					<?php if ($this->isNew || $this->schedule['enableScheduling'] == 'doesNotRepeat' || !isset($this->schedule['repeatOn'])): ?>
+						<div class='span-2'>
+							<input type='checkbox' name='repeatOn[]' value='0'>Sun
+						</div>
+						<div class='span-2'>
+							<input type='checkbox' name='repeatOn[]' value='1'>Mon
+						</div>
+						<div class='span-2'>
+							<input type='checkbox' name='repeatOn[]' value='2'>Tue
+						</div>
+						<div class='span-2'>
+							<input type='checkbox' name='repeatOn[]' value='3'>Wed
+						</div>
+						<div class='span-2'>
+							<input type='checkbox' name='repeatOn[]' value='4'>Thu
+						</div>
+						<div class='span-2'>
+							<input type='checkbox' name='repeatOn[]' value='5'>Fri
+						</div>
+						<div class='span-2 last'>
+							<input type='checkbox' name='repeatOn[]' value='6'>Sat
+						</div>
+					<?php else: ?>
+						<div class='span-2'>
+							<?php if(strpos($this->schedule['repeatOn'], '0') !== false): ?>
+							<input type='checkbox' name='repeatOn[]' value='0' checked='checked'>Sun
+							<?php else: ?>
+							<input type='checkbox' name='repeatOn[]' value='0'>Sun
+							<?php endif; ?>
+						</div>
+						<div class='span-2'>
+							<?php if(strpos($this->schedule['repeatOn'], '1') !== false): ?>
+							<input type='checkbox' name='repeatOn[]' value='1' checked='checked'>Mon
+							<?php else: ?>
+							<input type='checkbox' name='repeatOn[]' value='1'>Mon
+							<?php endif; ?>
+						</div>
+						<div class='span-2'>
+							<?php if(strpos($this->schedule['repeatOn'], '2') !== false): ?>
+							<input type='checkbox' name='repeatOn[]' value='2' checked='checked'>Tue
+							<?php else: ?>
+							<input type='checkbox' name='repeatOn[]' value='2'>Tue
+							<?php endif; ?>
+						</div>
+						<div class='span-2'>
+							<?php if(strpos($this->schedule['repeatOn'], '3') !== false): ?>
+							<input type='checkbox' name='repeatOn[]' value='3' checked='checked'>Wed
+							<?php else: ?>
+							<input type='checkbox' name='repeatOn[]' value='3'>Wed
+							<?php endif; ?>
+						</div>
+						<div class='span-2'>
+							<?php if(strpos($this->schedule['repeatOn'], '4') !== false): ?>
+							<input type='checkbox' name='repeatOn[]' value='4' checked='checked'>Thu
+							<?php else: ?>
+							<input type='checkbox' name='repeatOn[]' value='4'>Thu
+							<?php endif; ?>
+						</div>
+						<div class='span-2'>
+							<?php if(strpos($this->schedule['repeatOn'], '5') !== false): ?>
+							<input type='checkbox' name='repeatOn[]' value='5' checked='checked'>Fri
+							<?php else: ?>
+							<input type='checkbox' name='repeatOn[]' value='5'>Fri
+							<?php endif; ?>
+						</div>
+						<div class='span-2 last'>
+							<?php if(strpos($this->schedule['repeatOn'], '6') !== false): ?>
+							<input type='checkbox' name='repeatOn[]' value='6' checked='checked'>Sat
+							<?php else: ?>
+							<input type='checkbox' name='repeatOn[]' value='6'>Sat
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
+				</div>
+				<hr class='space'/>
+			</div>
+			<div id='repeatBy' class='scheduling'>
+				<strong>Repeat by</strong>
+				<div>
+					<?php if ($this->isNew || $this->schedule['enableScheduling'] == 'doesNotRepeat' || !isset($this->schedule['repeatBy'])): ?>
+						<input type='radio' name='repeatBy' value='byMonthDay' checked='checked'>day of the month
+						<input type='radio' name='repeatBy' value='byWeekDay'>day of the week
+					<?php else: ?>
+						<?php if ($this->schedule['repeatBy'] == 'byWeekDay'): ?>
+						<input type='radio' name='repeatBy' value='byMonthDay'>day of the month
+						<input type='radio' name='repeatBy' value='byWeekDay' checked='checked'>day of the week
+						<?php else: ?>
+						<input type='radio' name='repeatBy' value='byMonthDay' checked='checked'>day of the month
+						<input type='radio' name='repeatBy' value='byWeekDay'>day of the week
+						<?php endif; ?>
+					<?php endif; ?>
+				</div>
+				<hr class='space'/>
+			</div>
+			<div id='range' class='scheduling'>
+				<div class='span-22'>
+					<strong>Range</strong>
+				</div>
+
+				<div class='span-22'>
+					<div class='span-1'>&nbsp;</div>
+					<div class='span-5'>
+						<div>Starts:</div>
+						<div id='rangeStart'>
+							<?php if ($this->isNew || $this->schedule['enableScheduling'] == 'doesNotRepeat'): ?>
+								<input type='text' name='rangeStart' style='width: 100px;'>
+							<?php else: ?>
+								<?php if (isset($this->schedule['rangeStart'])): ?>
+								<input type='text' name='rangeStart' style='width: 100px;' value='<?php echo $this->schedule["rangeStart"]; ?>'>
+								<?php else: ?>
+								<input type='text' name='rangeStart' style='width: 100px;'>
+								<?php endif; ?>
+							<?php endif; ?>
+						</div>
+					</div>
+					<div class='span-1'>&nbsp;</div>
+					<div class='span-5 last'>
+						<div>Ends:</div>
+						<div id='rangeEnd'>
+							<?php if ($this->isNew || $this->schedule['enableScheduling'] == 'doesNotRepeat'): ?>
+								<input type='radio' name='rangeEnd' value='never'>Never
+								<br>
+								<input type='radio' name='rangeEnd' value='until' checked='checked'>Until
+								<?php $rangeEnd = new Zend_Date; ?>
+								<?php $rangeEnd->addWeek(1); ?>
+								<input type='text' name='rangeUntil' id='rangeUntil' style='width: 100px;' value='<?php echo $rangeEnd->toString("MM/dd/yyyy"); ?>'>
+							<?php else: ?>
+								<?php if (empty($this->schedule['rangeEnd']) || $this->schedule['rangeEnd'] == 'never'): ?>
+								<input type='radio' name='rangeEnd' value='never' checked='checked'>Never
+								<br>
+								<input type='radio' name='rangeEnd' value='until'>Until
+								<input type='text' name='rangeUntil' id='rangeUntil' style='width: 100px;'>
+								<?php else: ?>
+								<input type='radio' name='rangeEnd' value='never'>Never
+								<br>
+								<input type='radio' name='rangeEnd' value='until' checked='checked'>Until
+								<input type='text' name='rangeUntil' id='rangeUntil' style='width: 100px;' value='<?php echo $this->schedule["rangeEnd"]; ?>'>
+								<?php endif; ?>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	</div>
+</div>

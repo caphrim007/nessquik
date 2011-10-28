@@ -1,0 +1,151 @@
+<div id='database' class='span-22 prepend-top append-bottom prepend-1 append-1 config'>
+	<form class='form-submit'>
+		<div class='span-22 append-bottom'>
+			<strong>nessquik database</strong>
+			<div class='small quiet'>
+				Connection settings for the nessquik database
+			</div>
+
+			<div class='prepend-1 prepend-top'>
+				<div class='span-20'>
+					<div class='span-9'>
+						Database host
+						<div>
+							<?php if(isset($this->config->database->default->params->host)): ?>
+							<input type='text' name='nq_host' value='<?php echo $this->config->database->default->params->host; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='nq_host' value='localhost' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+
+					<div class='span-2'>&nbsp;</div>
+
+					<div class='span-9 last'>
+						Database port
+						<div>
+							<?php if(isset($this->config->database->default->params->port)): ?>
+							<input type='text' name='nq_port' value='<?php echo $this->config->database->default->params->port; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='nq_port' value='5432' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+
+				<div class='span-20'>
+					Database name
+					<div>
+						<?php if(isset($this->config->database->default->params->dbname)): ?>
+						<input type='text' name='nq_dbname' value='<?php echo $this->config->database->default->params->dbname; ?>' class='span-9'>
+						<?php else: ?>
+						<input type='text' name='nq_dbname' value='nessquik' class='span-9'>
+						<?php endif; ?>
+					</div>
+				</div>
+
+				<div class='span-20'>
+					<div class='span-9'>
+						Username
+						<div>
+							<?php if(isset($this->config->database->default->params->username)): ?>
+							<input type='text' name='nq_username' value='<?php echo $this->config->database->default->params->username; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='nq_username' value='nessquik' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+
+					<div class='span-2'>&nbsp;</div>
+
+					<div class='span-9 last'>
+						Password
+						<div>
+							<?php if(isset($this->config->database->default->params->password)): ?>
+							<input type='text' name='nq_password' value='<?php echo $this->config->database->default->params->password; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='nq_password' value='password' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<?php if ($this->session->acl->isAllowed('Capability', 'edit_miscomp')): ?>
+
+		<div class='span-22 append-bottom'>
+			<strong>MISCOMP database</strong>
+			<div class='small quiet'>
+				Connection settings for the MISCOMP database
+			</div>
+
+			<div class='prepend-1 prepend-top'>
+				<div class='span-20'>
+					<div class='span-9'>
+						Database host
+						<div>
+							<?php if(isset($this->config->database->miscomp->params->host)): ?>
+							<input type='text' name='mis_host' value='<?php echo $this->config->database->miscomp->params->host; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='mis_host' value='localhost' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+
+					<div class='span-2'>&nbsp;</div>
+
+					<div class='span-9 last'>
+						Database port
+						<div>
+							<?php if(isset($this->config->database->miscomp->params->port)): ?>
+							<input type='text' name='mis_port' value='<?php echo $this->config->database->miscomp->params->port; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='mis_port' value='1521' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+
+				<div class='span-20'>
+					Database name
+					<div>
+						<?php if(isset($this->config->database->miscomp->params->dbname)): ?>
+						<input type='text' name='mis_dbname' value='<?php echo $this->config->database->miscomp->params->dbname; ?>' class='span-9'>
+						<?php else: ?>
+						<input type='text' name='mis_dbname' value='database' class='span-9'>
+						<?php endif; ?>
+					</div>
+				</div>
+
+				<div class='span-20'>
+					<div class='span-9'>
+						<strong>Username</strong>
+						<div>
+							<?php if(isset($this->config->database->miscomp->params->username)): ?>
+							<input type='text' name='mis_username' value='<?php echo $this->config->database->miscomp->params->username; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='mis_username' value='username' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+
+					<div class='span-2'>&nbsp;</div>
+
+					<div class='span-9 last'>
+						<strong>Password</strong>
+						<div>
+							<?php if(isset($this->config->database->miscomp->params->password)): ?>
+							<input type='text' name='mis_password' value='<?php echo $this->config->database->miscomp->params->password; ?>' class='span-9'>
+							<?php else: ?>
+							<input type='text' name='mis_password' value='password' class='span-9'>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<?php endif; ?>
+	</form>
+</div>

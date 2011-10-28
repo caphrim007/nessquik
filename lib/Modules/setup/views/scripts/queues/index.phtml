@@ -1,0 +1,59 @@
+<?php require _MODPATH.'/setup/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div class='span-22'>
+		<div class='span-22' style='font-size: 1.5em;'>
+			<a href='<?php echo $this->baseUrl(); ?>/setup' class='hypertext'>Setup</a> &raquo;
+			Queues
+		</div>
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<form id='form-submit'>
+		<strong>About</strong>
+		<div class='prepend-top'>
+			<p>
+			While this page loaded, nessquik created and saved several queues on your system
+			that it will use during operation to store temporary context jobs.
+			</p>
+			<p>
+			In case you're interested which queues these are, they are shown below.
+			</p>
+			<?php foreach($this->queues as $queue): ?>
+			<div class='span-22'>
+				<div class='prepend-1 span-5' style='font-weight: bold;'><?php echo $queue['queue_name']; ?></div>
+				<div class='span-16 last'><?php echo $queue['desc']; ?></div>
+			</div>
+			<?php endforeach; ?>
+
+			<hr class='space'/>
+
+			<p>
+			Queues allow nessquik to batch up lists of jobs that can, if needed, be distributed
+			across many systems.
+			</p>
+
+			<p>
+			Note that the queues have been configured with the same database credentials as
+			were provided in the previous step. If this was not your intention, you can change
+			these connection details after the remaining installation steps are finished.
+			</p>
+		</div>
+
+		<div class='span-22 append-bottom prepend-top'>
+			<div class='span-11'>
+				&laquo; <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/setup/docdb'>Document storage</a>
+			</div>
+			<div class='span-11 last' style='text-align: right;'>
+				<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/setup/automation'>Automation</a> &raquo;
+			</div>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/setup/views/scripts/footer/index.phtml'; ?>

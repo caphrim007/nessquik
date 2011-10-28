@@ -1,0 +1,28 @@
+<div id='adv-service-detection' class='advanced'>
+	<div class='span-21'>
+		<strong>Test SSL based services</strong>
+		<div>
+			<select name='plugin_preference[serviceDetectionTestSslServices]'>
+			<?php if ($this->isNew): ?>
+				<option value='Known SSL ports' selected='selected'>Known SSL ports
+				<option value='All'>All
+				<option value='None'>None
+			<?php else: ?>
+				<?php if ($this->policy->preferences->serviceDetectionTestSslServices == 'All'): ?>
+					<option value='Known SSL ports'>Known SSL ports
+					<option value='All' selected='selected'>All
+					<option value='None'>None
+				<?php elseif ($this->policy->preferences->serviceDetectionTestSslServices == 'None'): ?>
+					<option value='Known SSL ports'>Known SSL ports
+					<option value='All'>All
+					<option value='None' selected='selected'>None
+				<?php else: ?>
+					<option value='Known SSL ports' selected='selected'>Known SSL ports
+					<option value='All'>All
+					<option value='None'>None
+				<?php endif; ?>
+			<?php endif; ?>
+			</select>
+		</div>
+	</div>
+</div>

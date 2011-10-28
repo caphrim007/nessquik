@@ -1,0 +1,30 @@
+<div id='title' class='span-24' style='background-color: #ededed; line-height: 35px; height: 35px;'>
+	<div class='span-6'>
+<?php if ($this->isNew === true): ?>
+		<div style='padding-left: 10px; font-size: 1.4em;'>
+			<a href='<?php echo $this->baseUrl(); ?>/admin/queues' class='hypertext'>Queues</a> &raquo;
+			<span>Create queue</span>
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+<?php else: ?>
+		<div style='padding-left: 10px; font-size: 1.6em;'>
+			<a href='<?php echo $this->baseUrl(); ?>/admin/queues' class='hypertext'>Queues</a> &raquo;
+			Edit
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+<?php endif; ?>
+	</div>
+
+	<div id='menu' class='span-18 last' style='text-align: right;'>
+		<div class='pluginLinks'>
+			<ul>
+				<li><a href="#settings" class='darkHypertext'>Settings</a>
+				<?php if ($this->messageCount == 0): ?>
+				<li><span class='quietHypertext'>Messages</span>
+				<?php else: ?>
+				<li><a href="#messages" class='darkHypertext'>Messages</a>
+				<?php endif; ?>
+			</ul>
+		</div>
+	</div>
+</div>

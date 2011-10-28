@@ -1,0 +1,76 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/admin/views/scripts/logging/title.phtml'; ?>
+
+<div class='span-24 last' style='border-color: 1px solid #fff; position: relative;'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+	<div class='span-22 prepend-1 append-1 prepend-top append-bottom'>
+	<form id='form-submit'>
+		<span style='font-size: 1.2em;'>Log level</span>
+		<div class='small quiet'>
+			Defines the level of logging that nessquik does. A higher level means more logging
+		</div>
+		<div>
+			<select name='log-level'>
+				<?php foreach($this->logLevels as $level): ?>
+					<?php if ($this->config->debug->log->mask == $level): ?>
+						<option value='<?php echo $level; ?>' selected='selected'><?php echo $level; ?>
+					<?php else: ?>
+						<option value='<?php echo $level; ?>'><?php echo $level; ?>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</select>
+		</div>
+
+		<hr class='space'/>
+
+		<span style='font-size: 1.2em;'>Log files</span>
+		<div class='small quiet'>
+			Specify the paths to where you want nessquik to store log files. Depending on the
+			feature of nessquik in use, log files will be sent to different places.
+		</div>
+		<div class='log-file-inputs span-22'>
+			<div class='span-22'>
+				<div class='span-5'>
+					<div style='padding: 5px;' class='inputHeader darkHypertext'>General messages</div>
+				</div>
+				<div class='span-17 last'>
+					<input type='text' name='log-messages' class='input-txt' value='<?php echo $this->config->debug->log->messages; ?>'>
+				</div>
+			</div>
+			<div class='span-22'>
+				<div class='span-5'>
+					<div style='padding: 5px;' class='inputHeader darkHypertext'>XML-RPC messages</div>
+				</div>
+				<div class='span-17 last'>
+					<input type='text' name='log-xmlrpc' class='input-txt' value='<?php echo $this->config->debug->log->xmlrpc; ?>'><br>
+				</div>
+			</div>
+			<div class='span-22'>
+				<div class='span-5'>
+					<div style='padding: 5px;' class='inputHeader darkHypertext'>RPC usage messages</div>
+				</div>
+				<div class='span-17 last'>
+					<input type='text' name='log-rpc' class='input-txt' value='<?php echo $this->config->debug->log->usage; ?>'>
+				</div>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div class='message error append-bottom'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+
+		<div class='span-22 prepend-1 append-1 clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Save'>
+			<a class='hypertext' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/admin'>cancel</a>
+		</div>
+	</form>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

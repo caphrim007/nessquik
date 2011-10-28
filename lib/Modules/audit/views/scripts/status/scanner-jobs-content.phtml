@@ -1,0 +1,24 @@
+<?php if (empty($this->results)): ?>
+	<div style='color: #aaa; font-size: 10px; padding: 10px;'>
+		No scanners have been created yet
+	</div>
+<?php else: ?>
+	<?php foreach ($this->results as $key => $scanner): ?>
+		<tr>
+			<td style='width: 50%;'>
+				<a class='hypertext' href='<?php echo $this->baseUrl() ;?>/scanners/modify/edit?id=<?php echo $scanner['id']; ?>'><?php echo $scanner['name']; ?></a>
+			</td>
+			<td style='width: 50%;' class='quiet'>
+				<?php if (isset($scanner['running'])): ?>
+					<?php if ($scanner['running'] == 1): ?>
+						There is <?php echo $scanner['running']; ?> audit running on this scanner
+					<?php else: ?>
+						There are <?php echo $scanner['running']; ?> audits running on this scanner
+					<?php endif; ?>
+				<?php else: ?>
+					There are no audits running on this scanner
+				<?php endif; ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+<?php endif; ?>

@@ -1,0 +1,63 @@
+<div id='network' class='span-22 prepend-top append-bottom prepend-1 append-1 config advanced'>
+	<div class='span-21'>
+		<strong>Max simultaneous TCP sessions per scan</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->maxSimultTcpSessions == null): ?>
+			<input type='text' name='preference[maxSimultTcpSessions]' value='unlimited'>
+			<?php else: ?>
+			<input type='text' name='preference[maxSimultTcpSessions]' value='<?php echo $this->policy->preferences->maxSimultTcpSessions; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Max simultaneous TCP sessions per host</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->hostMaxSimultTcpSessions == null): ?>
+			<input type='text' name='preference[hostMaxSimultTcpSessions]' value='unlimited'>
+			<?php else: ?>
+			<input type='text' name='preference[hostMaxSimultTcpSessions]' value='<?php echo $this->policy->preferences->hostMaxSimultTcpSessions; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Network receive timeout (in seconds)</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->checksReadTimeout == null): ?>
+			<input type='text' name='preference[checksReadTimeout]' value='5'>
+			<?php else: ?>
+			<input type='text' name='preference[checksReadTimeout]' value='<?php echo $this->policy->preferences->checksReadTimeout; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Miscellaneous</strong>
+		<div>
+			<?php if ($this->isNew): ?>
+				<input type='checkbox' name='preference[reduceConnectionsOnCongestion]'>Reduce the number of connections in parallel on congestion<br>
+				<input type='checkbox' name='preference[useKernelCongestionDetection]'>Use the kernel congestion detection (Linux only)<br>
+				<input type='checkbox' name='preference[stopScanOnDisconnect]'>Stop scanning hosts turned off during the audit
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preferences->reduceConnectionsOnCongestion)): ?>
+				<input type='checkbox' name='preference[reduceConnectionsOnCongestion]' checked='checked'>Reduce the number of connections in parallel on congestion<br>
+				<?php else: ?>
+				<input type='checkbox' name='preference[reduceConnectionsOnCongestion]'>Reduce the number of connections in parallel on congestion<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->useKernelCongestionDetection)): ?>
+				<input type='checkbox' name='preference[useKernelCongestionDetection]' checked='checked'>Use the kernel congestion detection (Linux only)<br>
+				<?php else: ?>
+				<input type='checkbox' name='preference[useKernelCongestionDetection]'>Use the kernel congestion detection (Linux only)<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->stopScanOnDisconnect)): ?>
+				<input type='checkbox' name='preference[stopScanOnDisconnect]' checked='checked'>Stop scanning hosts turned off during the audit
+				<?php else: ?>
+				<input type='checkbox' name='preference[stopScanOnDisconnect]'>Stop scanning hosts turned off during the audit
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

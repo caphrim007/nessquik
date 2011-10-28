@@ -1,0 +1,23 @@
+<div id='adv-port-scanner-settings' class='advanced'>
+	<div class='span-21'>
+		<strong>Miscellaneous</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->portScannersCheckOpenTcpPorts == null): ?>
+				<input type='checkbox' name='plugin_preference[portScannersCheckOpenTcpPorts]'>Check open TCP ports found by local port enumerators<br>
+				<input type='checkbox' name='plugin_preference[portScannersNetworkScannersIfLocalFailed]' checked='checked'>Only run network port scanners if local port enumeration failed
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preferences->portScannersCheckOpenTcpPorts)): ?>
+				<input type='checkbox' name='plugin_preference[portScannersCheckOpenTcpPorts]' checked='checked'>Check open TCP ports found by local port enumerators<br>
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[portScannersCheckOpenTcpPorts]'>Check open TCP ports found by local port enumerators<br>
+				<?php endif; ?>
+
+				<?php if ($this->filter->filter($this->policy->preferences->portScannersNetworkScannersIfLocalFailed)): ?>
+				<input type='checkbox' name='plugin_preference[portScannersNetworkScannersIfLocalFailed]' checked='checked'>Only run network port scanners if local port enumeration failed
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[portScannersNetworkScannersIfLocalFailed]'>Only run network port scanners if local port enumeration failed
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

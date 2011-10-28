@@ -1,0 +1,61 @@
+<?php require _MODPATH.'/setup/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div class='span-22'>
+		<div class='span-22' style='font-size: 1.5em;'>
+			<a href='<?php echo $this->baseUrl(); ?>/setup' class='hypertext'>Setup</a> &raquo;
+			Automation
+		</div>
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<form id='form-submit'>
+		<strong>About</strong>
+		<div class='prepend-top'>
+			<p>
+			nessquik can automatically queue messages if accounts or audits
+			match a specific regular expression.
+			</p>
+			<p>
+			nessquik is creating these regular expressions in the background right now
+			to be used by the system when new URLs are inserted
+			</p>
+			<p>
+			When these regular expressions have been created, you will be shown a table which
+			lists the regular expressions that have been generated.
+			</p>
+		</div>
+		<div class='prepend-top'>
+			<div class='span-22 prepend-top'>
+				<div class='span-22 message error append-bottom'>
+					<span class='content'></span>
+					&nbsp;&nbsp;
+					<span class='hypertext close'>close</span>
+				</div>
+			</div>
+			<div id='automations' class='span-22'>
+				<div style='text-align: center;'>
+					<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+				</div>
+			</div>
+		</div>
+
+		<div class='span-22 append-bottom prepend-top'>
+			<div class='span-22'>
+				<div class='span-11'>
+					&laquo; <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/setup/queues'>Queues</a>
+				</div>
+				<div id='next-step' class='span-11 last' style='text-align: right;'>
+					<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/setup/scanner'>Scanner</a> &raquo;
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/setup/views/scripts/footer/index.phtml'; ?>

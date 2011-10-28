@@ -1,0 +1,68 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div class='span-16'>
+		<span style='font-size: 1.5em;'>Authentication</span>
+		<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+	</div>
+	<div class='span-5 last'>
+		<?php if ($this->isWritable): ?>
+		<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/admin/authentication/edit?id=_new'>Add a new method</a>
+		<?php endif; ?>
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-15 colborder'>
+	<div class='message error'>
+		<span class='content'></span>
+		&nbsp;&nbsp;
+		<span class='hypertext close'>close</span>
+	</div>
+
+	<?php if (!$this->isWritable): ?>
+		<div class='notice'>
+			Your authentication config file is not writable
+		</div>
+	<?php else: ?>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+	<form id='form-submit'>
+		<div class='block'>
+			<div class='select-actions span-15 last'>
+				Select: <span class='hypertext select-all'>All</span>, <span class='hypertext select-none'>None</span>
+			</div>
+
+			<div class='search-results span-15 last'>
+				<div style='padding: 10px;' class='span-15'>
+					<div class='content'></div>
+				</div>
+				<div id='with-selected'>
+					With selected: <span class='hypertext selected-delete'>Delete</span>
+				</div>
+			</div>
+		</div>
+	</form>
+	<?php endif; ?>
+</div>
+<div class='span-6 last' style='text-align: justify;'>
+	<p>
+	nessquik supports layered authentication.
+	</p>
+	<p>
+	This allows the administrator to configure many different forms of authentication such as LDAP or database.
+	</p>
+	<p>
+	Each of them will be tried in the order that
+	they are specified until either the account is found and authenticated, or the list
+	of possible authentication sources is exhausted.
+	</p>
+	<p>
+	By default, nessquik comes with support for 
+	<a target='_blank' class='hypertext' href='<?php echo $this->config->links->wiki; ?>:2.6:manuals:admin:authentication#database'>database</a>, 
+	<a target='_blank' class='hypertext' href='<?php echo $this->config->links->wiki; ?>:2.6:manuals:admin:authentication#ldap'>ldap</a> and 
+	<a target='_blank' class='hypertext' href='<?php echo $this->config->links->wiki; ?>:2.6:manuals:admin:authentication#x.509_certificates'>certificate</a> authentication
+	</p>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

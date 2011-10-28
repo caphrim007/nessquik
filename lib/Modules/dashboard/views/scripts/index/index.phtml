@@ -1,0 +1,55 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div id='dashboard'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+		<input type='hidden' name='hasAudits' value='<?php echo $this->hasAudits; ?>'>
+	</form>
+<?php if ($this->hasAudits): ?>
+	<div class='span-24' style='background-color: #ededed; line-height: 35px; height: 35px;'>
+		<div style='padding-left: 10px; font-size: 1.6em;'>
+			Latest activity
+		</div>
+	</div>
+	<div class='span-24' style='border-color: 1px solid #fff; position: relative;'>
+		<div class='span-22 append-1 prepend-1 prepend-top'>
+			<span style='font-size: 1.5em;'>Scanning Overview</span>
+		</div>
+
+		<div class='span-20 append-2 prepend-2 append-bottom prepend-top overviewHeaders'>
+			<div class='span-5 darkHypertext' style='text-align: center;'>Parked</div>
+			<div class='span-5' style='text-align: center;'>Pending</div>
+			<div class='span-5' style='text-align: center;'>Running</div>
+			<div class='span-5 last' style='text-align: center;'>Finished</div>
+		</div>
+		<div id='scanning-overview' class='span-20 append-2 prepend-2 append-bottom'>
+			<div class='quiet span-5' style='text-align: center;'><?php echo $this->parked; ?></div>
+			<div class='quiet span-5' style='text-align: center;'><?php echo $this->pending; ?></div>
+			<div class='quiet span-5' style='text-align: center;'><?php echo $this->running; ?></div>
+			<div class='quiet span-5 last' style='text-align: center;'><?php echo $this->finished; ?></div>
+		</div>
+	</div>
+
+	<div class='span-22 append-1 prepend-1 append-bottom prepend-top'>
+		<span style='font-size: 1.5em;'>Upcoming scans</span>
+	</div>
+	<div class='span-22 prepend-1 append-1 append-bottom'>
+		<div id='week-calendar'></div>
+	</div>
+<?php else: ?>
+<div class='append-1 prepend-1 span-22 last prepend-top append-bottom'>
+	<span style='font-size: 1.5em;'>Get started with nessquik</span>
+</div>
+<div id='no-audits-mesg'>
+	<div class='span-22 append-bottom'>
+		You have not scheduled any scans yet, so I really don't have much to do.
+	</div>
+	<div class='span-22 append-bottom' style='text-align: center;'>
+		Schedule a new scan <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/audit/modify/edit?id=_new'>now</a>.
+	</div>
+</div>
+<?php endif; ?>
+
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

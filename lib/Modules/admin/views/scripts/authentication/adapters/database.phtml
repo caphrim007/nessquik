@@ -1,0 +1,84 @@
+<div id='DbTable' class='authentication-block span-22'>
+	<div class='span-15'>
+		<strong>Database adapter</strong><span class='required'>*</span>
+		<div>
+			<select name='database-adapter'>
+			<?php foreach ($this->config->database as $key => $val): ?>
+				<?php if (@$this->info->params->adapter == $key): ?>
+				<option value='<?php echo $key; ?>' selected='selected'><?php echo $key; ?>
+				<?php else: ?>
+				<option value='<?php echo $key; ?>'><?php echo $key; ?>
+				<?php endif; ?>
+			<?php endforeach; ?>
+			</select>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Table name</strong><span class='required'>*</span>
+		<div>
+			<?php if (empty($this->info->params->tableName)): ?>
+			<input type='text' name='tableName' value='accounts'>
+			<?php else: ?>
+			<input type='text' name='tableName' value='<?php echo $this->info->params->tableName; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Identity column</strong><span class='required'>*</span>
+		<div>
+			<?php if (empty($this->info->params->identityColumn)): ?>
+			<input type='text' name='identityColumn' value='username'>
+			<?php else: ?>
+			<input type='text' name='identityColumn' value='<?php echo @$this->info->params->identityColumn; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Credential column</strong><span class='required'>*</span>
+		<div>
+			<?php if (empty($this->info->params->credentialColumn)): ?>
+			<input type='text' name='credentialColumn' value='password'>
+			<?php else: ?>
+			<input type='text' name='credentialColumn' value='<?php echo @$this->info->params->credentialColumn; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>Credential treatment</strong>
+		<div>
+			<select name='credentialTreatment'>
+				<?php if (@$this->info->params->credentialTreatment == 'None'): ?>
+				<option value='none' selected='selected'>None
+				<option value='MD5(?)'>MD5
+				<option value='PASSWORD(?)'>Password
+				<?php elseif (@$this->info->params->credentialTreatment == 'Password(?)'): ?>
+				<option value='none'>None
+				<option value='MD5(?)'>MD5
+				<option value='PASSWORD(?)' selected='selected'>Password
+				<?php else: ?>
+				<option value='none'>None
+				<option value='MD5(?)' selected='selected'>MD5
+				<option value='PASSWORD(?)'>Password
+				<?php endif; ?>
+			</select>
+		</div>
+	</div>
+	<div class='span-1'>&nbsp;</div>
+	<div class='span-6 last' style='text-align: justify;'>
+		<p>
+		You can configure nessquik to connect to almost any database server.
+		</p>
+		<p>
+		You'll need to have created a database adapter first, otherwise
+		nessquik will not know how to connect to your database
+		</p>
+		<p>
+		For more information about the fields, refer to 
+		<a target='_blank' class='hypertext' href='<?php echo $this->config->links->dbTableOptions; ?>'>this</a> link.
+		</p>
+	</div>
+</div>

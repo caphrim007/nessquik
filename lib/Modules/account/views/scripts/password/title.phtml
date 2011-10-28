@@ -1,0 +1,26 @@
+<div id='title' class='span-24' style='background-color: #ededed; line-height: 35px; height: 35px; position: relative;'>
+	<div class='span-12'>
+		<div style='padding-left: 10px; font-size: 1.6em;'>
+			<a href='<?php echo $this->baseUrl(); ?>/admin/account' class='hypertext'>Accounts</a> &raquo;
+			<a href='<?php echo $this->baseUrl(); ?>/account/modify/edit?id=<?php echo $this->accountId; ?>' class='hypertext'><?php echo $this->account->username; ?></a> &raquo;
+			Password
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+	</div>
+	<div id='title-menu-holder' class='span-12 last' style='position: relative;'>
+	<ul id="menu" style='float: right;'>
+		<li class='trigger'>
+			<img class='hypertext' style='margin-top: 8px; float: left; width: 16px; height: 16px;' src='<?php echo $this->baseUrl(); ?>/usr/images/setting.png'><span style='float: left;' class='activeText darkHypertext'>Tools</span>
+			<ul class='sub-menu' style='z-index: 1000'>
+				<li>
+					<a href="#general" class='darkHypertext'>Generate password</a>
+				</li>
+			</ul>
+		</li>
+		<li class='trigger'>
+			<img id='faqIcon' class='hypertext' style='margin-top: 8px; float: left; width: 16px; height: 16px;' src='<?php echo $this->baseUrl(); ?>/usr/images/faq.png'>
+			&nbsp;
+		</li>
+	</ul>
+	</div>
+</div>

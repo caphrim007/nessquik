@@ -1,0 +1,92 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/account/views/scripts/modify/title.phtml'; ?>
+
+<div class='span-24 last'>
+<?php if ($this->id == '_new'): ?>
+<div class='prepend-1 append-1 span-22 prepend-top'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+	<form id='form-submit'>
+		<input type='hidden' name='id' value='<?php echo $this->id; ?>'>
+		<div class='span-22'>
+			<strong>Username</strong>
+			<div>
+				<input type='text' name='username'>
+			</div>
+		</div>
+
+		<?php if (in_array('DbTable', $this->types) || in_array('Array', $this->types)): ?>
+		<hr class='space'/>
+
+		<div class='span-22'>
+			<strong>Password</strong>
+			<div class='small quiet'>
+				The password will have no effect if you will be using authentication that
+				relies on an external service like LDAP or X.509.
+			</div>
+		</div>
+		<div class='span-22'>
+			<input type='text' name='password'>
+			&nbsp;&nbsp;&nbsp;
+			<span id='generate' class='hypertext'>generate</span>
+		</div>
+
+		<?php endif; ?>
+
+		<hr class='space'/>
+
+		<div class='message error'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+
+		<div class='span-20 last form-ops clearfix' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Save'>
+			<a class='hypertext' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/admin/account'>cancel</a>
+		</div>
+	</form>
+</div>
+<?php else: ?>
+<div class='prepend-1 append-1 span-22 prepend-top'>
+	<div class='settings-block span-22'>
+		<div class='header bigtext'>Account Information</div>
+		<div class='span-22' style='padding: 10px;'>
+			<?php if (in_array('DbTable', $this->types) || in_array('Array', $this->types)): ?>
+			<div class='span-7'>
+				<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/account/password?accountId=<?php echo $this->id; ?>'>Change password</a>
+			</div>
+			<?php endif; ?>
+			<div class='span-7'>
+				<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/account/mappings?accountId=<?php echo $this->id; ?>'>Account mappings</a>
+			</div>
+			<div class='span-7'>
+				<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/account/roles?accountId=<?php echo $this->id; ?>'>Roles</a>
+			</div>
+		</div>
+		<div class='span-22' style='padding: 10px;'>
+			<div class='span-7'>
+				<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/account/contact?accountId=<?php echo $this->id; ?>'>Name and contacts</a>
+			</div>
+			<div class='span-7'>
+				<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/policy/index?accountId=<?php echo $this->id; ?>'>Policies</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class='prepend-1 append-1 span-22 prepend-top append-bottom'>
+	<div class='settings-block span-22'>
+		<div class='header bigtext'>Account Preferences</div>
+		<div class='span-22' style='padding: 10px;'>
+			<div class='span-7'>
+				<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/account/interface?accountId=<?php echo $this->id; ?>'>User interface</a>
+			</div>
+		</div>
+	</div>
+</div>
+<?php endif; ?>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

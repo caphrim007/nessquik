@@ -1,0 +1,58 @@
+<div class='span-22 prepend-top append-bottom prepend-1 append-1'>
+	<div class='permission-block'>
+		<strong>Queues</strong>
+
+		<div class='span-22'>
+			<div class='span-5'>
+				Available queues
+			</div>
+			<div class='span-5' style='text-align: right;'>
+				<span class='hypertext add-all'>&nbsp;</span>
+			</div>
+			<div class='span-2'>&nbsp;</div>
+			<div class='span-5'>
+				Selected queues
+			</div>
+			<div class='span-5 last' style='text-align: right;'>
+				<span class='hypertext clear-all'>clear all &laquo;</span>
+			</div>
+		</div>
+
+		<div class='permissions span-22'>
+			<div class='span-10'>
+				<ol class='selectable available'>
+					<?php if (!empty($this->allQueues)): ?>
+					<?php foreach($this->allQueues as $queue): ?>
+						<?php $queueObj = new Queue($queue['permission_resource']); ?>
+						<?php if ($this->inSelected($queue['permission_resource'], $this->selectedQueues)): ?>
+						<li class='<?php echo $queue['permission_id']; ?>'>
+							<input type='hidden' name='available-queue[]' value='<?php echo $queue['permission_id']; ?>'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/forward-selected.png'>&nbsp;&nbsp;
+							<span><?php echo $queueObj->getName(); ?></span>
+						<?php else: ?>
+						<li class='<?php echo $queue['permission_id']; ?>'>
+							<input type='hidden' name='available-queue[]' value='<?php echo $queue['permission_id']; ?>'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/forward.png'>&nbsp;&nbsp;
+							<span><?php echo $queueObj->getName(); ?></span>
+						<?php endif; ?>
+					<?php endforeach; ?>
+					<?php endif; ?>
+				</ol>
+			</div>
+			<div class='span-2'>&nbsp;</div>
+			<div class='span-10 last'>
+				<ol class='selectable selected'>
+					<?php if (!empty($this->selectedQueues)): ?>
+					<?php foreach($this->selectedQueues as $queue): ?>
+						<?php $queueObj = new Queue($queue['resource']); ?>
+						<li class='<?php echo $queue['id']; ?>'>
+							<input type='hidden' name='selected-queue[]' value='<?php echo $queue['id']; ?>'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/back.png'>&nbsp;&nbsp;
+							<span><?php echo $queueObj->getName(); ?></span>
+					<?php endforeach; ?>
+					<?php endif; ?>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>

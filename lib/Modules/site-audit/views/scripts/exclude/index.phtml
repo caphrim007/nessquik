@@ -1,0 +1,62 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div id='page-heading' class='span-22 last'>
+	<div class='span-22' style='font-size: 1.5em;'>
+		<a href='<?php echo $this->baseUrl(); ?>/site-audit' class='hypertext'>Site audit</a> &raquo;
+		Exclude targets
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<form id='form-submit'>
+		<strong>About</strong>
+		<div class='prepend-top'>
+			<p>
+			This step allows you to provide nessquik with a list of targets that
+			you want to exclude from your site audit.
+			This list will be added to each individual audit that nessquik creates
+			for you during this site audit configuration.
+			</p>
+		</div>
+
+		<hr class='quiet'/>
+
+		<input type='hidden' name='id' value='<?php echo $this->id; ?>'>
+		<div class='span-22 append-bottom'>
+			<div class='span-22'>
+				<strong>Targets</strong>
+				<div>
+					<textarea name='target' class='span-22' style='height: 200px;'></textarea>
+					<div class='small quiet'>
+						nessquik will attempt to extract IP addresses from
+						the above list. Valid forms of input are discussed in more detail 
+						<a class='hypertext' target='_blank' href='<?php echo $this->config->links->wiki; ?>'>here</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class='span-22 message error append-bottom'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+
+		<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Exclude the listed targets'>
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+
+		<div class='span-22 append-bottom prepend-top'>
+			<div class='span-22'>
+				&laquo; <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/site-audit/subnet'>Subnet</a>
+			</div>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

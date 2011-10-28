@@ -1,0 +1,126 @@
+<div id='adv-web-app-test-settings' class='advanced'>
+	<div class='span-21'>
+		<strong>Miscellaneous</strong>
+		<div class='web-app-test-block'>
+			<?php if ($this->isNew): ?>
+				<input type='checkbox' name='plugin_preference[webAppTestsEnableTests]'>Enable web applications tests
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preferences->webAppTestsEnableTests)): ?>
+				<input type='checkbox' name='plugin_preference[webAppTestsEnableTests]' checked='checked'>Enable web applications tests
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[webAppTestsEnableTests]'>Enable web applications tests
+				<?php endif; ?>
+			<?php endif; ?>
+
+			<div class='prepend-1 test-value'>
+				<hr class='space'/>
+				<strong>Maximum run time (min)</strong>
+				<div>
+					<?php if ($this->isNew || $this->policy->preferences->webAppTestsMaxRunTime == null): ?>
+					<input type='text' name='plugin_preference[webAppTestsMaxRunTime]' value='60'>
+					<?php else: ?>
+					<input type='text' name='plugin_preference[webAppTestsMaxRunTime]' value='<?php echo $this->policy->preferences->webAppTestsMaxRunTime; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+
+			<hr class='space'/>
+		</div>
+
+		<div class='web-app-test-block'>
+			<?php if ($this->isNew): ?>
+				<input type='checkbox' name='plugin_preference[webAppTestsSendPostRequests]'>Send POST requests
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preferences->webAppTestsSendPostRequests)): ?>
+				<input type='checkbox' name='plugin_preference[webAppTestssendPostRequests]' checked='checked'>Send POST requests
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[webAppTestsSendPostRequests]'>Send POST requests
+				<?php endif; ?>
+			<?php endif; ?>
+
+			<div class='prepend-1 test-value'>
+				<hr class='space'/>
+				<strong>Combinations of arguments values</strong>
+				<div>
+					<select name='plugin_preference[webAppTestsComboArgValues]'>
+					<?php if ($this->isNew): ?>
+						<option value='one value' selected='selected'>one value
+						<option value='all pairs (slower but efficient)'>all pairs (slower but efficient)
+						<option value='all combinations (extremely slow)'>all combinations (extremely slow)
+					<?php else: ?>
+						<?php if ($this->policy->preferences->webAppTestsComboArgValues == 'all pairs (slower but efficient)'): ?>
+							<option value='one value'>one value
+							<option value='all pairs (slower but efficient)' selected='selected'>all pairs (slower but efficient)
+							<option value='all combinations (extremely slow)'>all combinations (extremely slow)
+						<?php elseif ($this->policy->preferences->webAppTestsComboArgValues == 'all combinations (extremely slow)'): ?>
+							<option value='one value'>one value
+							<option value='all pairs (slower but efficient)'>all pairs (slower but efficient)
+							<option value='all combinations (extremely slow)' selected='selected'>all combinations (extremely slow)
+						<?php else: ?>
+							<option value='one value' selected='selected'>one value
+							<option value='all pairs (slower but efficient)'>all pairs (slower but efficient)
+							<option value='all combinations (extremely slow)'>all combinations (extremely slow)
+						<?php endif; ?>
+					<?php endif; ?>
+					</select>
+				</div>
+			</div>
+
+			<hr class='space'/>
+		</div>
+
+		<div class='web-app-test-block'>
+			<?php if ($this->isNew): ?>
+				<input type='checkbox' name='plugin_preference[webAppTestsParameterPollution]'>HTTP Parameter Pollution
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preferences->webAppTestsParameterPollution)): ?>
+				<input type='checkbox' name='plugin_preference[webAppTestsParameterPollution]' checked='checked'>HTTP Parameter Pollution
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[webAppTestsParameterPollution]'>HTTP Parameter Pollution
+				<?php endif; ?>
+			<?php endif; ?>
+
+			<div class='prepend-1 test-value'>
+				<hr class='space'/>
+				<strong>Stop at first flaw</strong>
+				<div>
+					<select name='plugin_preference[webAppTestsStopAtFirstFlaw]'>
+					<?php if ($this->isNew): ?>
+						<option value='per port (quicker)' selected='selected'>per port (quicker)
+						<option value='per CGI'>per CGI
+						<option value='look for all flaws (slower)'>look for all flaws (slower)
+					<?php else: ?>
+						<?php if ($this->policy->preferences->webAppTestsStopAtFirstFlaw == 'per CGI'): ?>
+							<option value='per port (quicker)'>per port (quicker)
+							<option value='per CGI' selected='selected'>per CGI
+							<option value='look for all flaws (slower)'>look for all flaws (slower)
+						<?php elseif ($this->policy->preference->webAppTestsStopAtFirstFlaw == 'look for all flaws (slower)'): ?>
+							<option value='per port (quicker)'>per port (quicker)
+							<option value='per CGI'>per CGI
+							<option value='look for all flaws (slower)' selected='selected'>look for all flaws (slower)
+						<?php else: ?>
+							<option value='per port (quicker)' selected='selected'>per port (quicker)
+							<option value='per CGI'>per CGI
+							<option value='look for all flaws (slower)'>look for all flaws (slower)
+						<?php endif; ?>
+					<?php endif; ?>
+					</select>
+				</div>
+			</div>
+
+			<hr class='space'/>
+		</div>
+
+		<div>
+			<?php if ($this->isNew): ?>
+				<input type='checkbox' name='plugin_preference[webAppTestsTestEmbedded]'>Test embedded web servers
+			<?php else: ?>
+				<?php if ($this->filter->filter($this->policy->preferences->webAppTestsTestEmbedded)): ?>
+				<input type='checkbox' name='plugin_preference[webAppTestsTestEmbedded]' checked='checked'>Test embedded web servers
+				<?php else: ?>
+				<input type='checkbox' name='plugin_preference[webAppTestsTestEmbedded]'>Test embedded web servers
+				<?php endif; ?>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

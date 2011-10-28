@@ -1,0 +1,51 @@
+<?php if (empty($this->results)): ?>
+	<div style='color: #000; text-align: center;' class='prepend-top'>
+		There are no existing account mappings
+	</div>
+<?php else: ?>
+	<div class='selectable last audit-list'>
+		<table style='width: 100%; -moz-border-radius: 5px 5px 5px 5px; border: 5px solid #f3f3f3;'>
+			<tbody>
+	<?php foreach ($this->results as $key => $map): ?>
+		<tr style='background: url("usr/images/table-bg.png") repeat-x scroll 0 bottom #fff; border-bottom: 1px solid #cdcdcd; border-left: 1px solid #cdcdcd; border-right: 1px solid #cdcdcd;'>
+			<td style='width: 5%; border-bottom: 1px solid #cdcdcd; border-left: 1px solid #cdcdcd;'>
+				<input type='checkbox' name='mapId' value='<?php echo $map['id']; ?>'>
+			</td>
+			<td style='width: 70%; border-bottom: 1px solid #cdcdcd;'>
+				<?php echo $map['username']; ?>
+			</td>
+			<td class='icons' style='width: 25%; border-bottom: 1px solid #cdcdcd; border-right: 1px solid #cdcdcd;'>
+				<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='Delete mapping' title='Delete mapping'>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+
+	<?php if (count($this->results) == $this->limit): ?>
+	<div class='span-15 prepend-top'>
+		<div class='span-7'>&nbsp;</div>
+		<div class='span-8 last' style='text-align: right;'>
+			<?php if ($this->page > 1): ?>
+			<span class='show-less hypertext'>&laquo; less</span>
+			<?php else: ?>
+			&nbsp;
+			<?php endif; ?>
+			&nbsp;&nbsp;&nbsp;
+			<span class='show-more hypertext'>more &raquo;</span>
+		</div>
+	</div>
+	<?php else: ?>
+	<div class='span-14 prepend-top'>
+		<div class='span-7'>&nbsp;</div>
+		<?php if ($this->page > 1): ?>
+		<div class='span-8 last' style='text-align: right;'>
+			<span class='show-less hypertext'>&laquo; less</span>
+		</div>
+		<?php else: ?>
+		<div class='span-8 last'>&nbsp;</div>
+		<?php endif; ?>
+	</div>
+	<?php endif; ?>
+<?php endif; ?>

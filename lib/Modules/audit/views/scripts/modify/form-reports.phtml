@@ -1,0 +1,326 @@
+<div id='reports' class='span-22 prepend-top append-bottom prepend-1 append-1 config'>
+	<div class='span-21'>
+		<strong>Available reports</strong>
+		<div class='block report-list prepend-top'>
+			<div class='select-actions span-21 last'>
+				Select: <span class='hypertext select-all'>All</span>, <span class='hypertext select-none'>None</span>
+			</div>
+			<div class='search-results span-21'>
+				<div style='padding: 10px;' class='span-21'>
+					<div class='content'>
+						<div style='text-align: center; color: #999;'>
+							Loading list of reports...
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id='reports-dialog' class='dialog-block container'>
+		<div style='width: 100%; border-bottom: 1px solid #eee; background-color: #eee; height: 45px; min-height: 45px;'>
+			<div style='padding: 10px;'>
+				<div style='color: #303233; font-weight: bold;'>
+					Audit report <span class='audit-report-name'></span>
+				</div>
+			</div>
+		</div>
+
+		<div style='border-color: 1px solid #fff;'>
+			<div id='report-detail'>
+				<div class='loading-block' style='height: 600px; overflow: auto;'>
+					<div style='text-align: center; color: #999;'>
+						<div class='prepend-top append-bottom'>
+							Loading the report...
+						</div>
+					</div>
+				</div>
+				<div class='content-block' style='height: 600px; overflow: auto;'></div>
+			</div>
+		</div>
+
+		<div class='span-18 last' style='height: 50px; background-color: #eee;'>
+			<div class='span-9' style='text-align: left; padding: 10px;'>
+				<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+			</div>
+			<div class='span-8 last' style='text-align: right; padding: 10px;'>
+				<input type='button' class='reports-dialog-close' value='close'>
+			</div>
+		</div>
+	</div>
+
+	<div id='reports-download' class='dialog-block'>
+		<div style='width: 100%; border-bottom: 1px solid #eee; background-color: #eee; height: 45px; min-height: 45px;'>
+			<div style='padding: 10px;'>
+				<div style='color: #303233; font-weight: bold;'>
+					Download audit report <span class='audit-report-name'></span>
+				</div>
+			</div>
+		</div>
+
+		<div class='span-18 last' style='height: 405px;'>
+			<div id='download-steps' style='border-color: 1px solid #fff;'>
+				<div id='download-format' class='span-18' style='height: 340px;'>
+					<div class='append-bottom span-18'>
+						<div class='span-8 colborder' style='height: 350px;'>
+							<strong>Formats</strong>
+							<div class='small quiet prepend-top'>
+								<p>
+								The various report formats that nessquik supports
+								are listed below. To download a report in the desired
+								format, first click on the format.
+								</p>
+								<p>
+								Information about the format and links to download
+								the report will be displayed to the right
+								</p>
+							</div>
+
+							<div class='prepend-top'>
+								<div class='row format hypertext' style='padding: 0 0 5px 0;'>
+									<input type='hidden' name='format' value='format-nessus'>
+									<strong style='padding: 5px;'>Nessus</strong>
+								</div>
+								<div class='row format hypertext' style='padding: 5px 0 5px 0;'>
+									<input type='hidden' name='format' value='format-html'>
+									<strong style='padding: 5px;'>Html</strong>
+								</div>
+								<div class='row format hypertext' style='padding: 5px 0 5px 0;'>
+									<input type='hidden' name='format' value='format-text'>
+									<strong style='padding: 5px;'>Text</strong>
+								</div>
+								<div class='row no-border format hypertext' style='padding: 5px 0 0 0;'>
+									<input type='hidden' name='format' value='format-nbe'>
+									<strong style='padding: 5px;'>Nbe</strong>
+								</div>
+							</div>
+						</div>
+						<div class='span-8 last'>
+							<div id='format-nessus' class='format-example'>
+							<strong>Info</strong>
+								<div class='small quiet prepend-top'>
+									<p>
+									The nessus format is an XML format that is used
+									by the Nessus vulnerability scanner
+									</p>
+									<p>
+									If you use the Nessus client software and want to
+									import results into that, you would probably want
+									to choose this format
+									</p>
+								</div>
+								<div style='text-align: center;'>
+									<input type='hidden' name='format' value='nessus'>
+									<a href='#' class='hypertext download'>Download</a>
+								</div>
+								<div class='prepend-top'>
+									<strong>Example</strong>
+									<div class='prepend-top'>
+										<img src='<?php echo $this->baseUrl(); ?>/usr/images/preview-nessus.png'>
+									</div>
+								</div>
+							</div>
+							<div id='format-html' class='format-example'>
+							<strong>Info</strong>
+								<div class='small quiet prepend-top'>
+									<p>
+									The HTML file format produces a report that can be
+									viewed like a standard webpage. The layout of the
+									HTML report is similar to the HTML reports that
+									nessus has produced in the past.
+									</p>
+									<p>
+									Refer to the example for an idea of what the report
+									looks like
+									</p>
+								</div>
+								<div style='text-align: center;'>
+									<input type='hidden' name='format' value='html'>
+									<a href='#' class='hypertext download'>Download</a>
+								</div>
+								<div class='prepend-top'>
+									<strong>Example</strong>
+									<div class='prepend-top'>
+										<img src='<?php echo $this->baseUrl(); ?>/usr/images/preview-html-v2.png'>
+									</div>
+								</div>
+							</div>
+							<div id='format-text' class='format-example'>
+							<strong>Info</strong>
+								<div class='small quiet prepend-top'>
+									<p>
+									The text format is a lightweight representation
+									of the scan results in plain text.
+									</p>
+									<p>
+									This format works great for emailing<br><br>
+									</p>
+								</div>
+								<div style='text-align: center;'>
+									<input type='hidden' name='format' value='txt'>
+									<a href='#' class='hypertext download'>Download</a>
+								</div>
+								<div class='prepend-top'>
+									<strong>Example</strong>
+									<div class='prepend-top'>
+										<img src='<?php echo $this->baseUrl(); ?>/usr/images/preview-text.png'>
+									</div>
+								</div>
+							</div>
+							<div id='format-nbe' class='format-example'>
+							<strong>Info</strong>
+								<div class='small quiet prepend-top'>
+									<p>
+									nbe is an older format used by the nessus security
+									scanner that some third party applications know how
+									to import.
+									</p>
+									<p>
+									It is a pipe delimited format that encapsulates the
+									results of the scan and is easily parsed by scripts
+									and other tools
+									</p>
+								</div>
+								<div style='text-align: center;'>
+									<input type='hidden' name='format' value='nbe'>
+									<a href='#' class='hypertext download'>Download</a>
+								</div>
+								<div class='prepend-top'>
+									<strong>Example</strong>
+									<div class='prepend-top'>
+										<img src='<?php echo $this->baseUrl(); ?>/usr/images/preview-nbe.png'>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class='span-18 last' style='height: 50px; background-color: #eee;'>
+			<div class='span-9' style='text-align: left; padding: 10px;'>
+				<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+			</div>
+			<div class='span-8 last' style='text-align: right; padding: 10px;'>
+				<input type='button' class='reports-dialog-close' value='close'>
+			</div>
+		</div>
+	</div>
+
+	<div id='reports-email' class='dialog-block'>
+		<div style='width: 100%; border-bottom: 1px solid #eee; background-color: #eee; height: 45px; min-height: 45px;'>
+			<div style='padding: 10px;'>
+				<div style='color: #303233; font-weight: bold;'>
+					Email audit report <span class='audit-report-name'></span>
+				</div>
+			</div>
+		</div>
+
+		<form>
+		<div class='span-18 last' style='min-height: 200px; padding: 10px;'>
+			<div class='span-18 append-bottom'>
+				<div class='span-5'>
+					<strong>Email subject</strong>
+				</div>
+				<div class='span-13 last'>
+					<input type='text' name='subject' class='span-11' value='nessquik scan report'>
+				</div>
+			</div>
+			<div class='span-18 append-bottom'>
+				<div class='span-5'>
+					<strong>Report format</strong>
+				</div>
+				<div class='span-13 last'>
+					<select name='reportFormat' class='span-11 report-format'>
+						<optgroup label='Formats'>
+							<option value='nessus'>nessus
+							<option value='html' checked='checked'>html
+							<option value='txt'>text
+							<option value='nbe'>nbe
+						</optgroup>
+					</select>
+					<div class='span-11' style='max-height: 150px; overflow: hidden; position: relative; z-index: 1;'>
+						<div class='prepend-top format-example nessus'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/preview-nessus.png'>
+						</div>
+						<div class='prepend-top format-example html'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/preview-html-v2.png'>
+						</div>
+						<div class='prepend-top format-example txt'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/preview-text.png'>
+						</div>
+						<div class='prepend-top format-example nbe'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/preview-nbe.png'>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='span-18 append-bottom'>
+				<div class='span-5'>
+					<strong>Compress attachment?</strong>
+				</div>
+				<div class='span-4 last'>
+					<input type='radio' name='compressAttachment' value='yes'>yes
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type='radio' name='compressAttachment' value='no' checked='checked'>no
+				</div>
+			</div>
+			<div class='span-18 append-bottom'>
+				<div class='span-5'>
+					<strong>Send to me</strong>
+				</div>
+				<div class='span-13 last'>
+					<input type='radio' name='sendToMe' value='yes' checked='checked'>yes
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type='radio' name='sendToMe' value='no'>no
+				</div>
+			</div>
+			<div class='span-18'>
+				<div class='span-5'>
+					<strong>Send to other people</strong>
+				</div>
+				<div class='span-13 last'>
+					<input type='radio' name='sendToOthers' value='yes'>yes
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type='radio' name='sendToOthers' value='no' checked='checked'>no
+				</div>
+			</div>
+			<div id='recipientContainer' class='span-18'>
+				<div class='small quiet prepend-top append-bottom'>
+					The emailed reports will be sent from your email address
+					and recipients will be able to reply to you.
+				</div>
+				<div class='span-17 prepend-1'>
+					<div class='span-16'>
+						<div class='span-4'>
+							<strong>Additional recipients</strong>
+						</div>
+						<div class='span-12 last' style='text-align: right;'>
+							<span class='hypertext add-recipient'>add</span>
+						</div>
+					</div>
+
+					<div id='emailRecipientList'></div>
+				</div>
+			</div>
+			<div class='message error span-17 prepend-top'>
+				<span class='content'></span>
+				&nbsp;&nbsp;
+				<span class='hypertext close'>close</span>
+			</div>
+		</div>
+		</form>
+
+		<div class='span-18 last' style='height: 50px; background-color: #eee;'>
+			<div class='span-9' style='text-align: left; padding: 10px;'>
+				<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+			</div>
+			<div class='span-8 last' style='text-align: right; padding: 10px;'>
+				<input type='button' class='btn-save' value='send'>
+				&nbsp;&nbsp;&nbsp;
+				<span class='hypertext reports-email-close'>close</span>
+			</div>
+		</div>
+	</div>
+</div>

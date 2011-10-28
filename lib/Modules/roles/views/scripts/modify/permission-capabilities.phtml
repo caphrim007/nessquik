@@ -1,0 +1,56 @@
+<div class='span-22 prepend-1 append-1 append-bottom'>
+	<div class='permission-block capability'>
+		<strong>Capabilities</strong>
+
+		<div class='span-22'>
+			<div class='span-5'>
+				Available capabilities
+			</div>
+			<div class='span-5' style='text-align: right;'>
+				<span class='hypertext add-all'>add all &raquo;</span>
+			</div>
+			<div class='span-2'>&nbsp;</div>
+			<div class='span-5'>
+				Selected capabilities
+			</div>
+			<div class='span-5 last' style='text-align: right;'>
+				<span class='hypertext clear-all'>clear all &laquo;</span>
+			</div>
+		</div>
+
+		<div class='permissions span-22'>
+			<div class='span-10'>
+				<ol class='selectable available'>
+					<?php if (!empty($this->allCapabilities)): ?>
+					<?php foreach($this->allCapabilities as $capability): ?>
+						<?php if ($this->inSelected($capability['permission_resource'], $this->selectedCapabilities)): ?>
+						<li class='<?php echo $capability['permission_id']; ?>'>
+							<input type='hidden' name='available-capability[]' value='<?php echo $capability['permission_id']; ?>'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/forward-selected.png'>&nbsp;&nbsp;
+							<span><?php echo $capability['permission_resource']; ?></span>
+						<?php else: ?>
+						<li class='<?php echo $capability['permission_id']; ?>'>
+							<input type='hidden' name='available-capability[]' value='<?php echo $capability['permission_id']; ?>'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/forward.png'>&nbsp;&nbsp;
+							<span><?php echo $capability['permission_resource']; ?></span>
+						<?php endif; ?>
+					<?php endforeach; ?>
+					<?php endif; ?>
+				</ol>
+			</div>
+			<div class='span-2'>&nbsp;</div>
+			<div class='span-10 last'>
+				<ol class='selectable selected'>
+					<?php if (!empty($this->selectedCapabilities)): ?>
+					<?php foreach($this->selectedCapabilities as $capability): ?>
+						<li class='<?php echo $capability['id']; ?>'>
+							<input type='hidden' name='selected-capability[]' value='<?php echo $capability['id']; ?>'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/back.png'>&nbsp;&nbsp;
+							<span><?php echo $capability['resource']; ?></span>
+					<?php endforeach; ?>
+					<?php endif; ?>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>

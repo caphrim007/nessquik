@@ -1,0 +1,173 @@
+<div id='targets' class='span-24 prepend-top append-bottom config'>
+	<div class='span-24'>
+		<div class='span-11 append-bottom append-1' style='text-align: center;'>
+			<span style='font-size: 1.3em;'>Included Targets</span>
+		</div>
+		<div class='span-11 append-bottom' style='text-align: center;'>
+			<span style='font-size: 1.3em;'>Excluded Targets</span>
+		</div>
+	</div>
+
+	<div class='span-24'>
+		<div id='targetIncludeList' class='span-11 append-1 targetList'>
+			<input type='hidden' name='type' value='include'>
+			<div class='prepend-top no-results-mesg'>
+				<p>Your included targets list is empty</p>
+				<p><span class='hypertext addTarget'>Add one</span> now</p>
+			</div>
+		<?php if (empty($this->include)): ?>
+			<div class='span-10 prepend-1 content'></div>
+		<?php else: ?>
+			<div class='span-10 prepend-1 content'>
+			<?php foreach ($this->include as $target): ?>
+
+			<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
+			<div class='span-10 prepend-1 newTargetBar'>
+				<div class='targetInitiator'>
+					<span class='targetInitiatorLink hypertext' style='padding-left: 5px;'>add target</span>
+				</div>
+				<div class='targetActions'>
+					<table class='hideTypes'>
+						<tr>
+							<td class='targetTypeIcons' style='width: 15%;'>
+								<img class='type HostnameTarget' src='<?php echo $this->baseUrl(); ?>/usr/images/target-host.png'>
+								<img class='type NetworkTarget' src='<?php echo $this->baseUrl(); ?>/usr/images/target-cidr.png'>
+								<img class='type RangeTarget' src='<?php echo $this->baseUrl(); ?>/usr/images/target-range.png'>
+								<img class='type ClusterTarget' src='<?php echo $this->baseUrl(); ?>/usr/images/target-miscomp.png'>
+								<img src='<?php echo $this->baseUrl(); ?>/usr/images/bullet_arrow_down.png'>
+							</td>
+							<td style='width: 70%;'>
+								<input type='text' name='target' style='width: 100%;'>
+							</td>
+							<td style='width: 15%; text-align:center;'>
+								<img class='accept' src='<?php echo $this->baseUrl(); ?>/usr/images/accept.png'>
+								&nbsp;
+								<img class='cancel' src='<?php echo $this->baseUrl(); ?>/usr/images/cancel.png'>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class='pager prepend-1 prepend-top append-bottom span-10' style='text-align: center;'></div>
+		</div>
+
+		<div id='targetExcludeList' class='span-11 targetList'>
+			<input type='hidden' name='type' value='exclude'>
+			<div class='prepend-top no-results-mesg'>
+				<p>Your excluded targets list is empty</p>
+				<p><span class='hypertext addTarget'>Add one</span> now</p>
+			</div>
+		<?php if (empty($this->exclude)): ?>
+			<div class='span-10 prepend-1 content'></div>
+		<?php else: ?>
+			<div class='span-10 prepend-1 content'>
+			<?php foreach ($this->exclude as $target): ?>
+
+			<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
+			<div class='span-10 prepend-1 newTargetBar'>
+				<div class='targetInitiator'>
+					<span class='targetInitiatorLink hypertext' style='padding-left: 5px;'>add target</span>
+				</div>
+				<div class='targetActions'>
+					<table class='hideTypes'>
+						<tr>
+							<td class='targetTypeIcons' style='width: 15%;'>
+								<img class='type HostnameTarget' src='<?php echo $this->baseUrl(); ?>/usr/images/target-host.png'>
+								<img class='type NetworkTarget' src='<?php echo $this->baseUrl(); ?>/usr/images/target-cidr.png'>
+								<img class='type RangeTarget' src='<?php echo $this->baseUrl(); ?>/usr/images/target-range.png'>
+								<img class='type ClusterTarget' src='<?php echo $this->baseUrl(); ?>/usr/images/target-miscomp.png'>
+								<img src='<?php echo $this->baseUrl(); ?>/usr/images/bullet_arrow_down.png'>
+							</td>
+							<td style='width: 70%;'>
+								<input type='text' name='target' style='width: 100%;'>
+							</td>
+							<td style='width: 15%; text-align:center;'>
+								<img class='accept' src='<?php echo $this->baseUrl(); ?>/usr/images/accept.png'>
+								&nbsp;
+								<img class='cancel' src='<?php echo $this->baseUrl(); ?>/usr/images/cancel.png'>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class='pager prepend-1 prepend-top append-bottom span-10' style='text-align: center;'></div>
+		</div>
+	</div>
+</div>
+
+<div id='targetTypeSelectorInclude' class='typeSelector'>
+	<table>
+		<tr class='HostnameTarget'>
+			<td>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/target-host.png'>
+			</td>
+			<td>
+				<span>Individual host</span>
+			</td>
+		</tr>
+		<tr class='NetworkTarget'>
+			<td>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/target-cidr.png'>
+			</td>
+			<td>
+				<span>Network</span>
+			</td>
+		</tr>
+		<tr class='RangeTarget'>
+			<td>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/target-range.png'>
+			</td>
+			<td>
+				<span>Range</span>
+			</td>
+		</tr>
+		<tr class='ClusterTarget'>
+			<td>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/target-miscomp.png'>
+			</td>
+			<td>
+				<span>Miscomp Cluster</span>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id='targetTypeSelectorExclude' class='typeSelector'>
+	<table>
+		<tr class='HostnameTarget'>
+			<td>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/target-host.png'>
+			</td>
+			<td>
+				<span>Individual host</span>
+			</td>
+		</tr>
+		<tr class='NetworkTarget'>
+			<td>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/target-cidr.png'>
+			</td>
+			<td>
+				<span>Network</span>
+			</td>
+		</tr>
+		<tr class='RangeTarget'>
+			<td>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/target-range.png'>
+			</td>
+			<td>
+				<span>Range</span>
+			</td>
+		</tr>
+		<tr class='ClusterTarget'>
+			<td>
+				<img src='<?php echo $this->baseUrl(); ?>/usr/images/target-miscomp.png'>
+			</td>
+			<td>
+				<span>Miscomp Cluster</span>
+			</td>
+		</tr>
+	</table>
+</div>

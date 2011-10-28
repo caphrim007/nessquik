@@ -1,0 +1,33 @@
+<?php if (empty($this->results)): ?>
+	<div class='prepend-top no-results-mesg'>
+		No policies were found
+	</div>
+<?php else: ?>
+<div class='selectable last policy-list list'>
+	<table>
+		<thead>
+			<tr>
+				<th class='check'><input type='checkbox'></th>
+				<th colspan='2'>Policy name</th>
+			</tr>
+		</thead>
+		<tbody>
+<?php foreach ($this->results as $key => $policy): ?>
+	<tr class='row content'>
+		<td class='check'>
+			<input type='checkbox' name='policy-id[]' value='<?php echo $policy['policy_id']; ?>'>
+		</td>
+		<td style='width: 70%; border-bottom: 1px solid #cdcdcd;'>
+			<a class='hypertext' href='<?php echo $this->baseUrl() ;?>/policy/modify/edit?id=<?php echo $policy['policy_id']; ?>'><?php echo $policy['policy_name'] ; ?></a>
+		</td>
+		<td class='icons'>
+			<input type='hidden' name='policyId' value='<?php echo $policy['policy_id']; ?>'>
+			&nbsp;&nbsp;&nbsp;
+			<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='Delete policy' title='Delete policy'>
+		</td>
+	</tr>
+<?php endforeach; ?>
+		</tbody>
+	</table>
+</div>
+<?php endif; ?>

@@ -1,0 +1,111 @@
+<div id='targets' class='clearfix'>
+	<div class='span-22'>
+		<div class='span-11'>
+			<strong>Site subnet</strong>
+			<div class='small quiet'>
+				Choose a format to enter your site subnet
+			</div>
+		</div>
+		<div class='span-11 last'>
+			<div class='span-11'>
+					<select name='type'>
+					<option value='network'>CIDR
+					<option value='range'>Range
+				</select>
+			</div>
+			<div class='span-11'>
+				<div class='input network'>
+					<strong>Network and mask</strong>
+					<div>
+						<input name='network' type='text' style='width: 200px;'> / 
+						<input name='netmask' type='text' style='width: 50px;' maxlength='2'>
+					</div>
+				</div>
+				<div class='input range'>
+					<div class='span-11'>
+						<div class='span-5'>
+							<strong>Start address</strong>
+						</div>
+						<div class='span-1'>&nbsp;</div>
+						<div class='span-5 last'>
+							<strong>End address</strong>
+						</div>
+					</div>
+					<div class='span-11'>
+						<div class='span-5'>
+							<input name='start' type='text'>
+						</div>
+						<div class='span-1'>&nbsp;</div>
+						<div class='span-5 last'>
+							<input name='end' type='text'>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr class='space'/>
+
+	<strong>Target list date range</strong>
+	<div class='small quiet'>
+		Include targets that were last scanned before a particular date and time.
+		Choose a date range to <span class='hypertext sample'>view sample</span> targets.
+	</div>
+
+	<div class='span-22'>
+		<div class='span-22 last prepend-top append-bottom'>
+			<input type='radio' name='startDateSwitch' value='general' checked='checked'>Targets last scanned before a general date
+			<div class='prepend-1 prepend-top'>
+				<select name='generalDate'>
+					<option value='last60Minutes'>Last 60 minutes
+					<option value='last4Hours'>Last 4 hours
+					<option value='last24Hours'>Last 24 hours
+					<option value='last7Days'>Last 7 days
+					<option value='last30Days' selected='selected'>Last 30 days
+				</select>
+			</div>
+		</div>
+
+		<div class='span-22 last prepend-top append-bottom future'>
+			<input type='radio' name='startDateSwitch' value='future'>Targets last scanned before specific date and time
+			<div class='prepend-1 prepend-top'>
+				<div class='span-5'>
+					<input class='span-4' type='text' name='startOnDate' id='startOnDate'>
+				</div>
+				<div class='span-1'>
+					<div style='padding-top: 5px; text-align: center;'>
+						at
+					</div>
+				</div>
+				<div class='span-9 last'>
+					<input type='text' class='span-4' name='startOnTime' id='startOnTime'>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id='dialog'>
+		<div style='width: 100%; border-bottom: 1px solid #eee; background-color: #eee; height: 45px; min-height: 45px;'>
+			<div style='padding: 10px;'>
+				<div style='color: #303233; font-weight: bold;'>
+					Sample audit targets
+				</div>
+			</div>
+		</div>
+
+		<div class='span-18 last' style='min-height: 300px;'>
+			<div id='target-list' style='border-color: 1px solid #fff;'>
+			</div>
+		</div>
+
+		<div class='span-18 last' style='height: 45px; background-color: #eee;'>
+			<div class='span-9' style='text-align: left; padding: 10px;'>
+				<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+			</div>
+			<div class='span-8 last' style='text-align: right; padding: 10px;'>
+				<span class='hypertext targets-dialog-close'>close</span>
+			</div>
+		</div>
+	</div>
+</div>

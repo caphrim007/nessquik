@@ -1,0 +1,41 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 row'>
+	<div class='span-22' style='font-size: 1.5em;'>
+		<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/admin/audit'>Audits</a> &raquo;
+		Status
+		<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+	<form id='form-submit'>
+		<div class='span-22'>
+			<strong>Scanner busyness</strong>
+			<div class='small quiet'>
+
+			</div>
+		</div>
+		<div class='search-results span-22 last'>
+			<div style='padding: 10px;' class='span-21 last'>
+				<div id='scannerSearchResults'>
+					<table id='scannerResultsTable' class='tablesorter'>
+						<thead>
+							<tr>
+								<th>Name of scanner</th>
+								<th>Number of running jobs</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+					<div id='scannerResultsMesg'></div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

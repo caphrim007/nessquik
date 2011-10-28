@@ -1,0 +1,103 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/scanners/views/scripts/modify/title.phtml'; ?>
+
+<div class='prepend-1 append-1 prepend-top append-bottom span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+	<form id='form-submit'>
+		<input type='hidden' name='scannerId' value='<?php echo $this->id; ?>'>
+
+		<div class='span-22 append-bottom'>
+			<strong>Server name</strong><span class='required'>*</span>
+			<div>
+				<?php if ($this->isNew): ?>
+					<input type='text' name='server-name' style='width: 50%;' value='New server'>
+				<?php else: ?>
+					<input type='text' name='server-name' style='width: 50%;' value='<?php echo $this->scanner->name; ?>'>
+				<?php endif; ?>
+			</div>
+		</div>
+
+		<div class='span-22 append-bottom'>
+			<strong>Description</strong>
+			<div>
+				<?php if ($this->isNew): ?>
+				<textarea name='description' style='width: 50%; height: 75px;'></textarea>
+				<?php else: ?>
+				<textarea name='description' style='width: 50%; height: 75px;'><?php echo $this->scanner->description; ?></textarea>
+				<?php endif; ?>
+			</div>
+		</div>
+
+		<div class='span-22 append-bottom'>
+			<strong>Adapter</strong>
+			<div>
+				<select id='adapter' name='adapter'>
+					<option value='NessusXmlRpc' selected='selected'>Nessus XML-RPC
+				</select>
+			</div>
+		</div>
+
+
+		<div class='span-22 append-bottom'>
+			<div class='span-10'>
+				<strong>Host</strong><span class='required'>*</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='host' value='localhost'>
+					<?php else: ?>
+					<input type='text' name='host' value='<?php echo $this->scanner->host; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class='span-11 last'>
+				<strong>Port</strong><span class='required'>*</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='port' value='8834'>
+					<?php else: ?>
+					<input type='text' name='port' value='<?php echo $this->scanner->port; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+
+		<div class='span-22 append-bottom'>
+			<div class='span-10'>
+				<strong>Username</strong><span class='required'>*</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='username' value='vscan'>
+					<?php else: ?>
+					<input type='text' name='username' value='<?php echo $this->scanner->username; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class='span-10'>
+				<strong>Password</strong><span class='required'>*</span>
+				<div>
+					<?php if ($this->isNew): ?>
+					<input type='text' name='password' value='password'>
+					<?php else: ?>
+					<input type='text' name='password' value='<?php echo $this->scanner->password; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+
+		<div class='message error append-bottom'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+
+		<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Save'>
+			<a class='hypertext' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/admin/scanners'>cancel</a>
+		</div>
+	</form>
+
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

@@ -1,0 +1,47 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div class='prepend-1 append-1 span-22 last prepend-top append-bottom'>
+	<div class='span-9 last'>
+		<img src='<?php echo $this->baseUrl(); ?>/usr/images/favicon.png' style='width: 310px; height: 277px;' alt='I want to share something with you - the three sentences that will get you through life. Number one, "cover for me." Number two, "oh, good idea, boss." Number three, "it was like that when I got here."' title='I want to share something with you - the three sentences that will get you through life. Number one, "cover for me." Number two, "oh, good idea, boss." Number three, "it was like that when I got here."'>
+	</div>
+	<div class='span-13 last'>
+		<div class='span-13' style='font-size: 1.5em;'>
+			Hi, you're using awesome software!
+		</div>
+		<div class='span-13 prepend-top'>
+			<p>
+			This is version <?php echo $this->config->misc->version; ?> of nessquik, and boy, what a labor of love.
+			</p>
+			<p>
+			This software was developed to make vulnerability assessment accessible to the masses.
+			In addition to that, it bakes in extra amounts of goodness and adds functionality that
+			benefits you and makes your job easier.
+			</p>
+			<p>
+			I hope you enjoy nessquik.
+			</p>
+		</div>
+		<div class='span-13' style='font-size: 1.5em;'>
+			Useful links
+		</div>
+		<div class='span-12 prepend-1 prepend-top'>
+			Here are some links that you might find helpful while
+			using the software.
+			<ul class='prepend-top'>
+				<li><a class='hypertext' target='_blank' href='<?php echo $this->config->links->home; ?>'>nessquik homepage</a>
+				<li><a class='hypertext' target='_blank' href='<?php echo $this->config->links->wiki; ?>'>wiki</a>
+			</ul>
+		</div>
+		<div class='span-13 prepend-top' style='font-size: 1.5em;'>
+			Report a bug
+		</div>
+		<div class='span-12 prepend-1 prepend-top'>
+			I take bugs seriously. Report them and I will fix them.
+			<ul class='prepend-top'>
+				<li><a class='hypertext' target='_blank' href='<?php echo $this->config->links->bugreport; ?>'>nessquik is busted!</a>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

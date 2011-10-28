@@ -1,0 +1,68 @@
+<?php if (empty($this->results)): ?>
+	<div id='selectable-plugin' class='selectable-plugin'>
+		<div style='color: #aaa; font-size: 10px; padding: 10px;'>
+			No plugins were found
+		</div>
+		<?php if ($this->page > 1): ?>
+		<table>
+			<tr class='navi'>
+				<td class='less'>
+					<span class='show-less hypertext'>&laquo; less</span>
+				</td>
+				<td class='more'>
+					&nbsp;
+				</td>
+			</tr>
+		</table>
+		<?php endif; ?>
+	</div>
+<?php else: ?>
+	<div id='selectable-plugin' class='selectable-plugin'>
+	<table>
+	<?php foreach($this->results as $key => $plugin): ?>
+		<tr class='plugin-row'>
+			<td class='check'>
+				<input type='hidden' value='<?php echo $plugin['id']; ?>'>
+				<input class='plugin-checkbox' type='checkbox' value='<?php echo $plugin['id']; ?>'>
+			</td>
+			<td class='name'>
+				<?php if (strlen($plugin['name']) > 95): ?>
+				<span class='hypertext name' title='<?php echo $plugin['name']; ?>'><?php echo trim(substr($plugin['name'],0,95)).'...'; ?></span>
+				<?php else: ?>
+				<span class='hypertext name' title='<?php echo $plugin['name']; ?>'><?php echo $plugin['name']; ?></span>
+				<?php endif; ?>
+			</td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+	<table>
+	<?php if (count($this->results) == $this->limit): ?>
+		<tr class='navi'>
+			<td class='less'>
+				<?php if ($this->page > 1): ?>
+				<span class='show-less hypertext'>&laquo; less</span>
+				<?php else: ?>
+				&nbsp;
+				<?php endif; ?>
+			</td>
+			<td class='more'>
+				<span class='show-more hypertext'>more &raquo;</span>
+			</td>
+		</tr>
+	<?php else: ?>
+		<tr class='navi'>
+			<td class='less'>
+				<?php if ($this->page > 1): ?>
+				<span class='show-less hypertext'>&laquo; less</span>
+				<?php else: ?>
+				&nbsp;
+				<?php endif; ?>
+			</td>
+			<td class='more'>
+				&nbsp;
+			</td>
+		</tr>
+	<?php endif; ?>
+	</table>
+	</div>
+<?php endif; ?>

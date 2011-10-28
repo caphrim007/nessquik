@@ -1,0 +1,20 @@
+<?php if (empty($this->results)): ?>
+	No results were found
+<?php else: ?>
+	<table class='span-22 tablesorter'>
+		<thead>
+			<tr>
+				<th>Country</th>
+				<th>Number of URLs hosted</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach ($this->results as $country): ?>
+			<tr class='row'>
+				<td><?php echo $country['key']; ?></td>
+				<td><?php echo $country['value']; ?></td>
+			</tr>
+		<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php endif; ?>

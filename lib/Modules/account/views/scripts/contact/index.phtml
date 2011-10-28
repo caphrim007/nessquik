@@ -1,0 +1,197 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div class='span-12' style='font-size: 1.5em;'>
+		<a href='<?php echo $this->baseUrl(); ?>/admin/account' class='hypertext'>Accounts</a> &raquo;
+		<a href='<?php echo $this->baseUrl(); ?>/account/modify/edit?id=<?php echo $this->accountId; ?>' class='hypertext'><?php echo $this->account->username; ?></a> &raquo;
+		Name and contacts
+		<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-15 colborder'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+	<form id='form-submit'>
+		<input type='hidden' name='accountId' value='<?php echo $this->accountId; ?>'>
+		<div id='delete-contacts'>
+			<input class='skeleton' type='hidden' name='delete-list[]' value=''>
+		</div>
+
+		<div class='span-15'>
+			<div class='span-15'>
+				<strong>There are some who call me...</strong>
+				<div class='small quiet'>
+					When we contact you, we think it would a bit more human to use your name or super hero alias.
+					<br>
+					How would you like us to address you when we send out our notifications?
+				</div>
+			</div>
+			<div>
+				<?php if ($this->account->proper_name == ''): ?>
+				<input type='text' class='span-15' name='proper_name' value='The Illustrious <?php echo $this->account->username; ?>'>
+				<?php else: ?>
+				<input type='text' class='span-15' name='proper_name' value='<?php echo $this->account->proper_name; ?>'>
+				<?php endif; ?>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div id='email-block' class='block span-15'>
+			<div class='span-15'>
+				<div class='span-15'>
+					<strong>Email</strong>
+				</div>
+				<div class='span-15'>
+					<div class='small quiet span-14'>
+						Each of these addresses will be notified when we need to contact you via email
+					</div>
+					<div class='span-1 last add-recipient' style='text-align: center;'>
+						<span class='hypertext'>add</span>
+					</div>
+				</div>
+			</div>
+			<div class='list span-15'>
+				<?php $emails = $this->account->doc->emailContact; ?>
+				<?php if (empty($emails)): ?>
+				<div class='span-15 recipient'>
+					<div class='span-14'>
+						<input type='text' name='emailContact[]' class='span-14'>
+					</div>
+					<div class='span-1 last icons' style='text-align: center;'>
+						<img class='trash' style='padding-top: 10px;' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+					</div>
+				</div>
+				<?php else: ?>
+				<?php foreach($emails as $email): ?>
+				<div class='span-15 recipient'>
+					<div class='span-14'>
+						<input type='text' name='emailContact[]' value='<?php echo $email; ?>' class='span-14'>
+					</div>
+					<div class='span-1 last icons' style='text-align: center;'>
+						<img class='trash' style='padding-top: 10px;' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+					</div>
+				</div>
+				<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
+		</div>
+
+		<hr class='space'/>
+<!--
+		<div id='phone-block' class='block span-15'>
+			<div class='span-7'>
+				<h4>Phone</h4>
+			</div>
+			<div class='span-7 last'>
+				<span class='add-new hypertext'>add</span>
+			</div>
+			<div class='list'>
+				<?php if (empty($this->phoneContacts)): ?>
+				<div class='row'>
+					<input type='text' name='new-phone-list[]' class='span-8'>
+					<span class='remove trash-icon'>
+						<img src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+					</span>
+				</div>
+				<?php else: ?>
+				<?php foreach($this->phoneContacts as $contact): ?>
+				<div class='row'>
+					<input type='hidden' name='contact-id[]' value='<?php echo $contact['id']; ?>'>
+					<input type='text' name='phone-list[<?php echo $contact['id']; ?>]' class='span-8 phone-list' value='<?php echo $contact['resource']; ?>'>
+					<span class='remove trash-icon'>
+						<img src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+					</span>
+				</div>
+				<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
+			<div class='small quiet'>
+				Ex: (650) 555-4444
+			</div>
+			<div class='skeleton'>
+				<div class='row'>
+					<input type='text' name='new-phone-list[]' class='span-8 phone-list'>
+					<span class='remove trash-icon'>
+						<img src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<hr class='space'/>
+-->
+
+		<div id='messaging-block' class='block span-15'>
+			<div class='span-15'>
+				<div class='span-15'>
+					<strong>Messaging</strong>
+				</div>
+				<div class='span-15'>
+					<div class='small quiet span-14'>
+						Each of these addresses will be notified when we need to contact you via instant messenger
+					</div>
+					<div class='span-1 last add-recipient' style='text-align: center;'>
+						<span class='hypertext'>add</span>
+					</div>
+				</div>
+			</div>
+
+			<div class='list span-15'>
+				<?php $xmpps = $this->account->doc->xmppContact; ?>
+				<?php if (empty($xmpps)): ?>
+				<div class='span-15 recipient'>
+					<div class='span-14'>
+						<input type='text' name='xmppContact[]' class='span-14'>
+					</div>
+					<div class='span-1 last icons' style='text-align: center;'>
+						<img class='trash' style='padding-top: 10px;' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+					</div>
+				</div>
+				<?php else: ?>
+				<?php foreach($xmpps as $xmpp): ?>
+				<div class='span-15 recipient'>
+					<div class='span-14'>
+						<input type='text' name='xmppContact[]' value='<?php echo $xmpp; ?>' class='span-14'>
+					</div>
+					<div class='span-1 last icons' style='text-align: center;'>
+						<img class='trash' style='padding-top: 10px;' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' title='remove'>
+					</div>
+				</div>
+				<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<div class='message'>
+			<div class='content error prepend-top append-bottom'</div>
+		</div>
+
+		<div class='span-20 last clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Save'>
+			<a class='hypertext' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/account/modify/edit?id=<?php echo $this->accountId; ?>'>cancel</a>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/settings/views/scripts/contact/scaffolding.phtml'; ?>
+
+<div class='span-6 last' style='text-align: justify;'>
+	<p>
+	You can manage contacts here
+	</p>
+	<p>
+	nessquik can contact people in a variety of different ways.
+	</p>
+	<p>
+	You can choose these contacts when you indicate how you
+	would like nessquik to notify you when certain events
+	take place.
+	</p>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

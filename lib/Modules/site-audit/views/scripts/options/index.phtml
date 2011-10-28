@@ -1,0 +1,59 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22 last'>
+	<div id='page-header' class='span-22 last' style='font-size: 1.5em;'>
+		<a href='<?php echo $this->baseUrl(); ?>/site-audit' class='hypertext'>Site audit</a> &raquo;
+		Options
+		<img class='progress' alt='Progress indicator' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+	</div>
+</div>
+<hr class='space'/>
+<div id='steps' class='span-22 last' style='border-color: 1px solid #fff'>
+	<ul>
+		<li><a href="#general"><span>General</span></a></li>
+		<li><a href='#notifications'><span>Notifications</span></a></li>
+	</ul>
+	<form id='form-edit' action=''>
+		<div>
+			<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+			<input type='hidden' name='auditId' value='_new'>
+		</div>
+	</form>
+	<form id='policySearch' action=''>
+		<div>
+			<input type='hidden' name='page' value='1'>
+			<input type='hidden' name='old-page' value='1'>
+		</div>
+	</form>
+
+	<form id='form-submit' action=''>
+	<?php require 'forms/general.phtml'; ?>
+	<?php require 'forms/notifications.phtml'; ?>
+
+		<hr class='space'/>
+
+		<div class='message error'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+		<div class='message success'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+		<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+			<input id='btn-save' type='button' value='Apply options to audit'>
+		</div>
+	</form>
+
+	<div class='span-22 append-bottom prepend-top'>
+		<div class='span-22'>
+			&laquo; <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/site-audit/account'>User account</a>
+		</div>
+	</div>
+
+	<?php require 'forms/scaffolding.phtml' ?>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

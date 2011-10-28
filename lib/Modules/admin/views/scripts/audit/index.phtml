@@ -1,0 +1,18 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/admin/views/scripts/audit/title.phtml'; ?>
+
+<div class='span-24 last' style='border-color: 1px solid #fff; position: relative;'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+
+		<input type='hidden' name='page' value='1'>
+		<input type='hidden' name='status' value=''>
+	</form>
+	<div id='audits' class='block clearfix menu-content span-24'>
+		<div id='content' class='content' style='padding: 10px;'></div>
+	</div>
+
+	<div id="pager" class='prepend-top append-bottom span-24' style='text-align: center;'></div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

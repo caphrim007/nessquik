@@ -1,0 +1,79 @@
+<div id='adv-nessus-scanners' class='advanced'>
+	<div class='span-21'>
+		<strong>SYN scanner</strong>
+		<div class='prepend-1 prepend-top'>
+			Firewall detection
+			<div>
+				<select name='plugin_preference[synScannerFirewallDetection]'>
+				<?php if ($this->isNew): ?>
+					<option value='Automatic (normal)' selected='selected'>Automatic (normal)
+					<option value='Disabled (softer)'>Disabled (softer)
+					<option value='Do not detect RST rate limitation (soft)'>Do not detect RST rate limitation (soft)
+					<option value='Ignore closed ports (aggressive)'>Ignore closed ports (aggressive)
+				<?php else: ?>
+					<?php if ($this->policy->preferences->synScannerFirewallDetection == 'Disabled (softer)'): ?>
+						<option value='Automatic (normal)'>Automatic (normal)
+						<option value='Disabled (softer)' selected='selected'>Disabled (softer)
+						<option value='Do not detect RST rate limitation (soft)'>Do not detect RST rate limitation (soft)
+						<option value='Ignore closed ports (aggressive)'>Ignore closed ports (aggressive)
+					<?php elseif ($this->policy->preferences->synScannerFirewallDetection == 'Do not detect RST rate limitation (soft)'): ?>
+						<option value='Automatic (normal)'>Automatic (normal)
+						<option value='Disabled (softer)'>Disabled (softer)
+						<option value='Do not detect RST rate limitation (soft)' selected='selected'>Do not detect RST rate limitation (soft)
+						<option value='Ignore closed ports (aggressive)'>Ignore closed ports (aggressive)
+					<?php elseif ($this->policy->preferences->synScannerFirewallDetection == 'Ignore closed ports (aggressive)'): ?>
+						<option value='Automatic (normal)'>Automatic (normal)
+						<option value='Disabled (softer)'>Disabled (softer)
+						<option value='Do not detect RST rate limitation (soft)'>Do not detect RST rate limitation (soft)
+						<option value='Ignore closed ports (aggressive)' selected='selected'>Ignore closed ports (aggressive)
+					<?php else: ?>
+						<option value='Automatic (normal)' selected='selected'>Automatic (normal)
+						<option value='Disabled (softer)'>Disabled (softer)
+						<option value='Do not detect RST rate limitation (soft)'>Do not detect RST rate limitation (soft)
+						<option value='Ignore closed ports (aggressive)'>Ignore closed ports (aggressive)
+					<?php endif; ?>
+				<?php endif; ?>
+				</select>
+			</div>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>TCP scanner</strong>
+		<div class='prepend-1 prepend-top'>
+			Firewall detection
+			<div>
+				<select name='plugin_preference[tcpScannerFirewallDetection]'>
+				<?php if ($this->isNew): ?>
+					<option value='Automatic (normal)' selected='selected'>Automatic (normal)
+					<option value='Disabled (softer)'>Disabled (softer)
+					<option value='Do not detect RST rate limitation (soft)'>Do not detect RST rate limitation (soft)
+					<option value='Ignore closed ports (aggressive)'>Ignore closed ports (aggressive)
+				<?php else: ?>
+					<?php if ($this->policy->preferences->tcpScannerFirewallDetection == 'Disabled (softer)'): ?>
+						<option value='Automatic (normal)'>Automatic (normal)
+						<option value='Disabled (softer)' selected='selected'>Disabled (softer)
+						<option value='Do not detect RST rate limitation (soft)'>Do not detect RST rate limitation (soft)
+						<option value='Ignore closed ports (aggressive)'>Ignore closed ports (aggressive)
+					<?php elseif ($this->policy->preferences->tcpScannerFirewallDetection == 'Do not detect RST rate limitation (soft)'): ?>
+						<option value='Automatic (normal)'>Automatic (normal)
+						<option value='Disabled (softer)'>Disabled (softer)
+						<option value='Do not detect RST rate limitation (soft)' selected='selected'>Do not detect RST rate limitation (soft)
+						<option value='Ignore closed ports (aggressive)'>Ignore closed ports (aggressive)
+					<?php elseif ($this->policy->preferences->tcpScannerFirewallDetection == 'Ignore closed ports (aggressive)'): ?>
+						<option value='Automatic (normal)'>Automatic (normal)
+						<option value='Disabled (softer)'>Disabled (softer)
+						<option value='Do not detect RST rate limitation (soft)'>Do not detect RST rate limitation (soft)
+						<option value='Ignore closed ports (aggressive)' selected='selected'>Ignore closed ports (aggressive)
+					<?php else: ?>
+						<option value='Automatic (normal)' selected='selected'>Automatic (normal)
+						<option value='Disabled (softer)'>Disabled (softer)
+						<option value='Do not detect RST rate limitation (soft)'>Do not detect RST rate limitation (soft)
+						<option value='Ignore closed ports (aggressive)'>Ignore closed ports (aggressive)
+					<?php endif; ?>
+				<?php endif; ?>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>

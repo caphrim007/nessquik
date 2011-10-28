@@ -1,0 +1,65 @@
+<div id='email' class='span-22 prepend-top append-bottom prepend-1 append-1 config'>
+	<form class='form-submit'>
+		<div class='span-22 append-bottom'>
+			<strong>Sender options</strong>
+			<div class='small quiet'>
+				Connection settings for sending email to user accounts
+			</div>
+
+			<div class='prepend-1 prepend-top'>
+				<div class='span-20 append-bottom'>
+					<div class='span-9'>
+						Name of email sender
+						<div>
+							<input type='text' name='smtp_from_name' value='<?php echo $this->config->mail->smtp->fromName; ?>' class='span-9'>
+						</div>
+					</div>
+
+					<div class='span-2'>&nbsp;</div>
+
+					<div class='span-9 last'>
+						Email address of sender
+						<div>
+							<input type='text' name='smtp_from' value='<?php echo $this->config->mail->smtp->from; ?>' class='span-9'>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class='span-22 append-bottom'>
+			<strong>Delivery settings</strong>
+			<div class='small quiet'>
+				Connection settings for sending email to user accounts
+			</div>
+
+			<div class='prepend-1 prepend-top'>
+				<div class='span-20 append-bottom'>
+					<div class='span-9'>
+						SMTP server
+						<div>
+							<input type='text' name='smtp_host' value='<?php echo $this->config->mail->smtp->server; ?>' class='span-9'>
+						</div>
+					</div>
+
+					<div class='span-2'>&nbsp;</div>
+
+					<div class='span-9 last'>
+						SMTP server port
+						<div>
+							<input type='text' name='smtp_port' value='<?php echo $this->config->mail->smtp->params->port; ?>' class='span-9'>
+						</div>
+					</div>
+				</div>
+
+				<div class='span-20 append-bottom'>
+					<input type='checkbox'>This connection needs authentication credentials
+				</div>
+
+				<div class='span-20'>
+					<input type='checkbox'>This connection should be secured
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

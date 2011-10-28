@@ -1,0 +1,43 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div id='page-heading' class='span-22 last'>
+	<div class='span-22' style='font-size: 1.5em;'>
+		Site audit
+	</div>
+</div>
+<hr class='space'/>
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<form id='form-submit'>
+		<strong>About</strong>
+		<div class='prepend-top'>
+			<p>
+			The next few screens will guide you through creating a site audit in nessquik.
+			</p>
+			<p>
+			A site audit is a slightly bigger beast that a normal audit. It typically involves
+			a larger address space, exclusion lists, and other gobbledygook that a regular
+			audit in nessquik is just not equipped to handle yet.
+			</p>
+			<p>
+			Arguably this is a problem with nessquik itself (that it wasn't made to handle
+			gigantic stuff like this) but until such time as that functionality is added,
+			the site audit will remain.
+			</p>
+			<p>
+			So without further ado
+			</p>
+		</div>
+
+		<div class='span-22 append-bottom'>
+			<div class='span-22' style='text-align: right;'>
+				<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/site-audit/account'>Let's go</a> &raquo;
+			</div>
+		</div>
+	</form>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

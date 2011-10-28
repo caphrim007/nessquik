@@ -1,0 +1,36 @@
+<div id='title' class='span-24' style='background-color: #ededed; line-height: 35px; height: 35px;'>
+	<div class='span-5'>
+		<div style='padding-left: 10px; font-size: 1.6em;'>
+			Policies
+			<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+	</div>
+
+	<div class='span-19 last menu' style='text-align: right;'>
+		<div class='pluginLinks'>
+			<ul>
+				<li><a href='<?php echo $this->baseUrl(); ?>/policy/modify/edit?id=_new' class='darkHypertext'>Create</a>
+				<li><span id='searchLink' class='darkHypertext'>Search</span>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id='searchMenu' class='span-6 last' style='background-color: #fff; border: 1px solid #ccc; padding: 10px; -moz-border-radius: 4px; position: absolute; z-index: 1000;'>
+	<form id='form-policies'>
+	<div class='span-6 append-bottom'>
+		<div class='span-6' style='color: #555;'>
+			<strong>Policy name</strong>
+		</div>
+		<div class='span-6'>
+			<input name='name' type='text' style='width: 100%;'>
+		</div>
+	</div>
+
+	<hr class='quiet'/>
+
+	<div class='span-6' style='text-align: right;'>
+		<input type='button' value='Search'>
+	</div>
+	</form>
+</div>

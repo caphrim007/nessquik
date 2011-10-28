@@ -1,0 +1,121 @@
+<div id='settings' class='span-22 prepend-top append-bottom prepend-1 append-1 config'>
+	<form id='form-settings'>
+		<input type='hidden' name='id' value='<?php echo $this->id; ?>'>
+	<?php if ($this->isNew): ?>
+	<h4>Queue name</h4>
+	<div class='small quiet'>
+		Note that the queue name cannot be changed after it is created.
+	</div>
+	<div>
+		<input type='text' name='queue-name' style='width: 50%;' value='queue'>
+	</div>
+	<?php else: ?>
+	<span style='font-size: 1.2em;'>Queue name</span>
+		: <span style='font-weight: bold;'><?php echo $this->queue['name']; ?></span>
+	<div class='small quiet'>
+		Because the queue name acts as the key for the queue, it cannot be changed after it is created.
+	</div>
+	<?php endif; ?>
+
+	<hr class='space'/>
+
+	<div>
+		<h4>Adapter configuration</h4>
+		<div class='small quiet append-bottom'>
+			The queue adapter is used to talk with the message queue.
+		</div>
+
+		<div class='span-22 append-bottom'>
+			<div class='span-10'>
+				<strong>Hostname</strong>
+				<div>
+					<?php if (empty($this->queue['driverOptions']['host'])): ?>
+					<input type='text' name='host' style='width: 50%;' value='localhost'>
+					<?php else: ?>
+					<input type='text' name='host' style='width: 50%;' value='<?php echo $this->queue['driverOptions']['host']; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+
+			<div class='span-2'>&nbsp;</div>
+
+			<div class='span-10 last'>
+				<strong>Port</strong>
+				<div>
+					<?php if (empty($this->queue['driverOptions']['port'])): ?>
+					<input type='text' name='port' style='width: 50%;' value='5432'>
+					<?php else: ?>
+					<input type='text' name='port' style='width: 50%;' value='<?php echo $this->queue['driverOptions']['port']; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+		<div class='span-22 append-bottom'>
+			<div class='span-10'>
+				<strong>Database name</strong>
+				<div>
+					<?php if (empty($this->queue['driverOptions']['dbname'])): ?>
+					<input type='text' name='dbname' style='width: 50%;' value='nessquik'>
+					<?php else: ?>
+					<input type='text' name='dbname' style='width: 50%;' value='<?php echo $this->queue['driverOptions']['dbname']; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+
+			<div class='span-2'>&nbsp;</div>
+
+			<div class='span-10 last'>
+				<strong>Database type</strong>
+				<div>
+					<select name='type' style='width: 50%;'>
+					<?php if ($this->queue['driverOptions']['type'] == 'Pdo_Mysql'): ?>
+						<option value='Pdo_Pgsql'>Pdo_Pgsql
+						<option value='Pdo_Mysql' selected='selected'>Pdo_Mysql
+					<?php else: ?>
+						<option value='Pdo_Pgsql' selected='selected'>Pdo_Pgsql
+						<option value='Pdo_Mysql'>Pdo_Mysql
+					<?php endif; ?>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class='span-22 append-bottom'>
+			<div class='span-10'>
+				<strong>Username</strong>
+				<div>
+					<?php if (empty($this->queue['driverOptions']['username'])): ?>
+					<input type='text' name='username' style='width: 50%;' value='root'>
+					<?php else: ?>
+					<input type='text' name='username' style='width: 50%;' value='<?php echo $this->queue['driverOptions']['username']; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+
+			<div class='span-2'>&nbsp;</div>
+
+			<div class='span-10 last'>
+				<strong>Password</strong>
+				<div>
+					<?php if (empty($this->queue['driverOptions']['password'])): ?>
+					<input type='text' name='password' style='width: 50%;' value='password'>
+					<?php else: ?>
+					<input type='text' name='password' style='width: 50%;' value='<?php echo $this->queue['driverOptions']['password']; ?>'>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class='span-22 last message error append-bottom'>
+		<span class='content'></span>
+		&nbsp;&nbsp;
+		<span class='hypertext close'>close</span>
+	</div>
+
+	<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+		<input id='btn-save' type='button' value='Save'>
+		<a class='hypertext' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/admin/queues'>cancel</a>
+	</div>
+	</form>
+</div>

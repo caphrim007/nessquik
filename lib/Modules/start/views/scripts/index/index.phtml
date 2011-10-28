@@ -1,0 +1,53 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+
+<div class='prepend-1 prepend-top append-bottom append-1 span-22'>
+	<div class='span-16'>
+		<span class='dim-header'>Welcome to nessquik</span>
+	</div>
+</div>
+<div class='prepend-1 prepend-top append-bottom append-1 span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div class='prepend-1 span-21 append-bottom'>
+		<p>
+		It looks like this is the first time you've visited us, so let's take a moment to get
+		your account set up so that you can begin using nessquik.
+		</p>
+		<p>
+		I've taken the liberty of creating a scanning policy for you so you can create audits
+		right now.
+		</p>
+		<p>
+		Your account is ready to go, so feel free to use the links to the top right, or the
+		links below to explore further.
+		</p>
+	</div>
+
+	<div class='append-bottom span-22'>
+		<span class='dim-header'>Where would you like to go?</span>
+	</div>
+	<div class='prepend-1 span-22 append-bottom where-to-go'>
+		<div class='span-7'>
+			<div>
+				<a class='hypertext large' target='_blank' href='<?php echo $this->baseUrl(); ?>'>Home area</a>
+			</div>
+		</div>
+		<div class='span-7'>
+			<div>
+				<a class='hypertext large' target='_blank' href='<?php echo $this->baseUrl(); ?>/audit/modify/edit?id=_new'>Create a new audit</a>
+			</div>
+		</div>
+		<div class='span-7'>
+			<div>
+				<a class='hypertext large' target='_blank' href='<?php echo $this->baseUrl(); ?>/policy'>Create or change policies</a>
+			</div>
+		</div>
+	</div>
+	<div class='small quiet span-22'>
+		Note: The above links will open in new tabs
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

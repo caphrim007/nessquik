@@ -1,0 +1,27 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/charts/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div id='urlActivityLastWeekScatter' class='span-22 append-bottom'>
+		<div class='span-22'>
+			<strong>About this chart</strong>
+		</div>
+		<div class='small quiet append-bottom span-22'>
+			The larger the dot, the more URLs that were created at the specific hour on
+			the specific day.
+		</div>
+		<div class='progress span-22'>
+			<img src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+		</div>
+		<div class='message error span-22'>
+			<div class='content'></div>
+		</div>
+		<div id='urlActivityLastWeekScatterChart' class='span-22' style='height: 300px; text-align: center;'></div>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

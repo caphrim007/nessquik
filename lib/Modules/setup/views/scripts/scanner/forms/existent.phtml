@@ -1,0 +1,52 @@
+		<div class='prepend-top'>
+			<p>
+			It seems you have already created a server in nessquik.
+			</p>
+			<p>
+			If you want to use this server as the default audit server,
+			you can choose to do so below, and nessquik will update
+			the plugin list as needed.
+			</p>
+			<p>
+			On the other hand, if you made a mistake when creating the
+			audit server, you can delete the existing audit server
+			details from nessquik and start from scratch.
+			</p>
+		</div>
+
+		<hr class='quiet'/>
+
+		<div class='message error append-bottom'>
+			<span class='content'></span>
+			&nbsp;&nbsp;
+			<span class='hypertext close'>close</span>
+		</div>
+
+		<div class='append-bottom'>
+			<strong>Which would you like to do?</strong>
+		</div>
+
+		<div class='span-22 last clearfix form-ops' style='text-align: center;'>
+			<div class='span-11' style='background-color: #efefef; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;'>
+				<div class='update-plugins' style='padding: 10px;'>
+					<input class='btn-save' type='button' value='Use the existing scanner'>
+				</div>
+			</div>
+			<div class='span-11 last' style='background-color: #efefef; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;'>
+				<div class='delete-scanners' style='padding: 10px;'>
+					<input class='btn-save' type='button' value='Delete scanners and start fresh'>
+				</div>
+			</div>
+		</div>
+		<div class='span-22 updates-mesg small quiet prepend-top' style='text-align: center;'>
+			The update operations could take several minutes to complete please be patient.
+		</div>
+
+		<div class='span-22 append-bottom prepend-top'>
+			<div class='span-11'>
+				&laquo; <a class='hypertext' href='<?php echo $this->baseUrl(); ?>/setup/automation'>Automation</a>
+			</div>
+			<div class='span-11 last' style='text-align: right;'>
+				<img class='progress'  src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+			</div>
+		</div>

@@ -1,0 +1,41 @@
+[info]
+name = "Low Hanging Fruit"
+author = "ANL CST"
+last-updated = "06-25-2008"
+
+[plugins] 
+single[] = 24680	; Serverprotect Buffer Overflow
+single[] = 24323	; Solaris telnet.d Vulnerability
+single[] = 22194	; MS06-040 Vulnerability
+single[] = 21696	; MS06-025 RAS Vulnerability
+single[] = 21327	; Retrospect Client Buffer Overflow
+single[] = 10660	; Oracle tnslsnr security
+single[] = 21564	; RealVNC Authentication Bypass Vulnerability
+single[] = 19427	; Veritas default root
+single[] = 20368	; MS04-042
+single[] = 20006	; MS05-046
+single[] = 20182	; Veritas NetBackup Vuln
+single[] = 15970	; MS04-045
+single[] = 12055	; MS04-007
+single[] = 12014	; Free Community Detected
+single[] = 19407	; MS05-043
+single[] = 20728	; MSDE Weak sa P/W
+single[] = 12011	; BetterInternet Detected
+single[] = 12015	; IPInsight Detected
+single[] = 20008	; MS05-051
+single[] = 10673	; MSSQL sa blank pw
+single[] = 11026	; AP Detection
+single[] = 16337	; MS05-007
+single[] = 12012	; CyDoor Running
+single[] = 11995	; Bonzi Buddy Running
+single[] = 13852	; MS Scheduler Vuln
+single[] = 12010	; BargainBuddy Running
+single[] = 18502	; MS05-027
+single[] = 11883	; Gator Running
+single[] = 11998	; Gator Running
+single[] = 11996	; Brilliant Digital Running
+single[] = 12063	; Bagle.B Detected
+single[] = 19408	; MS05-039
+single[] = 18027	; MS05-017
+single[] = 16230	; Veritas BO
+single[] = 19948	; Open X server

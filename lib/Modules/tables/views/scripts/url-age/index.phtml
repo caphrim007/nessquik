@@ -1,0 +1,88 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/tables/views/scripts/header/index.phtml'; ?>
+
+<div class='span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+	</form>
+
+	<div id='topUrls' class='span-22 append-bottom clearfix' style='text-align: center;'>
+		<div class='span-11'>
+			<div class='span-11'>
+				<strong>Oldest Url</strong>
+			</div>
+                        <div class='span-11' style='background-color: #efefef; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;'>
+                                <div class='span-11 last hypertext' style='padding: 10px; text-align: left; font-family: "Courier New";'>
+				<?php $doc = $this->oldest->getDocument(); ?>
+				<?php if (strlen($doc->uri) > 50): ?>
+					<span title='<?php echo $doc->uri; ?>'><?php echo substr($doc->uri,0,50) . '...'; ?></span>
+				<?php else: ?>
+				<?php echo $doc->uri; ?>
+				<?php endif; ?>
+                                </div>
+				<div class='span-11 last quiet' style='text-align: left; padding: 10px;'>
+					<?php $account = new Account($this->oldest->account_id); ?>
+					Date added: <?php echo $doc->created_at; ?><br>
+					Added by: <?php echo $account->getUsername(); ?>
+				</div>
+			</div>
+		</div>
+		<div class='span-11 last'>
+			<div class='span-11 last'>
+				<strong>Newest Url</strong>
+			</div>
+                        <div class='span-11 last' style='background-color: #efefef; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;'>
+                                <div class='span-11 last hypertext' style='padding: 10px; text-align: left; font-family: "Courier New";'>
+				<?php $doc = $this->newest->getDocument(); ?>
+				<?php if (strlen($doc->uri) > 50): ?>
+					<span title='<?php echo $doc->uri; ?>'><?php echo substr($doc->uri,0,50) . '...'; ?></span>
+				<?php else: ?>
+				<?php echo $doc->uri; ?>
+				<?php endif; ?>
+                                </div>
+				<div class='span-11 last quiet' style='text-align: left; padding: 10px;'>
+					<?php $account = new Account($this->newest->account_id); ?>
+					Date added: <?php echo $doc->created_at; ?><br>
+					Added by: <?php echo $account->getUsername(); ?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class='span-22 prepend-top'>
+		<strong>URLs created</strong>
+	</div>
+		
+	<div class='span-22 prepend-top'>
+		<div id='totalDocsBlock' class='small quiet span-11'>
+			<span style='font-weight: bold;' id='totalDocsVal'>0</span> URLs were found
+		</div>
+		<div class='span-11 last' style='text-align: right;'>
+			<label for="from">From</label>
+			<input type="text" id="from" name="from" value='<?php echo $this->yesterday->toString('MM/dd/YYYY'); ?>'/>
+			<label for="to">to</label>
+			<input type="text" id="to" name="to" value='<?php echo $this->today->toString('MM/dd/YYYY'); ?>'/>
+		</div>
+	</div>
+
+	<div class='span-22 append-bottom'>
+		<div id='tableData' class='span-22'>Please wait while the table data is retrieved</div>
+		<div id='pager' class='span-22 prepend-top' style='text-align: center;'>
+			<form>
+				<img class="first" src="<?php echo $this->baseUrl(); ?>/usr/images/first.png">
+				<img class="prev" src="<?php echo $this->baseUrl(); ?>/usr/images/prev.png">
+				<input type="text" class="pagedisplay">
+				<img class="next" src="<?php echo $this->baseUrl(); ?>/usr/images/next.png">
+				<img class="last" src="<?php echo $this->baseUrl(); ?>/usr/images/last.png">
+				<select class="pagesize">
+					<option value="10" selected="selected">10</option>
+					<option value="20">20</option>
+					<option value="30">30</option>
+					<option value="40">40</option>
+				</select>
+			</form>
+		</div>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

@@ -1,0 +1,201 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/roles/views/scripts/modify/title.phtml'; ?>
+
+<div class='span-24 last' style='border-color: 1px solid #fff; position: relative;'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+		<input type='hidden' name='isNew' value='<?php echo $this->isNew; ?>'>
+		<input type='hidden' name='roleId' value='<?php echo $this->id; ?>'>
+	</form>
+
+	<div id='role' class='block clearfix menu-content span-24'>
+		<div id='content' class='content'>
+			<form id='form-submit' action=''>
+				<input type='hidden' name='roleId' value='<?php echo $this->id; ?>'>
+				<?php require _MODPATH.'/roles/views/scripts/modify/form-general.phtml'; ?>
+
+				<?php require _MODPATH.'/roles/views/scripts/modify/permission-capabilities.phtml'; ?>
+				<?php require _MODPATH.'/roles/views/scripts/modify/permission-api-methods.phtml'; ?>
+				<?php require _MODPATH.'/roles/views/scripts/modify/permission-network-targets.phtml'; ?>
+				<?php require _MODPATH.'/roles/views/scripts/modify/permission-hostname-targets.phtml'; ?>
+				<?php require _MODPATH.'/roles/views/scripts/modify/permission-scanners.phtml'; ?>
+				<?php require _MODPATH.'/roles/views/scripts/modify/permission-audits.phtml'; ?>
+				<?php require _MODPATH.'/roles/views/scripts/modify/permission-policies.phtml'; ?>
+				<?php require _MODPATH.'/roles/views/scripts/modify/permission-queues.phtml'; ?>
+			</form>
+		</div>
+	</div>
+
+	<div class='span-24 prepend-top clearfix form-ops' style='text-align: center;'>
+		<input id='btn-save' type='button' value='Save'>
+		<a class='hypertext cancel' style='padding-left: 20px;' href='<?php echo $this->baseUrl(); ?>/audit'>cancel</a>
+	</div>
+
+	<div id='dialog'>
+		<div style='width: 100%; border-bottom: 1px solid #eee; background-color: #eee; height: 45px; min-height: 45px;'>
+			<div style='padding: 10px;'>
+				<div style='color: #303233; font-weight: bold;'>
+					Modify permissions that can be assigned to roles
+				</div>
+			</div>
+		</div>
+
+		<div class='span-21 last' style='height: 650px;'>
+			<div id='steps' style='border-color: 1px solid #fff'>
+				<ul>
+					<li><a href="#permission-capability"><span>Capabilities</span></a></li>
+					<li><a href="#permission-network"><span>Network Targets<span></a></li>
+					<li><a href="#permission-hostname"><span>Hostname Targets</span></a></li>
+				</ul>
+
+				<div id='permission-capability' class='tab-block'>
+					<div>
+						<form class='search'>
+							<input type='hidden' name='page' value='1'>
+							<input type='hidden' name='old-page' value='1'>
+							<input type='hidden' name='type' value='capability'>
+						</form>
+					</div>
+					<div>
+						<strong>Add new</strong>
+						<div class='span-21 add-capability-block'>
+							<input type='text' name='permission' style='width: 50%;'>
+							<input class='add-capability' name='add' type='button' value='add'>
+						</div>
+
+						<div class='span-19 message error'>
+							<span class='content'></span>
+							&nbsp;&nbsp;
+							<span class='hypertext close'>close</span>
+						</div>
+					</div>
+
+					<hr class='space'/>
+
+					<div>
+						<strong>Modify existing</strong>
+						<form class='form-submit'>
+						<div class='block scanner'>
+							<div class='select-actions span-15 last'>
+								Select: <span class='hypertext select-all'>All</span>, <span class='hypertext select-none'>None</span>
+							</div>
+
+							<div class='search-results span-19 last'>
+								<div style='padding: 10px;' class='span-19'>
+									<div class='content'></div>
+								</div>
+								<div id='with-selected'>
+									With selected: <span class='hypertext selected-delete'>Delete</span>
+								</div>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+				<div id='permission-network' class='tab-block'>
+					<div>
+						<form class='search'>
+							<input type='hidden' name='page' value='1'>
+							<input type='hidden' name='old-page' value='1'>
+							<input type='hidden' name='type' value='network'>
+						</form>
+					</div>
+					<div>
+						<strong>Add new</strong>
+						<div class='span-21 add-target-block'>
+							<input type='text' name='permission' style='width: 50%;'>
+							<input class='add-target' name='add' type='button' value='add'>
+						</div>
+
+						<div class='span-19 message error'>
+							<span class='content'></span>
+							&nbsp;&nbsp;
+							<span class='hypertext close'>close</span>
+						</div>
+					</div>
+
+					<hr class='space'/>
+
+					<div>
+						<strong>Modify existing</strong>
+						<form class='form-submit'>
+						<div class='block scanner'>
+							<div class='select-actions span-15 last'>
+								Select: <span class='hypertext select-all'>All</span>, <span class='hypertext select-none'>None</span>
+							</div>
+
+							<div class='search-results span-19 last'>
+								<div style='padding: 10px;' class='span-19'>
+									<div class='content'></div>
+								</div>
+								<div id='with-selected'>
+									With selected: <span class='hypertext selected-delete'>Delete</span>
+								</div>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+				<div id='permission-hostname' class='tab-block'>
+					<div>
+						<form class='search'>
+							<input type='hidden' name='page' value='1'>
+							<input type='hidden' name='old-page' value='1'>
+							<input type='hidden' name='type' value='hostname'>
+						</form>
+					</div>
+					<div>
+						<strong>Add new</strong>
+						<div class='span-21 add-target-block'>
+							<input type='text' name='permission' style='width: 50%;'>
+							<input class='add-target' name='add' type='button' value='add'>
+						</div>
+
+						<div class='span-19 message error'>
+							<span class='content'></span>
+							&nbsp;&nbsp;
+							<span class='hypertext close'>close</span>
+						</div>
+					</div>
+
+					<hr class='space'/>
+
+					<div>
+						<strong>Modify existing</strong>
+						<form class='form-submit'>
+						<div class='block scanner'>
+							<div class='select-actions span-15 last'>
+								Select: <span class='hypertext select-all'>All</span>, <span class='hypertext select-none'>None</span>
+							</div>
+
+							<div class='search-results span-19 last'>
+								<div style='padding: 10px;' class='span-19'>
+									<div class='content'></div>
+								</div>
+								<div id='with-selected'>
+									With selected: <span class='hypertext selected-delete'>Delete</span>
+								</div>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class='span-21 last' style='text-align: right; height: 45px; background-color: #eee;'>
+			<div class='span-10'>
+				<div style='padding: 10px; text-align: left;'>
+					<img class='progress' src='<?php echo $this->baseUrl(); ?>/usr/images/spinner.gif'>
+				</div>
+			</div>
+			<div class='span-11 last'>
+				<div style='padding: 10px;'>
+					<input type='button' class='search-dialog-close' value='Close'>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

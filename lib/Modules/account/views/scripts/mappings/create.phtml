@@ -1,0 +1,42 @@
+<?php require _MODPATH.'/default/views/scripts/header/index.phtml'; ?>
+<?php require _MODPATH.'/account/views/scripts/mappings/title.phtml'; ?>
+
+<div class='prepend-top append-bottom prepend-1 append-1 span-22'>
+	<form id='form-edit'>
+		<input type='hidden' name='base-url' value='<?php echo $this->baseUrl(); ?>'>
+		<input type='hidden' name='accountId' value='<?php echo $this->account->id; ?>'>
+	</form>
+	<div id='create-mapping-body'>
+		<form id='form-submit'>
+			<input type='hidden' name='accountId' value='<?php echo $this->account->id; ?>'>
+			<div class='span-22'>
+				<strong>Map name</strong>
+			</div>
+			<div class='span-22'>
+				<input type='text' name='map-name' style='width: 100%;'>
+			</div>
+			<div class='span-22 prepend-top'>
+				The mapping name needs to be defined exactly as it would appear
+				in the authentication adapter that normally handles it.
+				Some examples are shown below.
+			</div>
+
+			<div class='span-22 prepend-top'>
+				<div style='font-weight: bold;'>LDAP</div>
+				<div class='prepend-1 quiet'>john.doe@organization.org</div>
+			</div>
+
+			<div class='span-22 prepend-top'>
+				<div style='font-weight: bold;'>X.509</div>
+				<div class='prepend-1 quiet'>/DC=org/DC=Organization/O=Dev/OU=People/CN=John Doe/CN=john.doe</div>
+			</div>
+		</form>
+	</div>
+	<div class='span-22 prepend-top' style='text-align: center;'>
+		<input type='button' class='create-dialog-save' value='Save'>
+		&nbsp;&nbsp;&nbsp;
+		<a class='hypertext' href='<?php echo $this->baseUrl(); ?>/account/mappings?accountId=<?php echo $this->accountId; ?>'>cancel</a>
+	</div>
+</div>
+
+<?php require _MODPATH.'/default/views/scripts/footer/index.phtml'; ?>

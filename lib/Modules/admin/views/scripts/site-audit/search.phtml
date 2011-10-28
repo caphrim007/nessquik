@@ -1,0 +1,56 @@
+<?php if (empty($this->results)): ?>
+	<div style='color: #aaa; font-size: 10px; padding: 10px;'>
+		No accounts are defined. Create one <a href='<?php echo $this->baseUrl(); ?>/admin/account/edit?id=_new'>now</a>
+	</div>
+<?php else: ?>
+	<div class='selectable span-14 prepend-top'>
+	<?php foreach ($this->results as $key => $account): ?>
+	<?php if (count($this->results) == 1): ?>
+	<div class='row span-14 no-border'>
+	<?php elseif ((count($this->results) - 1) == $key): ?>
+	<div class='row span-14 no-border' style='padding: 5px 0 0 0;'>
+	<?php elseif ($key == 0): ?>
+	<div class='row span-14' style='padding: 0 0 5px 0;'>
+	<?php else: ?>
+	<div class='row span-14' style='padding: 5px 0 5px 0;'>
+	<?php endif; ?>
+		<div class='span-1'>
+			<input type='checkbox' name='accountId' value='<?php echo $account['id']; ?>'>
+		</div>
+		<div class='name span-10'>
+			<a class='hypertext' href='<?php echo $this->baseUrl() ;?>/account/modify/edit?id=<?php echo $account['id']; ?>'><?php echo $account['username'] ; ?></a>
+		</div>
+		<div class='span-3 icons last'>
+			<input type='hidden' name='id' value='<?php echo $account['id']; ?>'>
+			<img class='trash' src='<?php echo $this->baseUrl(); ?>/usr/images/trash.gif' alt='delete account'>
+		</div>
+	</div>
+	<?php endforeach; ?>
+	</div>
+<?php endif; ?>
+
+<?php if (count($this->results) == $this->limit): ?>
+<div class='span-14 prepend-top'>
+	<div class='span-7'>&nbsp;</div>
+	<div class='span-7 last' style='text-align: right;'>
+		<?php if ($this->page > 1): ?>
+		<span class='show-less hypertext'>&laquo; less</span>
+		<?php else: ?>
+		&nbsp;
+		<?php endif; ?>
+		&nbsp;&nbsp;&nbsp;
+		<span class='show-more hypertext'>more &raquo;</span>
+	</div>
+</div>
+<?php else: ?>
+<div class='span-14 prepend-top'>
+	<div class='span-7'>&nbsp;</div>
+	<?php if ($this->page > 1): ?>
+	<div class='span-7 last' style='text-align: right;'>
+		<span class='show-less hypertext'>&laquo; less</span>
+	</div>
+	<?php else: ?>
+	<div class='span-7 last'>&nbsp;</div>
+	<?php endif; ?>
+</div>
+<?php endif; ?>

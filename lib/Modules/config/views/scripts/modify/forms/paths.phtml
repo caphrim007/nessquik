@@ -1,0 +1,33 @@
+<div id='paths' class='span-22 prepend-top append-bottom prepend-1 append-1 config'>
+	<form class='form-submit'>
+		<div class='span-22 append-bottom'>
+			<strong>Application paths</strong>
+			<div class='small quiet'>
+				Paths to binaries used by tools packaged with nessquik
+			</div>
+
+			<div class='prepend-1 prepend-top'>
+				<div class='span-20'>
+					Python
+					<div>
+						<?php if (isset($this->config->python->path)): ?>
+						<input type='text' name='python' value='<?php echo $this->config->python->path; ?>' class='span-20'>
+						<?php else: ?>
+						<input type='text' name='python' value='/usr/bin/python' class='span-20'>
+						<?php endif; ?>
+					</div>
+				</div>
+				<div class='span-20'>
+					Java
+					<div>
+						<?php if (isset($this->config->java->path)): ?>
+						<input type='text' name='java' value='<?php echo $this->config->java->path; ?>' class='span-20'>
+						<?php else: ?>
+						<input type='text' name='java' value='/usr/bin/java' class='span-20'>
+						<?php endif; ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

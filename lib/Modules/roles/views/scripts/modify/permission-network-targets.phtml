@@ -1,0 +1,54 @@
+<div class='span-22 prepend-top append-bottom prepend-1 append-1'>
+	<div class='permission-block network-target'>
+		<strong>Network Targets</strong>
+
+		<div class='span-22'>
+			<div class='span-5'>
+				Available targets
+			</div>
+			<div class='span-5' style='text-align: right;'>&nbsp;</div>
+			<div class='span-2'>&nbsp;</div>
+			<div class='span-5'>
+				Selected targets
+			</div>
+			<div class='span-5 last' style='text-align: right;'>
+				<span class='hypertext clear-all'>clear all &laquo;</span>
+			</div>
+		</div>
+
+		<div class='permissions span-22'>
+			<div class='span-10'>
+				<ol class='selectable available'>
+					<?php if (!empty($this->networkTargets)): ?>
+					<?php foreach($this->networkTargets as $target): ?>
+						<?php if ($this->inSelected($target['permission_resource'], $this->selectedNetworkTargets)): ?>
+						<li class='<?php echo $target['permission_id']; ?>'>
+							<input type='hidden' name='available-networktarget[]' value='<?php echo $target['permission_id']; ?>'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/forward-selected.png'>&nbsp;&nbsp;
+							<span><?php echo $target['permission_resource']; ?></span>
+						<?php else: ?>
+						<li class='<?php echo $target['permission_id']; ?>'>
+							<input type='hidden' name='available-networktarget[]' value='<?php echo $target['permission_id']; ?>'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/forward.png'>&nbsp;&nbsp;
+							<span><?php echo $target['permission_resource']; ?></span>
+						<?php endif; ?>
+					<?php endforeach; ?>
+					<?php endif; ?>
+				</ol>
+			</div>
+			<div class='span-2'>&nbsp;</div>
+			<div class='span-10 last'>
+				<ol class='selectable selected'>
+					<?php if (!empty($this->selectedNetworkTargets)): ?>
+					<?php foreach($this->selectedNetworkTargets as $target): ?>
+						<li class='<?php echo $target['id']; ?>'>
+							<input type='hidden' name='selected-networktarget[]' value='<?php echo $target['id']; ?>'>
+							<img src='<?php echo $this->baseUrl(); ?>/usr/images/back.png'>&nbsp;&nbsp;
+							<span><?php echo $target['resource']; ?></span>
+					<?php endforeach; ?>
+					<?php endif; ?>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>

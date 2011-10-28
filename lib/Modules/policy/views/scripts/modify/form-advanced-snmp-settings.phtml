@@ -1,0 +1,23 @@
+<div id='adv-snmp-settings' class='advanced'>
+	<div class='span-21'>
+		<strong>Community name</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->snmpCommunityName == null): ?>
+			<input type='text' name='plugin_preference[snmpCommunityName]' value='public'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[snmpCommunityName]' value='<?php echo $this->policy->preferences->snmpCommunityName; ?>'>
+			<?php endif; ?>
+		</div>
+
+		<hr class='space'/>
+
+		<strong>UDP port</strong>
+		<div>
+			<?php if ($this->isNew || $this->policy->preferences->snmpUdpPort == null): ?>
+			<input type='text' name='plugin_preference[snmpUdpPort]' value='161'>
+			<?php else: ?>
+			<input type='text' name='plugin_preference[snmpUdpPort]' value='<?php echo $this->policy->preferences->snmpUdpPort; ?>'>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

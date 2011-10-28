@@ -1,0 +1,62 @@
+<?php if (empty($this->scanners)): ?>
+	<div class='prepend-top no-results-mesg'>
+		No scanners were found
+	</div>
+<?php else: ?>
+<div class='selectable last policy-list list'>
+	<table>
+		<thead>
+			<tr>
+				<th class='check'>&nbsp;</th>
+				<th colspan='2'>Scanner</th>
+			</tr>
+		</thead>
+		<tbody>
+	<?php if ($this->isNew): ?>
+		<?php foreach ($this->scanners as $key => $scanner): ?>
+			<tr class='row'>
+				<td class='check'>
+					<?php if ($key == 0): ?>
+					<input type='radio' name='scanner' value='<?php echo $scanner->id; ?>' checked='checked'>
+					<?php else: ?>
+					<input type='radio' name='scanner' value='<?php echo $scanner->id; ?>'>
+					<?php endif; ?>
+				</td>
+				<td style='width: 70%; border-bottom: 1px solid #cdcdcd;'>
+					<?php echo $scanner->name; ?>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+	<?php else: ?>
+		<?php foreach ($this->scanners as $key => $scanner): ?>
+			<?php if ($this->audit->scanner_id == $scanner->id): ?>
+				<tr class='row'>
+					<td class='check'>
+						&raquo;
+					</td>
+					<td style='width: 70%; border-bottom: 1px solid #cdcdcd;'>
+						<?php echo $scanner->name ; ?>
+						&nbsp;
+						<span style='color: #999;'>( currently selected policy )</span>
+					</td>
+				</tr>
+			<?php else: ?>
+				<tr class='row'>
+					<td class='check'>
+						<?php if ($this->audit->scanner_id == $scanner->id): ?>
+						<input type='radio' name='scanner' value='<?php echo $scanner->id; ?>' checked='checked'>
+						<?php else: ?>
+						<input type='radio' name='scanner' value='<?php echo $scanner->id; ?>'>
+						<?php endif; ?>
+					</td>
+					<td style='width: 70%; border-bottom: 1px solid #cdcdcd;'>
+						<?php echo $scanner->name; ?>
+					</td>
+				</tr>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	<?php endif; ?>
+		</tbody>
+	</table>
+</div>
+<?php endif; ?>
